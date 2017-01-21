@@ -7,4 +7,4 @@
 让我们重温经典吧。
 
 
- ![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
+ ![image](https://github.com/geektcp/ClassicWOW/alipay_zhifubao.png)
