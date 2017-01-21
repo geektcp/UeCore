@@ -7,4 +7,4 @@
 让我们重温经典吧。
 
 
- ![image](https://github.com/geektcp/ClassicWOW/alipay_zhifubao.png)
+ ![image](https://github.com/geektcp/ClassicWOW/blob/master/alipay_zhifubao.png)
