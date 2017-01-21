@@ -5,3 +5,6 @@
 多年以后，在这款纯粹的开源服务器问世后，终于如愿以偿。
 
 让我们重温经典吧。
+
+
+ ![image](https://github.com/ButBueatiful/dotvim/raw/master/screenshots/vim-screenshot.jpg)
