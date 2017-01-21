@@ -8,4 +8,5 @@
 
 
 赞助方式：
+
  ![image](https://github.com/geektcp/ClassicWOW/blob/master/alipay_zhifubao.png)
