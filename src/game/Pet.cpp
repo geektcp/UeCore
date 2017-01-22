@@ -372,7 +372,8 @@ void Pet::SavePetToDB(PetSaveMode mode)
         static SqlStatementID insPet ;
 
         SqlStatement stmt = CharacterDatabase.CreateStatement(delPet, "DELETE FROM character_pet WHERE owner = ? AND id = ?");
-        stmt.PExecute(ownerLow, m_charmInfo->GetPetNumber());
+	// 防止猎人宠物莫名其妙秒消失的问题
+        //stmt.PExecute(ownerLow, m_charmInfo->GetPetNumber());
 
         // prevent duplicate using slot (except PET_SAVE_NOT_IN_SLOT)
         if (mode <= PET_SAVE_LAST_STABLE_SLOT)
