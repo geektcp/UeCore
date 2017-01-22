@@ -1,0 +1,11 @@
+#define __TBB_VERSION_STRINGS \
+"TBB: BUILD_HOST\t\tthy (x86_64)" ENDL \
+"TBB: BUILD_OS\t\tCentOS release 6.5 (Final)" ENDL \
+"TBB: BUILD_KERNEL\tLinux 2.6.32-431.el6.x86_64 #1 SMP Fri Nov 22 03:15:09 UTC 2013" ENDL \
+"TBB: BUILD_GCC\t\tgcc version 4.4.7 20120313 (Red Hat 4.4.7-16) (GCC) " ENDL \
+"TBB: BUILD_GLIBC\t2.12" ENDL \
+"TBB: BUILD_LD\t\tGNU ld version 2.20.51.0.2-5.36.el6 20100205" ENDL \
+"TBB: BUILD_TARGET\tintel64 on cc4.4.7_libc2.12_kernel2.6.32" ENDL \
+"TBB: BUILD_COMMAND\tg++ -DTBB_USE_DEBUG -DDO_ITT_NOTIFY -g -O0 -DUSE_PTHREAD -m64 -fPIC -D__TBB_BUILD=1 -Wall -Wno-parentheses -I../../src -I../../src/rml/include -I../../include" ENDL \
+
+#define __TBB_DATETIME "Fri Jun 10 14:16:00 UTC 2016"

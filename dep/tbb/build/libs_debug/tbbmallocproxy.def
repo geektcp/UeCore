@@ -1,0 +1,36 @@
+# 1 "../../src/tbbmalloc/lin64-proxy-export.def"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "../../src/tbbmalloc/lin64-proxy-export.def"
+# 29 "../../src/tbbmalloc/lin64-proxy-export.def"
+{
+global:
+calloc;
+free;
+malloc;
+realloc;
+posix_memalign;
+memalign;
+valloc;
+pvalloc;
+mallinfo;
+mallopt;
+__TBB_malloc_proxy;
+__TBB_internal_find_original_malloc;
+_ZdaPv;
+_ZdaPvRKSt9nothrow_t;
+_ZdlPv;
+_ZdlPvRKSt9nothrow_t;
+_Znam;
+_ZnamRKSt9nothrow_t;
+_Znwm;
+_ZnwmRKSt9nothrow_t;
+
+local:
+
+
+*3rml8internal*;
+*3tbb*;
+*__TBB*;
+
+};

@@ -1,0 +1,47 @@
+# 1 "../../src/tbbmalloc/lin-tbbmalloc-export.def"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "../../src/tbbmalloc/lin-tbbmalloc-export.def"
+# 29 "../../src/tbbmalloc/lin-tbbmalloc-export.def"
+{
+global:
+
+scalable_calloc;
+scalable_free;
+scalable_malloc;
+scalable_realloc;
+scalable_posix_memalign;
+scalable_aligned_malloc;
+scalable_aligned_realloc;
+scalable_aligned_free;
+__TBB_internal_calloc;
+__TBB_internal_free;
+__TBB_internal_malloc;
+__TBB_internal_realloc;
+__TBB_internal_posix_memalign;
+scalable_msize;
+
+local:
+
+
+*3rml8internal*;
+*3tbb*;
+*__TBB*;
+__itt_*;
+ITT_DoOneTimeInitialization;
+TBB_runtime_interface_version;
+
+
+__intel_*;
+_intel_*;
+get_memcpy_largest_cachelinesize;
+get_memcpy_largest_cache_size;
+get_mem_ops_method;
+init_mem_ops_method;
+irc__get_msg;
+irc__print;
+override_mem_ops_method;
+set_memcpy_largest_cachelinesize;
+set_memcpy_largest_cache_size;
+
+};
