@@ -49,7 +49,7 @@ void WorldSession::HandleAuctionHelloOpcode(WorldPacket& recv_data)
 }
 
 // this void causes that auction window is opened
-void WorldSession::SendAuctionHello(Unit* unit)
+void WorldSession::SendAuctionHello(Unit* unit) const
 {
     // always return pointer
     AuctionHouseEntry const* ahEntry = AuctionHouseMgr::GetAuctionHouseEntry(unit);
@@ -57,11 +57,11 @@ void WorldSession::SendAuctionHello(Unit* unit)
     WorldPacket data(MSG_AUCTION_HELLO, 12);
     data << unit->GetObjectGuid();
     data << uint32(ahEntry->houseId);
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 // call this method when player bids, creates, or deletes auction
-void WorldSession::SendAuctionCommandResult(AuctionEntry* auc, AuctionAction Action, AuctionError ErrorCode, InventoryResult invError)
+void WorldSession::SendAuctionCommandResult(AuctionEntry* auc, AuctionAction Action, AuctionError ErrorCode, InventoryResult invError) const
 {
     WorldPacket data(SMSG_AUCTION_COMMAND_RESULT, 16);
     data << uint32(auc ? auc->Id : 0);
@@ -86,11 +86,11 @@ void WorldSession::SendAuctionCommandResult(AuctionEntry* auc, AuctionAction Act
             break;
     }
 
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 // this function sends notification, if bidder is online
-void WorldSession::SendAuctionBidderNotification(AuctionEntry* auction, bool won)
+void WorldSession::SendAuctionBidderNotification(AuctionEntry* auction, bool won) const
 {
     WorldPacket data(SMSG_AUCTION_BIDDER_NOTIFICATION, (8 * 4));
     data << uint32(auction->GetHouseId());
@@ -103,11 +103,11 @@ void WorldSession::SendAuctionBidderNotification(AuctionEntry* auction, bool won
     data << uint32(auction->itemTemplate);
     data << int32(auction->itemRandomPropertyId);
 
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 // this void causes on client to display: "Your auction sold"
-void WorldSession::SendAuctionOwnerNotification(AuctionEntry* auction, bool sold)
+void WorldSession::SendAuctionOwnerNotification(AuctionEntry* auction, bool sold) const
 {
     WorldPacket data(SMSG_AUCTION_OWNER_NOTIFICATION, (7 * 4));
     data << uint32(auction->Id);
@@ -124,18 +124,18 @@ void WorldSession::SendAuctionOwnerNotification(AuctionEntry* auction, bool sold
     data << uint32(auction->itemTemplate);                  // item entry
     data << uint32(auction->itemRandomPropertyId);
 
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 // shows ERR_AUCTION_REMOVED_S
-void WorldSession::SendAuctionRemovedNotification(AuctionEntry* auction)
+void WorldSession::SendAuctionRemovedNotification(AuctionEntry* auction) const
 {
     WorldPacket data(SMSG_AUCTION_REMOVED_NOTIFICATION, (3 * 4));
     data << uint32(auction->Id);
     data << uint32(auction->itemTemplate);
     data << uint32(auction->itemRandomPropertyId);
 
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 // this function sends mail to old bidder
@@ -164,7 +164,7 @@ void WorldSession::SendAuctionOutbiddedMail(AuctionEntry* auction)
 }
 
 // this function sends mail, when auction is cancelled to old bidder
-void WorldSession::SendAuctionCancelledToBidderMail(AuctionEntry* auction)
+void WorldSession::SendAuctionCancelledToBidderMail(AuctionEntry* auction) const
 {
     ObjectGuid bidder_guid = ObjectGuid(HIGHGUID_PLAYER, auction->bidder);
     Player* bidder = sObjectMgr.GetPlayer(bidder_guid);
@@ -188,7 +188,7 @@ void WorldSession::SendAuctionCancelledToBidderMail(AuctionEntry* auction)
     }
 }
 
-AuctionHouseEntry const* WorldSession::GetCheckedAuctionHouseForAuctioneer(ObjectGuid guid)
+AuctionHouseEntry const* WorldSession::GetCheckedAuctionHouseForAuctioneer(ObjectGuid guid) const
 {
     Unit* auctioneer;
 
@@ -506,7 +506,7 @@ void WorldSession::HandleAuctionListBidderItems(WorldPacket& recv_data)
     auctionHouse->BuildListBidderItems(data, pl, count, totalcount);
     data.put<uint32>(0, count);                             // add count to placeholder
     data << uint32(totalcount);
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 // this void sends player info about his auctions
@@ -536,7 +536,7 @@ void WorldSession::HandleAuctionListOwnerItems(WorldPacket& recv_data)
     auctionHouse->BuildListOwnerItems(data, _player, count, totalcount);
     data.put<uint32>(0, count);
     data << uint32(totalcount);
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 // this void is called when player clicks on search button
@@ -586,5 +586,5 @@ void WorldSession::HandleAuctionListItems(WorldPacket& recv_data)
 
     data.put<uint32>(0, count);
     data << uint32(totalcount);
-    SendPacket(&data);
+    SendPacket(data);
 }

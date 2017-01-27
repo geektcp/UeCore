@@ -33,6 +33,7 @@ include_directories(SYSTEM
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/vmap
+  ${CMAKE_CURRENT_SOURCE_DIR}/AI
   ${CMAKE_CURRENT_SOURCE_DIR}/AuctionHouseBot
   ${CMAKE_CURRENT_SOURCE_DIR}/BattleGround
   ${CMAKE_CURRENT_SOURCE_DIR}/OutdoorPvP
@@ -40,6 +41,63 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/src/framework
   ${CMAKE_BINARY_DIR}
   ${CMAKE_BINARY_DIR}/src/shared
+)
+
+set(SRC_GRP_PLAYERBOT
+    playerbot/config.h
+    playerbot/PlayerbotAI.cpp
+    playerbot/PlayerbotAI.h
+    playerbot/PlayerbotClassAI.cpp
+    playerbot/PlayerbotClassAI.h
+    playerbot/PlayerbotDruidAI.cpp
+    playerbot/PlayerbotDruidAI.h
+    playerbot/PlayerbotHunterAI.cpp
+    playerbot/PlayerbotHunterAI.h
+    playerbot/PlayerbotMageAI.cpp
+    playerbot/PlayerbotMageAI.h
+    playerbot/PlayerbotMgr.cpp
+    playerbot/PlayerbotMgr.h
+    playerbot/PlayerbotPaladinAI.cpp
+    playerbot/PlayerbotPaladinAI.h
+    playerbot/PlayerbotPriestAI.cpp
+    playerbot/PlayerbotPriestAI.h
+    playerbot/PlayerbotRogueAI.cpp
+    playerbot/PlayerbotRogueAI.h
+    playerbot/PlayerbotShamanAI.cpp
+    playerbot/PlayerbotShamanAI.h
+    playerbot/PlayerbotWarlockAI.cpp
+    playerbot/PlayerbotWarlockAI.h
+    playerbot/PlayerbotWarriorAI.cpp
+    playerbot/PlayerbotWarriorAI.h
+)
+
+set(SRC_GRP_AI
+    AI/AggressorAI.cpp
+    AI/AggressorAI.h
+    AI/CreatureAI.cpp
+    AI/CreatureAI.h
+    AI/CreatureAIImpl.h
+    AI/CreatureAIRegistry.cpp
+    AI/CreatureAIRegistry.h
+    AI/CreatureAISelector.cpp
+    AI/CreatureAISelector.h
+    AI/CreatureEventAI.cpp
+    AI/CreatureEventAI.h
+    AI/CreatureEventAIMgr.cpp
+    AI/CreatureEventAIMgr.h
+    AI/GuardAI.cpp
+    AI/GuardAI.h
+    AI/GuardianAI.cpp
+    AI/GuardianAI.h
+    AI/NullCreatureAI.cpp
+    AI/NullCreatureAI.h
+    AI/PetAI.cpp
+    AI/PetAI.h
+    AI/PossessedAI.h
+    AI/ReactorAI.cpp
+    AI/ReactorAI.h
+    AI/TotemAI.cpp
+    AI/TotemAI.h
 )
 
 set(SRC_GRP_AHBOT
@@ -112,8 +170,6 @@ set(SRC_GRP_MOVEMENT
 )
 
 set(SRC_GRP_OBJECT
-    AggressorAI.cpp
-    AggressorAI.h
     AuctionHouseMgr.cpp
     AuctionHouseMgr.h
     Bag.cpp
@@ -124,17 +180,6 @@ set(SRC_GRP_OBJECT
     Corpse.h
     Creature.cpp
     Creature.h
-    CreatureAI.cpp
-    CreatureAI.h
-    CreatureAIImpl.h
-    CreatureAIRegistry.cpp
-    CreatureAIRegistry.h
-    CreatureAISelector.cpp
-    CreatureAISelector.h
-    CreatureEventAI.cpp
-    CreatureEventAI.h
-    CreatureEventAIMgr.cpp
-    CreatureEventAIMgr.h
     DynamicObject.cpp
     DynamicObject.h
     Formulas.h
@@ -142,8 +187,6 @@ set(SRC_GRP_OBJECT
     GameObject.h
     GMTicketMgr.cpp
     GMTicketMgr.h
-    GuardAI.cpp
-    GuardAI.h
     Guild.cpp
     Guild.h
     Item.cpp
@@ -153,8 +196,6 @@ set(SRC_GRP_OBJECT
     ItemPrototype.h
     LootMgr.cpp
     LootMgr.h
-    NullCreatureAI.cpp
-    NullCreatureAI.h
     Object.cpp
     Object.h
     ObjectAccessor.cpp
@@ -167,12 +208,8 @@ set(SRC_GRP_OBJECT
     ObjectPosSelector.h
     Pet.cpp
     Pet.h
-    PetAI.cpp
-    PetAI.h
     Player.cpp
     Player.h
-    ReactorAI.cpp
-    ReactorAI.h
     ReputationMgr.cpp
     ReputationMgr.h
     SocialMgr.cpp
@@ -184,8 +221,6 @@ set(SRC_GRP_OBJECT
     TemporarySummon.h
     Totem.cpp
     Totem.h
-    TotemAI.cpp
-    TotemAI.h
     Unit.cpp
     Unit.h
     UnitEvents.h
@@ -369,6 +404,8 @@ set(SRC_GRP_WORLD_HANDLERS
 )
 
 set(LIBRARY_SRCS
+    ${SRC_GRP_PLAYERBOT}
+    ${SRC_GRP_AI}
     ${SRC_GRP_AHBOT}
     ${SRC_GRP_BATTLEGROUND}
     ${SRC_GRP_CHAT_COMMANDS}
@@ -383,6 +420,15 @@ set(LIBRARY_SRCS
     ${SRC_GRP_WORLD_HANDLERS}
     pchdef.cpp
     pchdef.h
+)
+
+source_group("PlayerBot"
+  FILES
+    ${SRC_GRP_PLAYERBOT}
+)
+source_group("AI"
+  FILES
+    ${SRC_GRP_AI}
 )
 
 source_group("AhBot"
@@ -473,3 +519,5 @@ add_dependencies(${LIBRARY_NAME} revision.h)
 if(PCH)
   cotire(${LIBRARY_NAME})
 endif()
+
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/playerbot/playerbot.conf.dist.in DESTINATION ${CONF_DIR} RENAME playerbot.conf.dist)

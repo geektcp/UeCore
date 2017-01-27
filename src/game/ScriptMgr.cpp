@@ -79,11 +79,6 @@ ScriptMgr::ScriptMgr() :
     m_scheduledScripts = 0;
 }
 
-ScriptMgr::~ScriptMgr()
-{
-    UnloadScriptLibrary();
-}
-
 // /////////////////////////////////////////////////////////
 //              DB SCRIPTS (loaders of static data)
 // /////////////////////////////////////////////////////////
@@ -97,11 +92,11 @@ uint8 GetSpellStartDBScriptPriority(SpellEntry const* spellinfo, SpellEffectInde
         return 9;
 
     // NonExisting triggered spells can also start DB-Spell-Scripts
-    if (spellinfo->Effect[effIdx] == SPELL_EFFECT_TRIGGER_SPELL && !sSpellStore.LookupEntry(spellinfo->EffectTriggerSpell[effIdx]))
+    if (spellinfo->Effect[effIdx] == SPELL_EFFECT_TRIGGER_SPELL && !sSpellTemplate.LookupEntry<SpellEntry>(spellinfo->EffectTriggerSpell[effIdx]))
         return 5;
 
     // NonExisting trigger missile spells can also start DB-Spell-Scripts
-    if (spellinfo->Effect[effIdx] == SPELL_EFFECT_TRIGGER_MISSILE && !sSpellStore.LookupEntry(spellinfo->EffectTriggerSpell[effIdx]))
+    if (spellinfo->Effect[effIdx] == SPELL_EFFECT_TRIGGER_MISSILE && !sSpellTemplate.LookupEntry<SpellEntry>(spellinfo->EffectTriggerSpell[effIdx]))
         return 4;
 
     // Can not start script
@@ -454,7 +449,7 @@ void ScriptMgr::LoadScripts(ScriptMapMapName& scripts, const char* tablename)
                 break;
             case SCRIPT_COMMAND_REMOVE_AURA:                // 14
             {
-                if (!sSpellStore.LookupEntry(tmp.removeAura.spellId))
+                if (!sSpellTemplate.LookupEntry<SpellEntry>(tmp.removeAura.spellId))
                 {
                     sLog.outErrorDb("Table `%s` using nonexistent spell (id: %u) in SCRIPT_COMMAND_REMOVE_AURA or SCRIPT_COMMAND_CAST_SPELL for script id %u",
                                     tablename, tmp.removeAura.spellId, tmp.id);
@@ -464,7 +459,7 @@ void ScriptMgr::LoadScripts(ScriptMapMapName& scripts, const char* tablename)
             }
             case SCRIPT_COMMAND_CAST_SPELL:                 // 15
             {
-                if (!sSpellStore.LookupEntry(tmp.castSpell.spellId))
+                if (!sSpellTemplate.LookupEntry<SpellEntry>(tmp.castSpell.spellId))
                 {
                     sLog.outErrorDb("Table `%s` using nonexistent spell (id: %u) in SCRIPT_COMMAND_REMOVE_AURA or SCRIPT_COMMAND_CAST_SPELL for script id %u",
                                     tablename, tmp.castSpell.spellId, tmp.id);
@@ -473,7 +468,7 @@ void ScriptMgr::LoadScripts(ScriptMapMapName& scripts, const char* tablename)
                 bool hasErrored = false;
                 for (uint8 i = 0; i < MAX_TEXT_ID; ++i)
                 {
-                    if (tmp.textId[i] && !sSpellStore.LookupEntry(uint32(tmp.textId[i])))
+                    if (tmp.textId[i] && !sSpellTemplate.LookupEntry<SpellEntry>(uint32(tmp.textId[i])))
                     {
                         sLog.outErrorDb("Table `%s` using nonexistent spell (id: %u) in SCRIPT_COMMAND_CAST_SPELL for script id %u, dataint%u",
                                         tablename, uint32(tmp.textId[i]), tmp.id, i + 1);
@@ -632,9 +627,9 @@ void ScriptMgr::LoadScripts(ScriptMapMapName& scripts, const char* tablename)
                 if (!sLog.HasLogFilter(LOG_FILTER_DB_STRICTED_CHECK))
                 {
                     uint32 taxiSpell = 0;
-                    for (uint32 i = 1; i < sSpellStore.GetNumRows() && taxiSpell == 0; ++i)
+                    for (uint32 i = 1; i < sSpellTemplate.GetMaxEntry() && taxiSpell == 0; ++i)
                     {
-                        if (SpellEntry const* spell = sSpellStore.LookupEntry(i))
+                        if (SpellEntry const* spell = sSpellTemplate.LookupEntry<SpellEntry>(i))
                             for (int j = 0; j < MAX_EFFECT_INDEX; ++j)
                             {
                                 if (spell->Effect[j] == SPELL_EFFECT_SEND_TAXI && spell->EffectMiscValue[j] == int32(tmp.sendTaxiPath.taxiPathId))
@@ -822,7 +817,7 @@ void ScriptMgr::LoadSpellScripts()
     // check ids
     for (ScriptMapMap::const_iterator itr = sSpellScripts.second.begin(); itr != sSpellScripts.second.end(); ++itr)
     {
-        SpellEntry const* spellInfo = sSpellStore.LookupEntry(itr->first);
+        SpellEntry const* spellInfo = sSpellTemplate.LookupEntry<SpellEntry>(itr->first);
         if (!spellInfo)
         {
             sLog.outErrorDb("Table `dbscripts_on_spell` has not existing spell (Id: %u) as script id", itr->first);
@@ -941,7 +936,7 @@ void ScriptMgr::CheckScriptTexts(ScriptMapMapName const& scripts, std::set<int32
 
 /// Helper function to get Object source or target for Script-Command
 /// returns false iff an error happened
-bool ScriptAction::GetScriptCommandObject(const ObjectGuid guid, bool includeItem, Object*& resultObject)
+bool ScriptAction::GetScriptCommandObject(const ObjectGuid guid, bool includeItem, Object*& resultObject) const
 {
     resultObject = nullptr;
 
@@ -989,7 +984,7 @@ bool ScriptAction::GetScriptCommandObject(const ObjectGuid guid, bool includeIte
 
 /// Select source and target for a script command
 /// Returns false iff an error happened
-bool ScriptAction::GetScriptProcessTargets(WorldObject* pOrigSource, WorldObject* pOrigTarget, WorldObject*& pFinalSource, WorldObject*& pFinalTarget)
+bool ScriptAction::GetScriptProcessTargets(WorldObject* pOrigSource, WorldObject* pOrigTarget, WorldObject*& pFinalSource, WorldObject*& pFinalTarget) const
 {
     WorldObject* pBuddy = nullptr;
 
@@ -1103,7 +1098,7 @@ bool ScriptAction::GetScriptProcessTargets(WorldObject* pOrigSource, WorldObject
 }
 
 /// Helper to log error information
-bool ScriptAction::LogIfNotCreature(WorldObject* pWorldObject)
+bool ScriptAction::LogIfNotCreature(WorldObject* pWorldObject) const
 {
     if (!pWorldObject || pWorldObject->GetTypeId() != TYPEID_UNIT)
     {
@@ -1112,7 +1107,7 @@ bool ScriptAction::LogIfNotCreature(WorldObject* pWorldObject)
     }
     return false;
 }
-bool ScriptAction::LogIfNotUnit(WorldObject* pWorldObject)
+bool ScriptAction::LogIfNotUnit(WorldObject* pWorldObject) const
 {
     if (!pWorldObject || !pWorldObject->isType(TYPEMASK_UNIT))
     {
@@ -1121,7 +1116,7 @@ bool ScriptAction::LogIfNotUnit(WorldObject* pWorldObject)
     }
     return false;
 }
-bool ScriptAction::LogIfNotGameObject(WorldObject* pWorldObject)
+bool ScriptAction::LogIfNotGameObject(WorldObject* pWorldObject) const
 {
     if (!pWorldObject || pWorldObject->GetTypeId() != TYPEID_GAMEOBJECT)
     {
@@ -1130,7 +1125,7 @@ bool ScriptAction::LogIfNotGameObject(WorldObject* pWorldObject)
     }
     return false;
 }
-bool ScriptAction::LogIfNotPlayer(WorldObject* pWorldObject)
+bool ScriptAction::LogIfNotPlayer(WorldObject* pWorldObject) const
 {
     if (!pWorldObject || pWorldObject->GetTypeId() != TYPEID_PLAYER)
     {
@@ -1141,7 +1136,7 @@ bool ScriptAction::LogIfNotPlayer(WorldObject* pWorldObject)
 }
 
 /// Helper to get a player if possible (target preferred)
-Player* ScriptAction::GetPlayerTargetOrSourceAndLog(WorldObject* pSource, WorldObject* pTarget)
+Player* ScriptAction::GetPlayerTargetOrSourceAndLog(WorldObject* pSource, WorldObject* pTarget) const
 {
     if ((!pTarget || pTarget->GetTypeId() != TYPEID_PLAYER) && (!pSource || pSource->GetTypeId() != TYPEID_PLAYER))
     {
@@ -1524,13 +1519,15 @@ bool ScriptAction::HandleScriptStep()
             // TODO: when GO cast implemented, code below must be updated accordingly to also allow GO spell cast
             if (pSource && pSource->GetTypeId() == TYPEID_GAMEOBJECT)
             {
-                ((Unit*)pTarget)->CastSpell(((Unit*)pTarget), spell, true, nullptr, nullptr, pSource->GetObjectGuid());
+                ((Unit*)pTarget)->CastSpell(((Unit*)pTarget), spell, TRIGGERED_OLD_TRIGGERED, nullptr, nullptr, pSource->GetObjectGuid());
                 break;
             }
 
             if (LogIfNotUnit(pSource))
                 break;
-            ((Unit*)pSource)->CastSpell(((Unit*)pTarget), spell, (m_script->data_flags & SCRIPT_FLAG_COMMAND_ADDITIONAL) != 0);
+
+            uint32 castFlags = (m_script->data_flags & SCRIPT_FLAG_COMMAND_ADDITIONAL ? TRIGGERED_OLD_TRIGGERED : TRIGGERED_NONE); // TODO: Figure out nice support for other flags using some column
+            ((Unit*)pSource)->CastSpell(((Unit*)pTarget), spell, castFlags);
 
             break;
         }
@@ -2306,7 +2303,7 @@ bool ScriptMgr::OnQuestRewarded(Player* pPlayer, GameObject* pGameObject, Quest 
     return m_pOnGOQuestRewarded != nullptr && m_pOnGOQuestRewarded(pPlayer, pGameObject, pQuest);
 }
 
-uint32 ScriptMgr::GetDialogStatus(Player* pPlayer, Creature* pCreature)
+uint32 ScriptMgr::GetDialogStatus(const Player* pPlayer, const Creature* pCreature) const
 {
     if (!m_pGetNPCDialogStatus)
         return DIALOG_STATUS_UNDEFINED;
@@ -2314,7 +2311,7 @@ uint32 ScriptMgr::GetDialogStatus(Player* pPlayer, Creature* pCreature)
     return m_pGetNPCDialogStatus(pPlayer, pCreature);
 }
 
-uint32 ScriptMgr::GetDialogStatus(Player* pPlayer, GameObject* pGameObject)
+uint32 ScriptMgr::GetDialogStatus(const Player* pPlayer, const GameObject* pGameObject) const
 {
     if (!m_pGetGODialogStatus)
         return DIALOG_STATUS_UNDEFINED;
@@ -2497,9 +2494,9 @@ void ScriptMgr::CollectPossibleEventIds(std::set<uint32>& eventIds)
     }
 
     // Load all possible script entries from spells
-    for (uint32 i = 1; i < sSpellStore.GetNumRows(); ++i)
+    for (uint32 i = 1; i < sSpellTemplate.GetMaxEntry(); ++i)
     {
-        SpellEntry const* spell = sSpellStore.LookupEntry(i);
+        SpellEntry const* spell = sSpellTemplate.LookupEntry<SpellEntry>(i);
         if (spell)
         {
             for (int j = 0; j < MAX_EFFECT_INDEX; ++j)

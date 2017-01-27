@@ -42,7 +42,7 @@ namespace VMAP
                     hit = true;
                 return result;
             }
-            bool didHit() { return hit; }
+            bool didHit() const { return hit; }
         protected:
             ModelInstance* prims;
             bool hit;
@@ -230,31 +230,45 @@ namespace VMAP
     bool StaticMapTree::CanLoadMap(const std::string& vmapPath, uint32 mapID, uint32 tileX, uint32 tileY)
     {
         std::string basePath = vmapPath;
+	//sLog.outError("1111vmapPath: %s", basePath.c_str());
         if (basePath.length() > 0 && (basePath[basePath.length() - 1] != '/' || basePath[basePath.length() - 1] != '\\'))
             basePath.append("/");
         std::string fullname = basePath + VMapManager2::getMapFileName(mapID);
         bool success = true;
+	//sLog.outError("1111fullname.c_str: %s", fullname.c_str() );
         FILE* rf = fopen(fullname.c_str(), "rb");
-        if (!rf)
+        if (!rf){
+	   // sLog.outError("return false, and rf : %d", rf);
             return false;
+	}
         // TODO: check magic number when implemented...
         char tiled;
         char chunk[8];
         if (!readChunk(rf, chunk, VMAP_MAGIC, 8) || fread(&tiled, sizeof(char), 1, rf) != 1)
         {
+	    // portalclassic 服务端要求 地图版本为6.0，而我用的是5.0的版本，这里需要修改VMAP_MAGIC的值来降低版本
+	  //  if(!readChunk(rf, chunk, VMAP_MAGIC, 8)) { sLog.outError("111111.5 when: !readChunk(rf, chunk, VMAP_MAGIC, 8) "); }
+	  //  if(fread(&tiled, sizeof(char), 1, rf) != 1) { sLog.outError("11111.5 when: fread(&tiled, sizeof(char), 1, rf) != 1 "); }
             fclose(rf);
+	    sLog.outError("return false, and readChunk or fread failed : %d", rf);
             return false;
         }
         if (tiled)
         {
             std::string tilefile = basePath + getTileFileName(mapID, tileX, tileY);
+	    //sLog.outError("333333 tilefile.c_str(): %s", tilefile.c_str() );
             FILE* tf = fopen(tilefile.c_str(), "rb");
-            if (!tf)
+            if (!tf){
+		//sLog.outError("3333 tf is false");
                 success = false;
+	    }
             else
             {
                 if (!readChunk(tf, chunk, VMAP_MAGIC, 8))
+		{
+		    //sLog.outError("333333 readChunk failed: and success = false");
                     success = false;
+		}
                 fclose(tf);
             }
         }

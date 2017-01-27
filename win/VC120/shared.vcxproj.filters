@@ -146,9 +146,6 @@
     <ClInclude Include="..\..\src\shared\Errors.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dep\include\mersennetwister\MersenneTwister.h">
-      <Filter>Util</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\shared\ProgressBar.h">
       <Filter>Util</Filter>
     </ClInclude>
@@ -202,6 +199,5 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\src\shared\revision.h" />
-    <CustomBuild Include="..\..\src\shared\SystemConfig.h.in" />
   </ItemGroup>
 </Project>

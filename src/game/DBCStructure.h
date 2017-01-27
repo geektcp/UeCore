@@ -559,6 +559,7 @@ struct ClassFamilyMask
     bool Empty() const { return Flags == 0; }
     bool operator!() const { return Empty(); }
     operator void const* () const { return Empty() ? nullptr : this; } // for allow normal use in if(mask)
+    bool operator== (const ClassFamilyMask &another) const { return (Flags == another.Flags); }
 
     bool IsFitToFamilyMask(uint64 familyFlags) const { return !!(Flags & familyFlags); }
     bool IsFitToFamilyMask(ClassFamilyMask const& mask) const { return !!(Flags & mask.Flags); }
@@ -618,7 +619,7 @@ struct SpellEntry
         uint32    manaPerSecondPerLevel;                    // 35
         uint32    rangeIndex;                               // 36
         float     speed;                                    // 37
-        uint32    modalNextSpell;                           // 38 not used
+        //uint32    modalNextSpell;                           // 38 not used
         uint32    StackAmount;                              // 39
         uint32    Totem[MAX_SPELL_TOTEMS];                  // 40-41
         int32     Reagent[MAX_SPELL_REAGENTS];              // 42-49
@@ -648,7 +649,7 @@ struct SpellEntry
         // uint32    SpellVisual2                           // 116 not used
         uint32    SpellIconID;                              // 117
         uint32    activeIconID;                             // 118
-        // uint32    spellPriority;                         // 119
+        uint32    spellPriority;                            // 119
         char*     SpellName[8];                             // 120-127
         // uint32    SpellNameFlag;                         // 128
         char*     Rank[8];                                  // 129-136
@@ -671,6 +672,7 @@ struct SpellEntry
         // uint32    MinFactionId;                          // 170 not used, and 0 in 2.4.2
         // uint32    MinReputation;                         // 171 not used, and 0 in 2.4.2
         // uint32    RequiredAuraVision;                    // 172 not used
+        uint32    IsServerSide;
 
         // helpers
         int32 CalculateSimpleValue(SpellEffectIndex eff) const { return EffectBasePoints[eff] + int32(EffectBaseDice[eff]); }

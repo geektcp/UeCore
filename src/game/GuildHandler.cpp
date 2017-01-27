@@ -128,7 +128,7 @@ void WorldSession::HandleGuildInviteOpcode(WorldPacket& recvPacket)
     WorldPacket data(SMSG_GUILD_INVITE, (8 + 10));          // guess size
     data << GetPlayer()->GetName();
     data << guild->GetName();
-    player->GetSession()->SendPacket(&data);
+    player->GetSession()->SendPacket(data);
 
     DEBUG_LOG("WORLD: Sent (SMSG_GUILD_INVITE)");
 }
@@ -239,7 +239,7 @@ void WorldSession::HandleGuildInfoOpcode(WorldPacket& /*recvPacket*/)
     data << uint32(guild->GetCreatedYear());
     data << uint32(guild->GetMemberSize());                 // amount of chars
     data << uint32(guild->GetAccountsNumber());             // amount of accounts
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 void WorldSession::HandleGuildRosterOpcode(WorldPacket& /*recvPacket*/)
@@ -666,13 +666,13 @@ void WorldSession::HandleGuildDelRankOpcode(WorldPacket& /*recvPacket*/)
     guild->Roster();                                        // broadcast for tab rights update
 }
 
-void WorldSession::SendGuildCommandResult(uint32 typecmd, const std::string& str, uint32 cmdresult)
+void WorldSession::SendGuildCommandResult(uint32 typecmd, const std::string& str, uint32 cmdresult) const
 {
     WorldPacket data(SMSG_GUILD_COMMAND_RESULT, (8 + str.size() + 1));
     data << typecmd;
     data << str;
     data << cmdresult;
-    SendPacket(&data);
+    SendPacket(data);
 
     DEBUG_LOG("WORLD: Sent (SMSG_GUILD_COMMAND_RESULT)");
 }
@@ -760,9 +760,9 @@ void WorldSession::HandleGuildEventLogQueryOpcode(WorldPacket& /* recvPacket */)
             pGuild->DisplayGuildEventLog(this);
 }
 
-void WorldSession::SendSaveGuildEmblem(uint32 msg)
+void WorldSession::SendSaveGuildEmblem(uint32 msg) const
 {
     WorldPacket data(MSG_SAVE_GUILD_EMBLEM, 4);
     data << uint32(msg);                                    // not part of guild
-    SendPacket(&data);
+    SendPacket(data);
 }

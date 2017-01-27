@@ -74,7 +74,8 @@ enum WorldTimers
     WUPDATE_EVENTS      = 3,
     WUPDATE_DELETECHARS = 4,
     WUPDATE_AHBOT       = 5,
-    WUPDATE_COUNT       = 6
+    WUPDATE_GROUPS      = 6,
+    WUPDATE_COUNT       = 7
 };
 
 /// Configuration elements
@@ -156,6 +157,7 @@ enum eConfigUInt32Values
     CONFIG_UINT32_BATTLEGROUND_PREMATURE_FINISH_TIMER,
     CONFIG_UINT32_BATTLEGROUND_PREMADE_GROUP_WAIT_FOR_MATCH,
     CONFIG_UINT32_BATTLEGROUND_QUEUE_ANNOUNCER_JOIN,
+    CONFIG_UINT32_GROUP_OFFLINE_LEADER_DELAY,
     CONFIG_UINT32_GUILD_EVENT_LOG_COUNT,
     CONFIG_UINT32_TIMERBAR_FATIGUE_GMLEVEL,
     CONFIG_UINT32_TIMERBAR_FATIGUE_MAX,
@@ -171,6 +173,7 @@ enum eConfigUInt32Values
     CONFIG_UINT32_GUID_RESERVE_SIZE_CREATURE,
     CONFIG_UINT32_GUID_RESERVE_SIZE_GAMEOBJECT,
     CONFIG_UINT32_CREATURE_RESPAWN_AGGRO_DELAY,
+    CONFIG_UINT32_MAX_WHOLIST_RETURNS,
     CONFIG_UINT32_VALUE_COUNT
 };
 
@@ -201,7 +204,9 @@ enum eConfigFloatValues
     CONFIG_FLOAT_RATE_DROP_ITEM_LEGENDARY,
     CONFIG_FLOAT_RATE_DROP_ITEM_ARTIFACT,
     CONFIG_FLOAT_RATE_DROP_ITEM_REFERENCED,
+    CONFIG_FLOAT_RATE_DROP_ITEM_QUEST,
     CONFIG_FLOAT_RATE_DROP_MONEY,
+    CONFIG_FLOAT_RATE_PET_XP_KILL,
     CONFIG_FLOAT_RATE_XP_KILL,
     CONFIG_FLOAT_RATE_XP_QUEST,
     CONFIG_FLOAT_RATE_XP_EXPLORE,
@@ -461,8 +466,8 @@ class World
         void LoadConfigSettings(bool reload = false);
 
         void SendWorldText(int32 string_id, ...);
-        void SendGlobalMessage(WorldPacket* packet);
-        void SendServerMessage(ServerMessageType type, const char* text = "", Player* player = nullptr);
+        void SendGlobalMessage(WorldPacket const& packet) const;
+        void SendServerMessage(ServerMessageType type, const char* text = "", Player* player = nullptr) const;
         void SendZoneUnderAttackMessage(uint32 zoneId, Team team);
         void SendDefenseMessage(uint32 zoneId, int32 textId);
 
@@ -503,8 +508,8 @@ class World
         bool isForceLoadMap(uint32 id) const { return m_configForceLoadMapIds.find(id) != m_configForceLoadMapIds.end(); }
 
         /// Are we on a "Player versus Player" server?
-        bool IsPvPRealm() { return (getConfig(CONFIG_UINT32_GAME_TYPE) == REALM_TYPE_PVP || getConfig(CONFIG_UINT32_GAME_TYPE) == REALM_TYPE_RPPVP || getConfig(CONFIG_UINT32_GAME_TYPE) == REALM_TYPE_FFA_PVP); }
-        bool IsFFAPvPRealm() { return getConfig(CONFIG_UINT32_GAME_TYPE) == REALM_TYPE_FFA_PVP; }
+        bool IsPvPRealm() const { return (getConfig(CONFIG_UINT32_GAME_TYPE) == REALM_TYPE_PVP || getConfig(CONFIG_UINT32_GAME_TYPE) == REALM_TYPE_RPPVP || getConfig(CONFIG_UINT32_GAME_TYPE) == REALM_TYPE_FFA_PVP); }
+        bool IsFFAPvPRealm() const { return getConfig(CONFIG_UINT32_GAME_TYPE) == REALM_TYPE_FFA_PVP; }
 
         void KickAll();
         void KickAllLess(AccountTypes sec);
@@ -538,8 +543,8 @@ class World
 
         // used World DB version
         void LoadDBVersion();
-        char const* GetDBVersion() { return m_DBVersion.c_str(); }
-        char const* GetCreatureEventAIVersion() { return m_CreatureEventAIVersion.c_str(); }
+        char const* GetDBVersion() const { return m_DBVersion.c_str(); }
+        char const* GetCreatureEventAIVersion() const { return m_CreatureEventAIVersion.c_str(); }
 
 
         /**
@@ -551,7 +556,7 @@ class World
         * FullName: World::InvalidatePlayerDataToAllClient
         * Access: public
         **/
-        void InvalidatePlayerDataToAllClient(ObjectGuid guid);
+        void InvalidatePlayerDataToAllClient(ObjectGuid guid) const;
 
     protected:
         void _UpdateGameTime();
@@ -570,10 +575,10 @@ class World
         void setConfigMinMax(eConfigUInt32Values index, char const* fieldname, uint32 defvalue, uint32 minvalue, uint32 maxvalue);
         void setConfigMinMax(eConfigInt32Values index, char const* fieldname, int32 defvalue, int32 minvalue, int32 maxvalue);
         void setConfigMinMax(eConfigFloatValues index, char const* fieldname, float defvalue, float minvalue, float maxvalue);
-        bool configNoReload(bool reload, eConfigUInt32Values index, char const* fieldname, uint32 defvalue);
-        bool configNoReload(bool reload, eConfigInt32Values index, char const* fieldname, int32 defvalue);
-        bool configNoReload(bool reload, eConfigFloatValues index, char const* fieldname, float defvalue);
-        bool configNoReload(bool reload, eConfigBoolValues index, char const* fieldname, bool defvalue);
+        bool configNoReload(bool reload, eConfigUInt32Values index, char const* fieldname, uint32 defvalue) const;
+        bool configNoReload(bool reload, eConfigInt32Values index, char const* fieldname, int32 defvalue) const;
+        bool configNoReload(bool reload, eConfigFloatValues index, char const* fieldname, float defvalue) const;
+        bool configNoReload(bool reload, eConfigBoolValues index, char const* fieldname, bool defvalue) const;
 
         static volatile bool m_stopEvent;
         static uint8 m_ExitCode;

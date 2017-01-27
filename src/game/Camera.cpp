@@ -37,7 +37,7 @@ Camera::~Camera()
     m_source->GetViewPoint().Detach(this);
 }
 
-void Camera::ReceivePacket(WorldPacket* data)
+void Camera::ReceivePacket(WorldPacket& data)
 {
     m_owner.SendDirectMessage(data);
 }
@@ -126,7 +126,7 @@ void Camera::Event_Moved()
     m_source->GetViewPoint().m_grid->AddWorldObject(this);
 }
 
-void Camera::UpdateVisibilityOf(WorldObject* target)
+void Camera::UpdateVisibilityOf(WorldObject* target) const
 {
     m_owner.UpdateVisibilityOf(m_source, target);
 }

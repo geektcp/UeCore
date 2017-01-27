@@ -25,7 +25,7 @@
 #include "TemporarySummon.h"
 #include "Totem.h"
 #include "Pet.h"
-#include "CreatureAI.h"
+#include "AI/CreatureAI.h"
 #include "GameObject.h"
 #include "Opcodes.h"
 #include "Chat.h"
@@ -2012,7 +2012,7 @@ bool ChatHandler::HandleNpcTameCommand(char* /*args*/)
         return false;
     }
 
-    player->CastSpell(creatureTarget, 13481, true);         // Tame Beast, triggered effect
+    player->CastSpell(creatureTarget, 13481, TRIGGERED_OLD_TRIGGERED);         // Tame Beast, triggered effect
     return true;
 }
 
@@ -3908,7 +3908,7 @@ void ChatHandler::HandleLearnSkillRecipesHelper(Player* player, uint32 skill_id)
         if (skillLine->classmask && (skillLine->classmask & classmask) == 0)
             continue;
 
-        SpellEntry const* spellInfo = sSpellStore.LookupEntry(skillLine->spellId);
+        SpellEntry const* spellInfo = sSpellTemplate.LookupEntry<SpellEntry>(skillLine->spellId);
         if (!spellInfo || !SpellMgr::IsSpellValid(spellInfo, player, false))
             continue;
 

@@ -26,6 +26,7 @@
 #include "Cell.h"
 
 #include <list>
+#include <memory>
 
 struct SpellEntry;
 
@@ -56,6 +57,7 @@ enum CreatureFlagsExtra
     CREATURE_EXTRA_FLAG_MMAP_FORCE_DISABLE     = 0x00004000,       // creature is forced to NOT use MMaps
     CREATURE_EXTRA_FLAG_WALK_IN_WATER          = 0x00008000,       // creature is forced to walk in water even it can swim
     CREATURE_EXTRA_FLAG_HAVE_NO_SWIM_ANIMATION = 0x00010000,       // we have to not set "swim" animation or creature will have "no animation"
+    CREATURE_EXTRA_FLAG_NO_MELEE               = 0x00020000,       // creature can't melee
 };
 
 // GCC have alternative #pragma pack(N) syntax and old gcc version not support pack(push,N), also any gcc version not support it at some platform
@@ -122,6 +124,7 @@ struct CreatureInfo
     uint32  SkinningLootId;
     uint32  KillCredit[MAX_KILL_CREDIT];
     uint32  MechanicImmuneMask;
+    uint32  SchoolImmuneMask;
     int32   ResistanceHoly;
     int32   ResistanceFire;
     int32   ResistanceNature;
@@ -300,6 +303,8 @@ enum AttackingTarget
     ATTACKING_TARGET_RANDOM = 0,                            // Just selects a random target
     ATTACKING_TARGET_TOPAGGRO,                              // Selects targes from top aggro to bottom
     ATTACKING_TARGET_BOTTOMAGGRO,                           // Selects targets from bottom aggro to top
+    ATTACKING_TARGET_NEAREST_BY,                            // Selects the nearest by target
+    ATTACKING_TARGET_FARTHEST_AWAY                          // Selects the farthest away target
 };
 
 enum SelectFlags
@@ -373,18 +378,22 @@ typedef std::list<VendorItemCount> VendorItemCounts;
 
 struct TrainerSpell
 {
-    TrainerSpell() : spell(0), spellCost(0), reqSkill(0), reqSkillValue(0), reqLevel(0), isProvidedReqLevel(false) {}
+    TrainerSpell() : spell(0), spellCost(0), reqSkill(0), reqSkillValue(0), reqLevel(0), learnedSpell(0), isProvidedReqLevel(false), conditionId(0) {}
 
-    TrainerSpell(uint32 _spell, uint32 _spellCost, uint32 _reqSkill, uint32 _reqSkillValue, uint32 _reqLevel, bool _isProvidedReqLevel)
-        : spell(_spell), spellCost(_spellCost), reqSkill(_reqSkill), reqSkillValue(_reqSkillValue), reqLevel(_reqLevel), isProvidedReqLevel(_isProvidedReqLevel)
-    {}
+    TrainerSpell(uint32 _spell, uint32 _spellCost, uint32 _reqSkill, uint32 _reqSkillValue, uint32 _reqLevel, uint32 _learnedspell, bool _isProvidedReqLevel, uint32 _conditionId)
+        : spell(_spell), spellCost(_spellCost), reqSkill(_reqSkill), reqSkillValue(_reqSkillValue), reqLevel(_reqLevel), learnedSpell(_learnedspell), isProvidedReqLevel(_isProvidedReqLevel), conditionId(_conditionId) {}
 
     uint32 spell;
     uint32 spellCost;
     uint32 reqSkill;
     uint32 reqSkillValue;
     uint32 reqLevel;
+    uint32 learnedSpell;
+    uint32 conditionId;
     bool isProvidedReqLevel;
+
+    // helpers
+    bool IsCastable() const { return learnedSpell != spell; }
 };
 
 typedef std::unordered_map < uint32 /*spellid*/, TrainerSpell > TrainerSpellMap;
@@ -474,8 +483,6 @@ enum TemporaryFactionFlags                                  // Used at real fact
 
 class MANGOS_DLL_SPEC Creature : public Unit
 {
-        CreatureAI* i_AI;
-
     public:
 
         explicit Creature(CreatureSubtype subtype = CREATURE_SUBTYPE_GENERIC);
@@ -483,6 +490,7 @@ class MANGOS_DLL_SPEC Creature : public Unit
 
         void AddToWorld() override;
         void RemoveFromWorld() override;
+        void CleanupsBeforeDelete() override;
 
         bool Create(uint32 guidlow, CreatureCreatePos& cPos, CreatureInfo const* cinfo, Team team = TEAM_NONE, const CreatureData* data = nullptr, GameEventCreatureData const* eventData = nullptr);
         bool LoadCreatureAddon(bool reload);
@@ -505,6 +513,9 @@ class MANGOS_DLL_SPEC Creature : public Unit
         bool IsTotem() const { return m_subtype == CREATURE_SUBTYPE_TOTEM; }
         bool IsTemporarySummon() const { return m_subtype == CREATURE_SUBTYPE_TEMPORARY_SUMMON; }
 
+        // Playerbot mod - adds functionality to load/unload bots from NPC, also need to apply SQL scripts
+        void LoadBotMenu(Player *pPlayer);
+
         bool IsCorpse() const { return getDeathState() ==  CORPSE; }
         bool IsDespawned() const { return getDeathState() ==  DEAD; }
         void SetCorpseDelay(uint32 delay) { m_corpseDelay = delay; }
@@ -525,6 +536,7 @@ class MANGOS_DLL_SPEC Creature : public Unit
         void FillGuidsListFromThreatList(GuidVector& guids, uint32 maxamount = 0);
 
         bool IsImmuneToSpell(SpellEntry const* spellInfo, bool castOnSelf) override;
+        bool IsImmuneToDamage(SpellSchoolMask meleeSchoolMask) override;
         bool IsImmuneToSpellEffect(SpellEntry const* spellInfo, SpellEffectIndex index, bool castOnSelf) const override;
 
         bool IsElite() const
@@ -549,8 +561,8 @@ class MANGOS_DLL_SPEC Creature : public Unit
         bool IsInEvadeMode() const;
 
         bool AIM_Initialize();
-
-        CreatureAI* AI() { return i_AI; }
+        virtual CreatureAI* AI() override { if (m_charmInfo && m_charmInfo->GetAI()) return m_charmInfo->GetAI(); else return m_ai.get(); }
+        virtual CombatData* GetCombatData() override { if (m_charmInfo && m_charmInfo->GetCombatData()) return m_charmInfo->GetCombatData(); else return m_combatData; }
 
         void SetWalk(bool enable, bool asDefault = true);
         void SetLevitate(bool enable) override;
@@ -643,8 +655,6 @@ class MANGOS_DLL_SPEC Creature : public Unit
         CreatureSpellCooldowns m_CreatureSpellCooldowns;
         CreatureSpellCooldowns m_CreatureCategoryCooldowns;
 
-        float GetAttackDistance(Unit const* pl) const;
-
         void SendAIReaction(AiReaction reactionType);
 
         void DoFleeToGetAssistance();
@@ -652,9 +662,9 @@ class MANGOS_DLL_SPEC Creature : public Unit
         void CallAssistance();
         void SetNoCallAssistance(bool val) { m_AlreadyCallAssistance = val; }
         void SetNoSearchAssistance(bool val) { m_AlreadySearchedAssistance = val; }
-        bool HasSearchedAssistance() { return m_AlreadySearchedAssistance; }
+        bool HasSearchedAssistance() const { return m_AlreadySearchedAssistance; }
         bool CanAssistTo(const Unit* u, const Unit* enemy, bool checkfaction = true) const;
-        bool CanInitiateAttack();
+        bool CanInitiateAttack() const;
 
         MovementGeneratorType GetDefaultMovementType() const { return m_defaultMovementType; }
         void SetDefaultMovementType(MovementGeneratorType mgt) { m_defaultMovementType = mgt; }
@@ -665,7 +675,7 @@ class MANGOS_DLL_SPEC Creature : public Unit
 
         bool IsVisibleInGridForPlayer(Player* pl) const override;
 
-        void RemoveCorpse();
+        void RemoveCorpse(bool inPlace = false);
         bool IsDeadByDefault() const { return m_isDeadByDefault; };
 
         void ForcedDespawn(uint32 timeMSToDespawn = 0);
@@ -686,7 +696,7 @@ class MANGOS_DLL_SPEC Creature : public Unit
         static void AddToRemoveListInMaps(uint32 db_guid, CreatureData const* data);
         static void SpawnInMaps(uint32 db_guid, CreatureData const* data);
 
-        void SendZoneUnderAttackMessage(Player* attacker);
+        void SendZoneUnderAttackMessage(Player* attacker) const;
 
         void SetInCombatWithZone();
 
@@ -709,7 +719,7 @@ class MANGOS_DLL_SPEC Creature : public Unit
         }
 
         void SetCombatStartPosition(float x, float y, float z) { m_combatStartX = x; m_combatStartY = y; m_combatStartZ = z; }
-        void GetCombatStartPosition(float& x, float& y, float& z) { x = m_combatStartX; y = m_combatStartY; z = m_combatStartZ; }
+        void GetCombatStartPosition(float& x, float& y, float& z) const { x = m_combatStartX; y = m_combatStartY; z = m_combatStartZ; }
 
         void SetRespawnCoord(CreatureCreatePos const& pos) { m_respawnPos = pos.m_pos; }
         void SetRespawnCoord(float x, float y, float z, float ori) { m_respawnPos.x = x; m_respawnPos.y = y; m_respawnPos.z = z; m_respawnPos.o = ori; }
@@ -720,7 +730,7 @@ class MANGOS_DLL_SPEC Creature : public Unit
 
         void SetFactionTemporary(uint32 factionId, uint32 tempFactionFlags = TEMPFACTION_ALL);
         void ClearTemporaryFaction();
-        uint32 GetTemporaryFactionFlags() { return m_temporaryFactionFlags; }
+        uint32 GetTemporaryFactionFlags() const { return m_temporaryFactionFlags; }
 
         void SendAreaSpiritHealerQueryOpcode(Player* pl);
 
@@ -758,7 +768,6 @@ class MANGOS_DLL_SPEC Creature : public Unit
         // below fields has potential for optimization
         bool m_AlreadyCallAssistance;
         bool m_AlreadySearchedAssistance;
-        bool m_AI_locked;
         bool m_isDeadByDefault;
         uint32 m_temporaryFactionFlags;                     // used for real faction changes (not auras etc)
 
@@ -770,6 +779,8 @@ class MANGOS_DLL_SPEC Creature : public Unit
         float m_combatStartZ;
 
         Position m_respawnPos;
+
+        std::unique_ptr<CreatureAI> m_ai;
 
     private:
         GridReference<Creature> m_gridRef;

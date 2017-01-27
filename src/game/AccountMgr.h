@@ -26,7 +26,7 @@ enum AccountOpResult
     AOR_OK,
     AOR_NAME_TOO_LONG,
     AOR_PASS_TOO_LONG,
-    AOR_NAME_ALREDY_EXIST,
+    AOR_NAME_ALREADY_EXIST,
     AOR_NAME_NOT_EXIST,
     AOR_DB_INTERNAL_ERROR
 };
@@ -39,17 +39,17 @@ class AccountMgr
         AccountMgr();
         ~AccountMgr();
 
-        AccountOpResult CreateAccount(std::string username, std::string password);
-        AccountOpResult DeleteAccount(uint32 accid);
-        AccountOpResult ChangeUsername(uint32 accid, std::string new_uname, std::string new_passwd);
-        AccountOpResult ChangePassword(uint32 accid, std::string new_passwd);
-        bool CheckPassword(uint32 accid, std::string passwd);
+        AccountOpResult CreateAccount(std::string username, std::string password) const;
+        AccountOpResult DeleteAccount(uint32 accid) const;
+        AccountOpResult ChangeUsername(uint32 accid, std::string new_uname, std::string new_passwd) const;
+        AccountOpResult ChangePassword(uint32 accid, std::string new_passwd) const;
+        bool CheckPassword(uint32 accid, std::string passwd) const;
 
-        uint32 GetId(std::string username);
-        AccountTypes GetSecurity(uint32 acc_id);
-        bool GetName(uint32 acc_id, std::string& name);
-        uint32 GetCharactersCount(uint32 acc_id);
-        std::string CalculateShaPassHash(std::string& name, std::string& password);
+        uint32 GetId(std::string username) const;
+        static AccountTypes GetSecurity(uint32 acc_id);
+        bool GetName(uint32 acc_id, std::string& name) const;
+        uint32 GetCharactersCount(uint32 acc_id) const;
+        std::string CalculateShaPassHash(std::string& name, std::string& password) const;
 
         static bool normalizeString(std::string& utf8str);
 };

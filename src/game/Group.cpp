@@ -29,6 +29,29 @@
 #include "BattleGround/BattleGround.h"
 #include "MapManager.h"
 #include "MapPersistentStateMgr.h"
+#include "playerbot/PlayerbotMgr.h"
+
+GroupMemberStatus GetGroupMemberStatus(const Player *member = nullptr)
+{
+    uint8 flags = MEMBER_STATUS_OFFLINE;
+    if (member && member->GetSession() && !member->GetSession()->PlayerLogout())
+    {
+        flags |= MEMBER_STATUS_ONLINE;
+        if (member->IsPvP())
+            flags |= MEMBER_STATUS_PVP;
+        if (member->isDead())
+            flags |= MEMBER_STATUS_DEAD;
+        if (member->HasFlag(PLAYER_FLAGS, PLAYER_FLAGS_GHOST))
+            flags |= MEMBER_STATUS_GHOST;
+        if (member->IsFFAPvP())
+            flags |= MEMBER_STATUS_PVP_FFA;
+        if (member->isAFK())
+            flags |= MEMBER_STATUS_AFK;
+        if (member->isDND())
+            flags |= MEMBER_STATUS_DND;
+    }
+    return GroupMemberStatus(flags);
+}
 
 //===================================================
 //============== Group ==============================
@@ -67,6 +90,7 @@ bool Group::Create(ObjectGuid guid, const char* name)
 {
     m_leaderGuid = guid;
     m_leaderName = name;
+    m_leaderLastOnline = time(nullptr);
 
     m_groupType  = isBGGroup() ? GROUPTYPE_RAID : GROUPTYPE_NORMAL;
 
@@ -109,6 +133,8 @@ bool Group::Create(ObjectGuid guid, const char* name)
     if (!isBGGroup())
         CharacterDatabase.CommitTransaction();
 
+    _updateLeaderFlag();
+
     return true;
 }
 
@@ -123,6 +149,8 @@ bool Group::LoadGroupFromDB(Field* fields)
     // group leader not exist
     if (!sObjectMgr.GetPlayerNameByGUID(m_leaderGuid, m_leaderName))
         return false;
+
+    m_leaderLastOnline = time(nullptr);
 
     m_groupType  = fields[13].GetBool() ? GROUPTYPE_RAID : GROUPTYPE_NORMAL;
 
@@ -200,8 +228,10 @@ bool Group::AddLeaderInvite(Player* player)
     if (!AddInvite(player))
         return false;
 
+    _updateLeaderFlag(true);
     m_leaderGuid = player->GetObjectGuid();
     m_leaderName = player->GetName();
+    _updateLeaderFlag();
     return true;
 }
 
@@ -268,8 +298,16 @@ bool Group::AddMember(ObjectGuid guid, const char* name)
 
 uint32 Group::RemoveMember(ObjectGuid guid, uint8 method)
 {
+    //Playerbot mod - if master leaves group, all bots leave group
+    {
+        Player* const player = sObjectMgr.GetPlayer(guid);
+        if (player && player->GetPlayerbotMgr())
+            player->GetPlayerbotMgr()->RemoveAllBotsFromGroup();
+    }
+    //END Playerbot mod
+
     // remove member and change leader (if need) only if strong more 2 members _before_ member remove
-    if (GetMembersCount() > uint32(isBGGroup() ? 1 : 2))    // in BG group case allow 1 members group
+    if (GetMembersCount() > GetMembersMinCount())
     {
         bool leaderChanged = _removeMember(guid);
 
@@ -284,7 +322,7 @@ uint32 Group::RemoveMember(ObjectGuid guid, uint8 method)
             if (method == 1)
             {
                 data.Initialize(SMSG_GROUP_UNINVITE, 0);
-                player->GetSession()->SendPacket(&data);
+                player->GetSession()->SendPacket(data);
             }
 
             // we already removed player from group and in player->GetGroup() is his original group!
@@ -296,7 +334,7 @@ uint32 Group::RemoveMember(ObjectGuid guid, uint8 method)
             {
                 data.Initialize(SMSG_GROUP_LIST, 24);
                 data << uint64(0) << uint64(0) << uint64(0);
-                player->GetSession()->SendPacket(&data);
+                player->GetSession()->SendPacket(data);
             }
 
             _homebindIfInstance(player);
@@ -304,9 +342,9 @@ uint32 Group::RemoveMember(ObjectGuid guid, uint8 method)
 
         if (leaderChanged)
         {
-            WorldPacket data(SMSG_GROUP_SET_LEADER, (m_memberSlots.front().name.size() + 1));
-            data << m_memberSlots.front().name;
-            BroadcastPacket(&data, true);
+            WorldPacket data(SMSG_GROUP_SET_LEADER, (m_leaderName.size() + 1));
+            data << m_leaderName;
+            BroadcastPacket(data, true);
         }
 
         SendUpdate();
@@ -328,7 +366,7 @@ void Group::ChangeLeader(ObjectGuid guid)
 
     WorldPacket data(SMSG_GROUP_SET_LEADER, slot->name.size() + 1);
     data << slot->name;
-    BroadcastPacket(&data, true);
+    BroadcastPacket(data, true);
     SendUpdate();
 }
 
@@ -366,7 +404,7 @@ void Group::Disband(bool hideDestroy)
         if (!hideDestroy)
         {
             data.Initialize(SMSG_GROUP_DESTROYED, 0);
-            player->GetSession()->SendPacket(&data);
+            player->GetSession()->SendPacket(data);
         }
 
         // we already removed player from group and in player->GetGroup() is his original group, send update
@@ -378,7 +416,7 @@ void Group::Disband(bool hideDestroy)
         {
             data.Initialize(SMSG_GROUP_LIST, 24);
             data << uint64(0) << uint64(0) << uint64(0);
-            player->GetSession()->SendPacket(&data);
+            player->GetSession()->SendPacket(data);
         }
 
         _homebindIfInstance(player);
@@ -396,6 +434,7 @@ void Group::Disband(bool hideDestroy)
         ResetInstances(INSTANCE_RESET_GROUP_DISBAND, nullptr);
     }
 
+    _updateLeaderFlag(true);
     m_leaderGuid.Clear();
     m_leaderName.clear();
 }
@@ -417,7 +456,7 @@ void Group::SetTargetIcon(uint8 id, ObjectGuid targetGuid)
     data << uint8(0);                                       // set targets
     data << uint8(id);
     data << targetGuid;
-    BroadcastPacket(&data, true);
+    BroadcastPacket(data, true);
 }
 
 static void GetDataForXPAtKill_helper(Player* player, Unit const* victim, uint32& sum_level, Player*& member_with_max_level, Player*& not_gray_member_with_max_level)
@@ -461,7 +500,7 @@ void Group::GetDataForXPAtKill(Unit const* victim, uint32& count, uint32& sum_le
     }
 }
 
-void Group::SendTargetIconList(WorldSession* session)
+void Group::SendTargetIconList(WorldSession* session) const
 {
     if (!session)
         return;
@@ -478,7 +517,7 @@ void Group::SendTargetIconList(WorldSession* session)
         data << m_targetIcons[i];
     }
 
-    session->SendPacket(&data);
+    session->SendPacket(data);
 }
 
 void Group::SendUpdate()
@@ -500,14 +539,9 @@ void Group::SendUpdate()
         {
             if (citr->guid == citr2->guid)
                 continue;
-            Player* member = sObjectMgr.GetPlayer(citr2->guid);
-            uint8 onlineState = (member) ? MEMBER_STATUS_ONLINE : MEMBER_STATUS_OFFLINE;
-            onlineState = onlineState | ((isBGGroup()) ? MEMBER_STATUS_PVP : 0);
-
             data << citr2->name;
             data << citr2->guid;
-            // online-state
-            data << uint8(sObjectMgr.GetPlayer(citr2->guid) ? 1 : 0);
+            data << uint8(GetGroupMemberStatus(sObjectMgr.GetPlayer(citr2->guid)));
             data << (uint8)(citr2->group | (citr2->assistant ? 0x80 : 0));
         }
 
@@ -519,7 +553,7 @@ void Group::SendUpdate()
             data << masterLootGuid;                         // master loot guid
             data << uint8(m_lootThreshold);                 // loot threshold
         }
-        player->GetSession()->SendPacket(&data);
+        player->GetSession()->SendPacket(data);
     }
 }
 
@@ -532,15 +566,55 @@ void Group::UpdatePlayerOutOfRange(Player* pPlayer)
         return;
 
     WorldPacket data;
-    pPlayer->GetSession()->BuildPartyMemberStatsChangedPacket(pPlayer, &data);
+    pPlayer->GetSession()->BuildPartyMemberStatsChangedPacket(pPlayer, data);
 
     for (GroupReference* itr = GetFirstMember(); itr != nullptr; itr = itr->next())
         if (Player* player = itr->getSource())
             if (player != pPlayer && !player->HaveAtClient(pPlayer))
-                player->GetSession()->SendPacket(&data);
+                player->GetSession()->SendPacket(data);
 }
 
-void Group::BroadcastPacket(WorldPacket* packet, bool ignorePlayersInBGRaid, int group, ObjectGuid ignore)
+void Group::UpdatePlayerOnlineStatus(Player* player, bool online /*= true*/)
+{
+    if (!player)
+        return;
+    const ObjectGuid guid = player->GetObjectGuid();
+    if (!IsMember(guid))
+        return;
+
+    SendUpdate();
+    if (online)
+    {
+        player->SetGroupUpdateFlag(GROUP_UPDATE_FULL);
+        UpdatePlayerOutOfRange(player);
+    }
+    else if (IsLeader(guid))
+        m_leaderLastOnline = time(nullptr);
+}
+
+void Group::UpdateOfflineLeader(time_t time, uint32 delay)
+{
+    // Do not update BG groups, BGs take care of offliners
+    if (isBGGroup())
+        return;
+
+    // Check leader presence
+    // TODO: Add a list of loading players or online/offline counter?
+    // FIXME: If player is loading a new map longer than delay, the leadership is going to be transfered
+    if (sObjectMgr.GetPlayer(m_leaderGuid))
+    {
+        m_leaderLastOnline = time;
+        return;
+    }
+
+    // Check for delay
+    if ((time - m_leaderLastOnline) < delay)
+        return;
+
+    _chooseLeader(true);
+}
+
+void Group::BroadcastPacket(WorldPacket& packet, bool ignorePlayersInBGRaid, int group, ObjectGuid ignore)
 {
     for (GroupReference* itr = GetFirstMember(); itr != nullptr; itr = itr->next())
     {
@@ -553,7 +627,7 @@ void Group::BroadcastPacket(WorldPacket* packet, bool ignorePlayersInBGRaid, int
     }
 }
 
-void Group::BroadcastReadyCheck(WorldPacket* packet)
+void Group::BroadcastReadyCheck(WorldPacket& packet)
 {
     for (GroupReference* itr = GetFirstMember(); itr != nullptr; itr = itr->next())
     {
@@ -574,7 +648,7 @@ void Group::OfflineReadyCheck()
             WorldPacket data(MSG_RAID_READY_CHECK_CONFIRM, 9);
             data << citr->guid;
             data << uint8(0);
-            BroadcastReadyCheck(&data);
+            BroadcastReadyCheck(data);
         }
     }
 }
@@ -641,6 +715,17 @@ bool Group::_addMember(ObjectGuid guid, const char* name, bool isAssistant, uint
                 if (bind->state->GetInstanceId() == player->GetInstanceId())
                     player->m_InstanceValid = true;
         }
+
+        if (player->IsFFAPvP())
+        {
+            player->ForceHealthAndPowerUpdate();
+            for (GroupReference* itr = GetFirstMember(); itr != nullptr; itr = itr->next())
+            {
+                Player* groupMember = itr->getSource();
+                if (groupMember && groupMember->GetSession())
+                    groupMember->ForceHealthAndPowerUpdate();
+            }
+        }
     }
 
     if (!isRaidGroup())                                     // reset targetIcons for non-raid-groups
@@ -690,12 +775,57 @@ bool Group::_removeMember(ObjectGuid guid)
 
     if (m_leaderGuid == guid)                               // leader was removed
     {
-        if (GetMembersCount() > 0)
-            _setLeader(m_memberSlots.front().guid);
+        _updateLeaderFlag(true);
+        _chooseLeader();
         return true;
     }
 
     return false;
+}
+
+void Group::_chooseLeader(bool offline /*= false*/)
+{
+    if (GetMembersCount() < GetMembersMinCount())
+        return;
+
+    ObjectGuid first = ObjectGuid(); // First available: if no suitable canditates are found
+    ObjectGuid chosen = ObjectGuid(); // Player matching prio creteria
+
+    for (member_citerator citr = m_memberSlots.begin(); citr != m_memberSlots.end(); ++citr)
+    {
+        if (citr->guid == m_leaderGuid)
+            continue;
+
+        // Prioritize online players
+        Player* player = sObjectMgr.GetPlayer(citr->guid);
+        if (!player || !player->GetSession() || player->GetGroup() != this)
+            continue;
+
+        // Prioritize assistants for raids
+        if (isRaidGroup() && !citr->assistant)
+        {
+            if (first.IsEmpty())
+                first = citr->guid;
+            continue;
+        }
+
+        chosen = citr->guid;
+        break;
+    }
+
+    if (chosen.IsEmpty())
+        chosen = first;
+
+    // If we are choosing a new leader due to inactivity, check if everyone is offline first
+    if (offline && chosen.IsEmpty())
+        return;
+
+    // Still nobody online...
+    if (chosen.IsEmpty())
+        chosen = m_memberSlots.front().guid;
+
+    // Do announce if we are choosing a new leader due to old one being offline
+    return (offline ? ChangeLeader(chosen) : _setLeader(chosen));
 }
 
 void Group::_setLeader(ObjectGuid guid)
@@ -753,8 +883,17 @@ void Group::_setLeader(ObjectGuid guid)
         CharacterDatabase.CommitTransaction();
     }
 
+    _updateLeaderFlag(true);
     m_leaderGuid = slot->guid;
     m_leaderName = slot->name;
+    m_leaderLastOnline = time(nullptr);
+    _updateLeaderFlag();
+}
+
+void Group::_updateLeaderFlag(bool remove /*= false*/) const
+{
+    if (Player* player = sObjectMgr.GetPlayer(m_leaderGuid))
+        player->UpdateGroupLeaderFlag(remove);
 }
 
 bool Group::_setMembersGroup(ObjectGuid guid, uint8 group)
@@ -1069,7 +1208,7 @@ void Group::UnbindInstance(uint32 mapid, bool unload)
     }
 }
 
-void Group::_homebindIfInstance(Player* player)
+void Group::_homebindIfInstance(Player* player) const
 {
     if (player && !player->isGameMaster())
     {

@@ -36,6 +36,7 @@
 #include "RASocket.h"
 #include "Util.h"
 #include "revision_sql.h"
+#include "playerbot/revision_sql.h"
 #include "MaNGOSsoap.h"
 #include "MassMailMgr.h"
 #include "DBCStores.h"

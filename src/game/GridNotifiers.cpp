@@ -24,7 +24,7 @@
 #include "Transports.h"
 #include "ObjectAccessor.h"
 #include "BattleGround/BattleGroundMgr.h"
-#include "CreatureAI.h"
+#include "AI/CreatureAI.h"
 
 using namespace MaNGOS;
 
@@ -69,8 +69,8 @@ void VisibleNotifier::Notify()
     {
         // send create/outofrange packet to player (except player create updates that already sent using SendUpdateToPlayer)
         WorldPacket packet;
-        i_data.BuildPacket(&packet);
-        player.GetSession()->SendPacket(&packet);
+        i_data.BuildPacket(packet);
+        player.GetSession()->SendPacket(packet);
 
         // send out of range to other players if need
         GuidSet const& oor = i_data.GetOutOfRangeGUIDs();

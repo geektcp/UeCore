@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libmpq
+Description: GPL version of the libmpq library
+Version: 0.4.2
+Libs: -L${libdir} -lmpq
+Cflags: -I${includedir}/libmpq -D_LARGE_FILES=1

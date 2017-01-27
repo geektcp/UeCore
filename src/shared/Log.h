@@ -161,7 +161,7 @@ class Log : public MaNGOS::Singleton<Log, MaNGOS::ClassLevelLockable<Log, std::m
         // any log level
         void outErrorScriptLib(const char* str, ...)     ATTR_PRINTF(2, 3);
 
-        void outWorldPacketDump(uint32 socket, uint32 opcode, char const* opcodeName, ByteBuffer const* packet, bool incoming);
+        void outWorldPacketDump(const char* socket, uint32 opcode, char const* opcodeName, ByteBuffer const& packet, bool incoming);
         // any log level
         void outCharDump(const char* str, uint32 account_id, uint32 guid, const char* name);
         void outRALog(const char* str, ...)       ATTR_PRINTF(2, 3);
@@ -170,7 +170,7 @@ class Log : public MaNGOS::Singleton<Log, MaNGOS::ClassLevelLockable<Log, std::m
         void SetLogFileLevel(char* Level);
         void SetColor(bool stdout_stream, Color color);
         void ResetColor(bool stdout_stream);
-        void outTime();
+        void outTime() const;
         static void outTimestamp(FILE* file);
         static std::string GetTimestampStr();
         bool HasLogFilter(uint32 filter) const { return !!(m_logFilter & filter); }

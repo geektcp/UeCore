@@ -323,9 +323,8 @@ void Log::outTimestamp(FILE* file)
     fprintf(file, "%-4d-%02d-%02d %02d:%02d:%02d ", aTm->tm_year + 1900, aTm->tm_mon + 1, aTm->tm_mday, aTm->tm_hour, aTm->tm_min, aTm->tm_sec);
 }
 
-void Log::outTime()
+void Log::outTime() const
 {
-    std::lock_guard<std::mutex> guard(m_worldLogMtx);
     time_t t = time(nullptr);
     tm* aTm = localtime(&t);
     //       YYYY   year
@@ -889,7 +888,7 @@ void Log::outErrorScriptLib(const char* err, ...)
     fflush(stderr);
 }
 
-void Log::outWorldPacketDump(uint32 socket, uint32 opcode, char const* opcodeName, ByteBuffer const* packet, bool incoming)
+void Log::outWorldPacketDump(const char* socket, uint32 opcode, char const* opcodeName, ByteBuffer const& packet, bool incoming)
 {
     if (!worldLogfile)
         return;
@@ -898,15 +897,15 @@ void Log::outWorldPacketDump(uint32 socket, uint32 opcode, char const* opcodeNam
 
     outTimestamp(worldLogfile);
 
-    fprintf(worldLogfile, "\n%s:\nSOCKET: %u\nLENGTH: %u\nOPCODE: %s (0x%.4X)\nDATA:\n",
+    fprintf(worldLogfile, "\n%s:\nSOCKET: %s\nLENGTH: %u\nOPCODE: %s (0x%.4X)\nDATA:\n",
             incoming ? "CLIENT" : "SERVER",
-            socket, static_cast<uint32>(packet->size()), opcodeName, opcode);
+            socket, static_cast<uint32>(packet.size()), opcodeName, opcode);
 
     size_t p = 0;
-    while (p < packet->size())
+    while (p < packet.size())
     {
-        for (size_t j = 0; j < 16 && p < packet->size(); ++j)
-            fprintf(worldLogfile, "%.2X ", (*packet)[p++]);
+        for (size_t j = 0; j < 16 && p < packet.size(); ++j)
+            fprintf(worldLogfile, "%.2X ", packet[p++]);
 
         fprintf(worldLogfile, "\n");
     }

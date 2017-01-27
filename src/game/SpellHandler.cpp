@@ -93,7 +93,7 @@ void WorldSession::HandleUseItemOpcode(WorldPacket& recvPacket)
     {
         for (int i = 0; i < MAX_ITEM_PROTO_SPELLS; ++i)
         {
-            if (SpellEntry const* spellInfo = sSpellStore.LookupEntry(proto->Spells[i].SpellId))
+            if (SpellEntry const* spellInfo = sSpellTemplate.LookupEntry<SpellEntry>(proto->Spells[i].SpellId))
             {
                 if (IsNonCombatSpell(spellInfo))
                 {
@@ -138,7 +138,7 @@ void WorldSession::HandleUseItemOpcode(WorldPacket& recvPacket)
         }
 
         // send spell error
-        if (SpellEntry const* spellInfo = sSpellStore.LookupEntry(spellid))
+        if (SpellEntry const* spellInfo = sSpellTemplate.LookupEntry<SpellEntry>(spellid))
             Spell::SendCastResult(_player, spellInfo, SPELL_FAILED_BAD_TARGETS);
         return;
     }
@@ -330,8 +330,7 @@ void WorldSession::HandleCastSpellOpcode(WorldPacket& recvPacket)
     DEBUG_LOG("WORLD: got cast spell packet, spellId - %u, data length = " SIZEFMTD,
               spellId, recvPacket.size());
 
-    SpellEntry const* spellInfo = sSpellStore.LookupEntry(spellId);
-
+    SpellEntry const* spellInfo = sSpellTemplate.LookupEntry<SpellEntry>(spellId);
     if (!spellInfo)
     {
         sLog.outError("WORLD: unknown spell id %u", spellId);
@@ -364,7 +363,7 @@ void WorldSession::HandleCastSpellOpcode(WorldPacket& recvPacket)
     // client provided targets
     SpellCastTargets targets;
 
-    recvPacket >> targets.ReadForCaster(_player);
+    recvPacket >> targets.ReadForCaster(mover);
 
     // auto-selection buff level base at target level (in spellInfo)
     if (Unit* target = targets.getUnitTarget())
@@ -398,7 +397,7 @@ void WorldSession::HandleCancelAuraOpcode(WorldPacket& recvPacket)
     uint32 spellId;
     recvPacket >> spellId;
 
-    SpellEntry const* spellInfo = sSpellStore.LookupEntry(spellId);
+    SpellEntry const* spellInfo = sSpellTemplate.LookupEntry<SpellEntry>(spellId);
     if (!spellInfo)
         return;
 
@@ -408,7 +407,12 @@ void WorldSession::HandleCancelAuraOpcode(WorldPacket& recvPacket)
     if (IsPassiveSpell(spellInfo))
         return;
 
-    if (!IsPositiveSpell(spellId))
+    SpellAuraHolder* holder = _player->GetSpellAuraHolder(spellId);
+
+    if (!holder)
+        return;
+
+    if (!IsPositiveSpell(spellId, holder->GetCaster(), _player))
     {
         // ignore for remote control state
         if (!_player->IsSelfMover())
@@ -442,8 +446,6 @@ void WorldSession::HandleCancelAuraOpcode(WorldPacket& recvPacket)
         return;
     }
 
-    SpellAuraHolder* holder = _player->GetSpellAuraHolder(spellId);
-
     // not own area auras can't be cancelled (note: maybe need to check for aura on holder and not general on spell)
     if (holder && holder->GetCasterGuid() != _player->GetObjectGuid() && HasAreaAuraEffect(holder->GetSpellProto()))
         return;
@@ -464,7 +466,7 @@ void WorldSession::HandlePetCancelAuraOpcode(WorldPacket& recvPacket)
     if (!_player->IsSelfMover())
         return;
 
-    SpellEntry const* spellInfo = sSpellStore.LookupEntry(spellId);
+    SpellEntry const* spellInfo = sSpellTemplate.LookupEntry<SpellEntry>(spellId);
     if (!spellInfo)
     {
         sLog.outError("WORLD: unknown PET spell id %u", spellId);
@@ -543,9 +545,9 @@ void WorldSession::HandleSelfResOpcode(WorldPacket& /*recv_data*/)
 
     if (_player->GetUInt32Value(PLAYER_SELF_RES_SPELL))
     {
-        SpellEntry const* spellInfo = sSpellStore.LookupEntry(_player->GetUInt32Value(PLAYER_SELF_RES_SPELL));
+        SpellEntry const* spellInfo = sSpellTemplate.LookupEntry<SpellEntry>(_player->GetUInt32Value(PLAYER_SELF_RES_SPELL));
         if (spellInfo)
-            _player->CastSpell(_player, spellInfo, false);
+            _player->CastSpell(_player, spellInfo, TRIGGERED_NONE);
 
         _player->SetUInt32Value(PLAYER_SELF_RES_SPELL, 0);
     }

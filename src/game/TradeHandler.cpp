@@ -29,7 +29,7 @@
 #include "SocialMgr.h"
 #include "DBCStores.h"
 
-void WorldSession::SendTradeStatus(TradeStatusInfo const& info)
+void WorldSession::SendTradeStatus(TradeStatusInfo const& info) const
 {
     WorldPacket data(SMSG_TRADE_STATUS, 13);
     data << uint32(info.Status);
@@ -52,7 +52,7 @@ void WorldSession::SendTradeStatus(TradeStatusInfo const& info)
             break;
     }
 
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 void WorldSession::HandleIgnoreTradeOpcode(WorldPacket& /*recvPacket*/)
@@ -67,7 +67,7 @@ void WorldSession::HandleBusyTradeOpcode(WorldPacket& /*recvPacket*/)
     // recvPacket.print_storage();
 }
 
-void WorldSession::SendUpdateTrade(bool trader_state /*= true*/)
+void WorldSession::SendUpdateTrade(bool trader_state /*= true*/) const
 {
     TradeData* view_trade = trader_state ? _player->GetTradeData()->GetTraderData() : _player->GetTradeData();
 
@@ -110,7 +110,7 @@ void WorldSession::SendUpdateTrade(bool trader_state /*= true*/)
         }
     }
 
-    SendPacket(&data);
+    SendPacket(data);
 }
 
 //==============================================================
@@ -322,7 +322,7 @@ void WorldSession::HandleAcceptTradeOpcode(WorldPacket& recvPacket)
         // not accept if spell can't be casted now (cheating)
         if (uint32 my_spell_id = my_trade->GetSpell())
         {
-            SpellEntry const* spellEntry = sSpellStore.LookupEntry(my_spell_id);
+            SpellEntry const* spellEntry = sSpellTemplate.LookupEntry<SpellEntry>(my_spell_id);
             Item* castItem = my_trade->GetSpellCastItem();
 
             if (!spellEntry || !his_trade->GetItem(TRADE_SLOT_NONTRADED) ||
@@ -357,7 +357,7 @@ void WorldSession::HandleAcceptTradeOpcode(WorldPacket& recvPacket)
         // not accept if spell can't be casted now (cheating)
         if (uint32 his_spell_id = his_trade->GetSpell())
         {
-            SpellEntry const* spellEntry = sSpellStore.LookupEntry(his_spell_id);
+            SpellEntry const* spellEntry = sSpellTemplate.LookupEntry<SpellEntry>(his_spell_id);
             Item* castItem = his_trade->GetSpellCastItem();
 
             if (!spellEntry || !my_trade->GetItem(TRADE_SLOT_NONTRADED) ||
@@ -523,7 +523,7 @@ void WorldSession::HandleBeginTradeOpcode(WorldPacket& /*recvPacket*/)
     SendTradeStatus(info);
 }
 
-void WorldSession::SendCancelTrade()
+void WorldSession::SendCancelTrade() const
 {
     if (m_playerRecentlyLogout)
         return;

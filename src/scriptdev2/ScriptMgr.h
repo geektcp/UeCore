@@ -7,6 +7,7 @@
 
 #include "Common.h"
 #include "DBCStructure.h"
+#include "SQLStorages.h"
 
 class Player;
 class Creature;
@@ -77,8 +78,8 @@ struct Script
     bool (*pGossipSelectGO)(Player*, GameObject*, uint32, uint32);
     bool (*pGossipSelectWithCode)(Player*, Creature*, uint32, uint32, const char*);
     bool (*pGossipSelectGOWithCode)(Player*, GameObject*, uint32, uint32, const char*);
-    uint32(*pDialogStatusNPC)(Player*, Creature*);
-    uint32(*pDialogStatusGO)(Player*, GameObject*);
+    uint32(*pDialogStatusNPC)(const Player*, const Creature*);
+    uint32(*pDialogStatusGO)(const Player*, const GameObject*);
     bool (*pQuestAcceptNPC)(Player*, Creature*, Quest const*);
     bool (*pQuestAcceptGO)(Player*, GameObject*, Quest const*);
     bool (*pQuestAcceptItem)(Player*, Item*, Quest const*);

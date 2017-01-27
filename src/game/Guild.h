@@ -203,7 +203,7 @@ class Guild
         typedef std::unordered_map<uint32, MemberSlot> MemberList;
         typedef std::vector<RankInfo> RankList;
 
-        uint32 GetId() { return m_Id; }
+        uint32 GetId() const { return m_Id; }
         ObjectGuid GetLeaderGuid() const { return m_LeaderGuid; }
         std::string const& GetName() const { return m_Name; }
         std::string const& GetMOTD() const { return MOTD; }
@@ -239,8 +239,8 @@ class Guild
 
         void BroadcastToGuild(WorldSession* session, const std::string& msg, uint32 language = LANG_UNIVERSAL);
         void BroadcastToOfficers(WorldSession* session, const std::string& msg, uint32 language = LANG_UNIVERSAL);
-        void BroadcastPacketToRank(WorldPacket* packet, uint32 rankId);
-        void BroadcastPacket(WorldPacket* packet);
+        void BroadcastPacketToRank(WorldPacket& packet, uint32 rankId);
+        void BroadcastPacket(WorldPacket& packet);
 
         void BroadcastEvent(GuildEvents event, ObjectGuid guid, char const* str1 = nullptr, char const* str2 = nullptr, char const* str3 = nullptr);
         void BroadcastEvent(GuildEvents event, char const* str1 = nullptr, char const* str2 = nullptr, char const* str3 = nullptr)

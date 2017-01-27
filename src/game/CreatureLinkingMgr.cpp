@@ -39,7 +39,7 @@
 #include "ObjectMgr.h"
 #include "SharedDefines.h"
 #include "Creature.h"
-#include "CreatureAI.h"
+#include "AI/CreatureAI.h"
 
 INSTANTIATE_SINGLETON_1(CreatureLinkingMgr);
 
@@ -574,7 +574,7 @@ void CreatureLinkingHolder::ProcessSlave(CreatureLinkingEvent eventType, Creatur
 }
 
 // Helper function to set following
-void CreatureLinkingHolder::SetFollowing(Creature* pWho, Creature* pWhom)
+void CreatureLinkingHolder::SetFollowing(Creature* pWho, Creature* pWhom) const
 {
     // Do some calculations
     float sX, sY, sZ, mX, mY, mZ, mO;
