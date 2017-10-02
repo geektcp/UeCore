@@ -10,7 +10,15 @@
 这是一个基于cmangos的二次开发版本，提供大量后台的可用性更新，及bug修改，功能定制。
 
 
+-------2017.10.2-------
+基于portalclassic，优化部分代码，并带有注释。
+
+
 
 赞助方式：
 
  ![image](https://github.com/geektcp/ClassicWOW/blob/master/alipay_zhifubao.png)
+ 
+ 
+ 
+ 
