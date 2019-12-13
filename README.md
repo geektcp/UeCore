@@ -67,6 +67,7 @@ cd boost_1_60_0
 ./b2 install
 ```
 
+```
 cd /usr/local/src/wow/
 git clone https://github.com/geektcp/ClassicWOW.git
 
@@ -85,4 +86,4 @@ cd /usr/local/src/wow/ClassicWOW/build &&
 time make -j16 &&
 make install &&
 chown -R wow.wow -R $BASE_DIR
-
+```
