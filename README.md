@@ -27,6 +27,62 @@
 我希望有一天，开源界能发起一个Java版的魔兽世界服务端，并最终开发出来。如果没有人发起，那么我来吧。
 这将是一个极具诱惑力，并且规模巨大的开源项目。
  ```
- 
- 
- 
+ # env
+```
+os					centOS 6.5
+wow					mangos-classic
+gcc					4.9.3
+cmake				3.5
+boost				1.60
+dbc and map		1.12.3
+wow client			1.12.3
+```
+
+# install
+```
+wget --no-check-certificate https://cmake.org/files/v3.5/cmake-3.5.2.tar.gz 
+tar -zxvf cmake-3.5.2.tar.gz
+cd cmake-3.5.2
+./configure --prefix=/usr/local/cmake-3.5.2
+make -j16
+make install
+```
+```
+yum -y install glibc-devel.i686
+tar -jxvf gcc-4.8.2.tar.bz2
+cd gcc-4.8.2
+./contrib/download_prerequisites
+mkdir build
+cd build
+../configure --prefix=/usr/local/gcc-4.8.2
+make -j16
+make install
+```
+```
+wget http://netcologne.dl.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.bz2
+tar -jxvf boost_1_60_0.tar.bz2
+cd boost_1_60_0
+./bootstrap.sh
+./b2
+./b2 install
+```
+
+cd /usr/local/src/wow/
+git clone https://github.com/geektcp/ClassicWOW.git
+
+export LD_LIBRARY_PATH=/usr/local/gcc-4.9.3/lib64/
+export BASE_DIR=/usr/local/wow_mangos_bot_2017.10.2
+mkdir -p /usr/local/src/wow/ClassicWOW/build/  &&
+rm -rf /usr/local/src/wow/ClassicWOW/build/*  &&
+cd /usr/local/src/wow/ClassicWOW/build &&
+/usr/local/cmake-3.5.2/bin/cmake ../ \
+-DCMAKE_INSTALL_PREFIX=$BASE_DIR  \
+-DCONF_DIR=$BASE_DIR/etc \
+-DPCH=1 \
+-DDEBUG=0 \
+-DCMAKE_C_COMPILER=/usr/local/gcc-4.9.3/bin/gcc \
+-DCMAKE_CXX_COMPILER=/usr/local/gcc-4.9.3/bin/g++ &&
+time make -j16 &&
+make install &&
+chown -R wow.wow -R $BASE_DIR
+
