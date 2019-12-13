@@ -69,7 +69,7 @@ cd boost_1_60_0
 
 ```
 cd /usr/local/src/wow/
-git clone https://github.com/geektcp/ClassicWOW.git
+git clone https://github.com/geektcp/elf-wow.git
 
 export LD_LIBRARY_PATH=/usr/local/gcc-4.9.3/lib64/
 export BASE_DIR=/usr/local/wow_mangos_bot_2017.10.2
