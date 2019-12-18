@@ -8,11 +8,13 @@
 ```
 
 # demo
+```
 测试游戏环境服务端:
 realmd   wow.whyalive.org:3724
 mangosd  wow.whyalive.org:8085
 
 客户端下载60 wow， 1.1x版本即可，修改配置指向上面的服务器地址即可。
+```
 
 # 说明
 ```
