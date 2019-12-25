@@ -13,7 +13,7 @@
 realmd   wow.whyalive.org:3724
 mangosd  wow.whyalive.org:8085
 
-客户端下载60 wow， 1.1x版本即可，修改配置指向上面的服务器地址即可。
+客户端下载60 wow， 1.12.x版本即可，修改配置指向上面的服务器地址即可。
 ```
 
 # 说明
@@ -38,13 +38,13 @@ mangosd  wow.whyalive.org:8085
  ```
  # env
 ```
-os					centOS 6.5
-wow					mangos-classic
-gcc					4.9.3
-cmake				3.5
-boost				1.60
-dbc and map		1.12.3
-wow client			1.12.3
+os                 centOS 6.5
+wow                mangos-classic
+gcc					           4.9.3
+cmake				          3.5
+boost				          1.60
+dbc and map		      1.12.3
+wow client			      1.12.3
 ```
 
 # install
