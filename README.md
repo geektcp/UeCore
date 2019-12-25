@@ -39,7 +39,7 @@ mangosd  wow.whyalive.org:8085
  # env
 env|version
 :-:|:-:
-os|centOS 6.5
+os|CentOS 6.5
 wow|mangos-classic
 gcc|4.9.3
 cmake|3.5
@@ -49,6 +49,7 @@ wow client|1.12.3
 
 
 # install
+make -j16用于cpu16核服务器环境，全部编译完要半小时
 ```
 wget --no-check-certificate https://cmake.org/files/v3.5/cmake-3.5.2.tar.gz 
 tar -zxvf cmake-3.5.2.tar.gz
@@ -59,12 +60,12 @@ make install
 ```
 ```
 yum -y install glibc-devel.i686
-tar -jxvf gcc-4.8.2.tar.bz2
-cd gcc-4.8.2
+tar -jxvf gcc-4.9.3.tar.bz2
+cd gcc-4.9.3
 ./contrib/download_prerequisites
 mkdir build
 cd build
-../configure --prefix=/usr/local/gcc-4.8.2
+../configure --prefix=/usr/local/gcc-4.9.3
 make -j16
 make install
 ```
