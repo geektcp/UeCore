@@ -19,6 +19,11 @@ SET realmlist wow.whyalive.org
 测试帐号：test1/123
 ```
 
+# client
+魔兽世界经典旧世客户端下载地址（无提取码）
+https://pan.baidu.com/s/1BgIYpZEmfTiAmeD_lMB1Sg
+
+
 # describe
 ```
 魔兽世界的服务端虽然没有客户端那么笨重，但是服务端的逻辑是比较复杂的。纯C/C++代码大约50万行。
