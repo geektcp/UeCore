@@ -38,7 +38,7 @@ mangosd  wow.whyalive.org:8085
  ```
  # env
 env|version
--|-
+:-:|:-:
 os|centOS 6.5
 wow|mangos-classic
 gcc|4.9.3
