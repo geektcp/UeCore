@@ -13,7 +13,10 @@
 realmd   wow.whyalive.org:3724
 mangosd  wow.whyalive.org:8085
 
-客户端下载60 wow， 1.12.x版本即可，修改配置指向上面的服务器地址即可。
+客户端下载60 wow， 1.12.3版本即可，修改配置文件realmlist.wtf
+SET realmlist wow.whyalive.org
+指向上面的服务器地址即可。
+测试帐号：test1/123
 ```
 
 # describe
