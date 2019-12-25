@@ -37,8 +37,8 @@ mangosd  wow.whyalive.org:8085
 这将是一个极具诱惑力，并且规模巨大的开源项目。
  ```
  # env
-```
 env|version
+-|-
 os|centOS 6.5
 wow|mangos-classic
 gcc|4.9.3
@@ -46,7 +46,7 @@ cmake|3.5
 boost|1.60
 dbc and map|1.12.3
 wow client|1.12.3
-```
+
 
 # install
 ```
