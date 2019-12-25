@@ -96,6 +96,7 @@ cd /usr/local/src/wow/ClassicWOW/build &&
 -DCMAKE_CXX_COMPILER=/usr/local/gcc-4.9.3/bin/g++ &&
 time make -j16 &&
 make install &&
+groupadd wow && useradd wow -g wow &&
 chown -R wow.wow -R $BASE_DIR
 ```
 
