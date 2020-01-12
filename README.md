@@ -50,18 +50,13 @@ wow client|1.12.3
 
 
 # install
-
-一、背景
-60魔兽是最经典的版本，遗憾的是60年代时还在大学读书，穷得很，买不起点卡，后来工作了，大概70年代开始玩的。
-多年以前，玩游戏时，一直非常期望能够自己控制角色的属性级别，得到各种装备。
-多年以后，在这款纯粹的开源服务器问世后，终于如愿以偿。
-如果安装不了提交issue
-
-服务端二进制安装包：
+```
+一、如果不想进行下面复杂的编译，可以下载服务端二进制安装包：
 https://github.com/geektcp/elf-wow/releases
 
+
 二、用源码编译部署服务器端
-```
+
 1、版本要求
 编译服务端有版本要求：
 os				CentOS 6.5
@@ -184,17 +179,12 @@ grant all on *.* to mangos@'%' IDENTIFIED by 'mangos';
 
 创建wow数据库：
 CREATE DATABASE `mangos` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-
 CREATE DATABASE `characters` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-
 CREATE DATABASE `realmd` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-
-然后进入源码目录下的sql目录：
-导入对应的sql到对应的数据库：
+然后进入源码目录下的sql目录，导入对应的sql到对应的数据库：
 ls /usr/local/src/wow/mangos-classic/sql/base
 characters.sql  mangos.sql  realmd.sql
-
 
 
 8、配置文件
@@ -215,7 +205,6 @@ LogLevel = 1
 LoginDatabaseInfo     = "10.10.10.10;3310;mangos;mangos;realmd"
 WorldDatabaseInfo     = "10.10.10.10;3310;mangos;mangos;mangos"
 CharacterDatabaseInfo = "10.10.10.10;3310;mangos;mangos;characters"
-
 
 标准可用的配置文件如下：
 cat /usr/local/wow_mangos/etc/mangosd.conf |grep -v ^# |grep -v ^$  
@@ -604,12 +593,6 @@ INSERT INTO `realmd`.`realmcharacters` (`realmid`, `acctid`) VALUES ('1', '5');
 SET realmlist 43.247.69.127:13724
 
 
-三、扩展功能
-后续打算抽时间弄个机器人版本，以经典旧时的客户端和服务器作为研究对象，来深入二次开发。
-
-待续。
-
-
 常用配置项
 开启所有飞行点
 AllFlightPaths=1
@@ -617,7 +600,7 @@ AllFlightPaths=1
 
 机器人用法
 对应的机器人命令：
-vim /usr/local/src/wow/portalclassic/doc/playerbot/commands.txt
+https://github.com/geektcp/elf-wow/blob/master/doc/playerbot/commands.txt
 
 查看机器人状态：
 /t 夜之眼 stats
@@ -747,9 +730,6 @@ WHERE o.id =176499
 19	千针石林山顶	.go -4885 -1596 101 1	　
 			
 
-
-
-
 四、常见问题
 编译安装通常是正常的，问题往往处在map文件的获取，及map文件和当前编译版本不匹配，或者是数据库表，由于不完整，或者不同版本杂乱在一起导致没法正常启动。
 
@@ -861,11 +841,8 @@ vim /usr/local/src/wow/portalclassic/src/game/MoveMapSharedDefines.h
 5、传送门已锁
 添加传送门后，提示传送门锁定
 
-
 待解决
-
-vim /usr/local/src/wow/ClassicWOW/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
-
+vim /usr/local/src/wow/elf-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
 
 
 五、参考链接
@@ -875,10 +852,8 @@ https://github.com/geektcp/mangos-classic
 客户端下载地址：
 http://pan.baidu.com/s/1hslkRVQ 
 
-
 官方服务端下载地址(不能用)：
 https://github.com/cmangos/mangos-classic
-
 
 sql下载地址（可用）：
 https://github.com/keyshuwen/Classicdb/
