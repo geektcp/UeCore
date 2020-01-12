@@ -64,12 +64,12 @@ https://github.com/geektcp/elf-wow/releases
 ```
 1、版本要求
 编译服务端有版本要求：
-os					centOS 6.5
-wow					mangos-classic
-gcc					4.9.3
+os				centOS 6.5
+wow				mangos-classic
+gcc				4.9.3
 cmake				3.5
 boost				1.60
-dbc and map		1.12.3
+dbc and map			1.12.3
 wow client			1.12.3
 
 2、升级cmake
@@ -108,7 +108,7 @@ cd boost_1_60_0
 cd /usr/local/src/wow/
 git clone https://github.com/geektcp/elf-wow.git
 
-然后开始编译并安装(必须要指定环境变量LD_LIBRARY_PATH为新版本g++的库)：
+然后开始编译并安装(必须要指定环境变量LD_LIBRARY_PATH为新版本g++的库)，下面这一段shell脚本全部复制粘贴执行：
 export LD_LIBRARY_PATH=/usr/local/gcc-4.9.3/lib64/
 export BASE_DIR=/usr/local/wow_mangos_bot_2017.10.2
 mkdir -p /usr/local/src/wow/elf-wow/build/  &&
@@ -123,6 +123,8 @@ cd /usr/local/src/wow/elf-wow/build &&
 -DCMAKE_CXX_COMPILER=/usr/local/gcc-4.9.3/bin/g++ &&
 time make -j16 &&
 make install &&
+group add wow &&
+useradd wow -g wow
 chown -R wow.wow -R $BASE_DIR
 
 
@@ -210,7 +212,6 @@ LogLevel = 1
 LoginDatabaseInfo     = "10.10.10.10;3310;mangos;mangos;realmd"
 WorldDatabaseInfo     = "10.10.10.10;3310;mangos;mangos;mangos"
 CharacterDatabaseInfo = "10.10.10.10;3310;mangos;mangos;characters"
-
 
 
 标准可用的配置文件如下：
@@ -533,8 +534,6 @@ WrongPass.MaxCount = 0
 WrongPass.BanTime = 600
 WrongPass.BanType = 0
 
-
-
 9、启动服务器
 cat /usr/local/wow_mangos/bin/startup.sh
 启动脚本内容如下：
@@ -564,9 +563,7 @@ ps -ef |grep wow_mangos |grep wow|grep -v grep |grep -v local|awk '{print $2}' |
 alais环境变量：
 vim ~/.bash_profile
 alias startmangos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/startup.sh'
-
 alias stopmanos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/shutdown.sh'
-
 
 
 10、创建账号
@@ -574,7 +571,6 @@ alias stopmanos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/s
 account create nagle 123
 
 即可创建一个帐号为nagle，密码为123的帐号了。
-
 
 另外通过数据库也可以创建账号,对应的sql语句是：
 SET
@@ -614,7 +610,6 @@ SET realmlist 43.247.69.127:13724
 常用配置项
 开启所有飞行点
 AllFlightPaths=1
-
 
 
 机器人用法
