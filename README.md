@@ -64,7 +64,7 @@ https://github.com/geektcp/elf-wow/releases
 ```
 1、版本要求
 编译服务端有版本要求：
-os				centOS 6.5
+os				CentOS 6.5
 wow				mangos-classic
 gcc				4.9.3
 cmake				3.5
@@ -72,9 +72,12 @@ boost				1.60
 dbc and map			1.12.3
 wow client			1.12.3
 
+对linux不太熟悉的话，下面的编译安装步骤建议root用户下进行。
+需要注意的是，编译安装对环境要求非常高，最好严格按照上述版本号安装，尤其是操作系统和gcc
+
 2、升级cmake
-wget --no-check-certificate \
-https://cmake.org/files/v3.5/cmake-3.5.2.tar.gz 
+cd /usr/local/src
+wget --no-check-certificate https://cmake.org/files/v3.5/cmake-3.5.2.tar.gz 
 
 tar -zxvf cmake-3.5.2.tar.gz
 cd cmake-3.5.2
