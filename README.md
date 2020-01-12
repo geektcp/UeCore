@@ -57,8 +57,10 @@ wow client|1.12.3
 多年以后，在这款纯粹的开源服务器问世后，终于如愿以偿。
 如果安装不了提交issue
 
+服务端二进制安装包：
+https://github.com/geektcp/elf-wow/releases
 
-二、部署服务器端
+二、用源码编译部署服务器端
 ```
 1、版本要求
 编译服务端有版本要求：
@@ -143,7 +145,7 @@ vmapExtractor.exe
 注意上面这几个exe文件，只有我用的这个版本才有，最新的cmangos-classic没有对应的可执行文件，而这几个可执行文件是用来生成map文件的，而服务器端启动时必须依赖map文件。
 网上找到的下载1.12版本的map文件很难找到，没有下载地址，有也是无效的链接，或者下载下来不能用的。
 
-将上米娜的exe文件都拷贝windows环境的wow客户端下，跟wow.exe同一级目录
+将上面的exe文件都拷贝windows环境的wow客户端下，跟wow.exe同一级目录
 然后依次直接按如下步骤运行：
 1、生成dbc和maps文件
 ad.exe
@@ -559,13 +561,11 @@ cat /usr/local/wow_mangos/bin/shutdown.sh
 ps -ef |grep wow_mangos |grep wow|grep -v grep |grep -v local|awk '{print $2}' |xargs -t -i kill -9 {}
 
 
-
 alais环境变量：
 vim ~/.bash_profile
 alias startmangos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/startup.sh'
 
 alias stopmanos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/shutdown.sh'
-
 
 
 
