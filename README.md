@@ -175,7 +175,7 @@ wow mangos classic经典版本的数据库数据来源于：
 /usr/local/src/wow/mangos-classic/sql
 
 另一部分存在于源码目录下：
-git clone git://github.com/cmangos/classic-db.git
+git clone https://github.com/cmangos/classic-db.git
 
 创建数据库账号：
 grant all on *.* to mangos@'%' IDENTIFIED by 'mangos';
