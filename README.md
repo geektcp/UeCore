@@ -840,12 +840,11 @@ vim /usr/local/src/wow/portalclassic/src/game/MoveMapSharedDefines.h
 指令语法格式错误
 设置为空，然后重启服务器即可，这个表示在服务器启动时就读取到内存的。
 
-
 5、传送门已锁
 添加传送门后，提示传送门锁定
 
 待解决
-vim /usr/local/src/wow/elf-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
+cat /usr/local/src/wow/elf-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
 
 
 五、参考链接
@@ -867,7 +866,6 @@ https://github.com/cmangos/issues/wiki
 官方部署文档（有参考价值）：
 https://github.com/cmangos/issues/wiki/Installation-Instructions
 
-
 其他参考链接：
 http://www.mangoscn.com/forum.php?mod=viewthread&tid=180042
 
@@ -877,10 +875,10 @@ https://github.com/TrinityZero/TrinityZero
 
 
 其他相关下载服务端：
-git clone git://github.com/cmangos/mangos-classic.git 	mangos_server
-git clone git://github.com/scriptdev2/scriptdev2-classic.git 	mangos_scriptdev2
-git clone git://github.com/ACID-Scripts/Classic.git 	mangos_acid
-git clone git://github.com/classicdb/database.git 		mangos_classicdb
-git clone git://github.com/cmangos/classic-db.git
+git clone https://github.com/cmangos/mangos-classic.git 	mangos_server
+git clone https://github.com/scriptdev2/scriptdev2-classic.git 	mangos_scriptdev2
+git clone https://github.com/ACID-Scripts/Classic.git 		mangos_acid
+git clone https://github.com/classicdb/database.git 		mangos_classicdb
+git clone https://github.com/cmangos/classic-db.git
 
 ```
