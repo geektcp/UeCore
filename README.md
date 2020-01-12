@@ -553,10 +553,13 @@ ps -ef |grep wow_mangos |grep wow|grep -v grep |grep -v local|awk '{print $2}' |
 
 
 alais环境变量：
-vim ~/.bash_profile
+cat /root/.bash_profile
 alias startmangos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/startup.sh'
 alias stopmanos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/shutdown.sh'
 
+这里补充下，之所以用root下执行，又切换到wow普通用户，是因为服务端启动后会进入一个控制台，如果用nohup启动，会不断的打印日志，日志文件太大。
+如果用screen的话就没有那么多日志。
+有兴趣的话可以研究下screen的用法。
 
 10、创建账号
 如果启动mangosd服务端时，配置文件指定了启用控制台，那么可以在控制台输入命令：
@@ -847,7 +850,7 @@ vim /usr/local/src/wow/elf-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomerega
 
 五、参考链接
 我的服务端源码地址(含可用的mysql初始化数据)：
-https://github.com/geektcp/mangos-classic
+https://github.com/geektcp/elf-wow
 
 客户端下载地址：
 http://pan.baidu.com/s/1hslkRVQ 
