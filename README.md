@@ -16,12 +16,11 @@ SET realmlist wow.whyalive.org
 测试帐号：
 test1/123
 wow/123
-
 ```
 
 # client
 ```
-魔兽世界经典旧世客户端下载地址
+魔兽世界经典旧世客户端下载地址:
 https://pan.baidu.com/s/1BgIYpZEmfTiAmeD_lMB1Sg
 ```
 
