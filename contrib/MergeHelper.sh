@@ -3,12 +3,6 @@
 # This program is free software licensed under GPL version 2
 # Please see the included COPYING for full text */
 
-###############################################################################
-#
-#   Simple helper script to help merging branches & pull requests
-#
-###############################################################################
-
 #internal use
 script_file_name="MergeHelper.sh"
 config_file_name="_MergeHelper.config"
