@@ -17,7 +17,7 @@ mangosd  wow.whyalive.org:8085
 客户端下载60 wow， 1.12.3版本即可，修改配置文件realmlist.wtf
 SET realmlist wow.whyalive.org
 指向上面的服务器地址即可。
-测试帐号：
+测试帐号/密码：
 test1/123
 wow/123
 ```
