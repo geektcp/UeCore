@@ -148,7 +148,8 @@ offmesh.txt
 README.txt
 vmap_assembler.exe
 vmapExtractor.exe
-注意上面这几个exe文件，只有我用的这个版本才有，最新的cmangos-classic没有对应的可执行文件，而这几个可执行文件是用来生成map文件的，而服务器端启动时必须依赖map文件。
+注意上面这几个exe文件，只有我用的这个版本才有，最新的cmangos-classic没有对应的可执行文件，
+而这几个可执行文件是用来生成map文件的，而服务器端启动时必须依赖map文件。
 网上找到的下载1.12版本的map文件很难找到，没有下载地址，有也是无效的链接，或者下载下来不能用的。
 
 将上面的exe文件都拷贝windows环境的wow客户端下，跟wow.exe同一级目录
@@ -749,9 +750,11 @@ sLog.outError("111111： %s", name. c_str());
 
 2、map和sql的版本问题
 map文件必须跟服务器端的版本匹配，目前我的客户端是1.12.3版本
-服务器端的版本是老的mangos-classic，这个源码也不记得从哪里搞的，反正现在的官方的github下的mangos-classic是没有可执行文件生成map，而且用本文档提供的方式生成的map也跟github上的官方源码版本是不匹配的，这个地方要注意。
+服务器端的版本是老的mangos-classic，这个源码也不记得从哪里搞的，反正现在的官方的github下的mangos-classic是没有可执行文件生成map，
+而且用本文档提供的方式生成的map也跟github上的官方源码版本是不匹配的，这个地方要注意。
 
-只能用我的git下的服务端源码下的用于抽取的可执行文件，来抽取我的客户端版本1.12.3下的map文件，服务器才能正常启动，另外数据库初始化数据也必须用我的git下的初始化sql。
+只能用我的git下的服务端源码下的用于抽取的可执行文件，来抽取我的客户端版本1.12.3下的map文件，服务器才能正常启动，
+另外数据库初始化数据也必须用我的git下的初始化sql。
 
 报错如下
 Using DataDir ../data/
@@ -759,12 +762,15 @@ WORLD: VMap support included. LineOfSight:1, getHeight:1, indoorCheck:1
 WORLD: VMap data directory is: ../data/vmaps
 WORLD: MMap pathfinding enabled
 
-VMap file '../data/vmaps/000.vmtree' is missing or point to wrong version vmap file, redo vmaps with latest vmap_assembler.exe program
-Correct *.map files not found in path '../data/maps' or *.vmtree/*.vmtile files in '../data/vmaps'. Please place *.map and vmap files in appropriate directories or correct the DataDir value in the mangosd.conf file.
+VMap file '../data/vmaps/000.vmtree' is missing or point to wrong version vmap file, 
+redo vmaps with latest vmap_assembler.exe program
+Correct *.map files not found in path '../data/maps' or *.vmtree/*.vmtile files in '../data/vmaps'. 
+Please place *.map and vmap files in appropriate directories or correct the DataDir value in the mangosd.conf file.
 
 
 可能原因
-这个问题可能跟map文件的版本也有关，但是从网上下别人的机器人端的map文件也提示报这个错，我怀疑是数据库里面某个字段对应的版本号有关系，导致提示这个错误。
+这个问题可能跟map文件的版本也有关，但是从网上下别人的机器人端的map文件也提示报这个错，
+我怀疑是数据库里面某个字段对应的版本号有关系，导致提示这个错误。
 待研究。
 
 
@@ -781,7 +787,8 @@ bool GridMap::ExistVMap(uint32 mapid, int gx, int gy)
              if (!exists)
             {
                 std::string name = vmgr->getDirFileName(mapid, gx, gy);
-                sLog.outError("VMap file '%s' is missing or point to wrong version vmap file, redo vmaps with latest vmap_assembler.exe program", (sWorld.GetDataPath() + "vmaps/" + name).c_str());
+                sLog.outError("VMap file '%s' is missing or point to wrong version vmap file, 
+		redo vmaps with latest vmap_assembler.exe program", (sWorld.GetDataPath() + "vmaps/" + name).c_str());
                 return false;
             }
 ...
