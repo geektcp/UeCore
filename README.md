@@ -13,7 +13,7 @@ https://www.cnblogs.com/geektcp/p/12185112.html
 
 # demo
 ```
-测试游戏环境服务端:
+测试游戏环境服务端(资金不足，域名已经过期被回收了):
 realmd   wow.whyalive.org:3724
 mangosd  wow.whyalive.org:8085
 
