@@ -47,7 +47,7 @@ https://pan.baidu.com/s/1BgIYpZEmfTiAmeD_lMB1Sg
 env|version
 :-:|:-:
 os|CentOS 6.5
-wow|mangos-classic
+wow|okhoxi-wow
 gcc|4.9.3
 cmake|3.5
 boost|1.60
@@ -66,7 +66,7 @@ https://github.com/geektcp/okhoxi-wow/releases
 1、版本要求
 编译服务端有版本要求：
 os				CentOS 6.5
-wow				mangos-classic
+wow				okhoxi-wow
 gcc				4.9.3
 cmake				3.5
 boost				1.60
