@@ -139,7 +139,7 @@ map文件包括maps,mmaps,vmaps,dbc四个部分。，每个文件夹下面有大
 是从客户端的安装文件里面的抽取出来的。
 
 抽取方式，先从服务器端的源码里面找到如下目录：
-ls /usr/local/src/wow/elf-wow/contrib/extractor_binary
+ls /usr/local/src/wow/okhoxi-wow/contrib/extractor_binary
 ad.exe
 ExtractResources.sh
 MoveMapGen.exe
@@ -609,7 +609,7 @@ AllFlightPaths=1
 
 机器人用法
 对应的机器人命令：
-https://github.com/geektcp/elf-wow/blob/master/doc/playerbot/commands.txt
+https://github.com/geektcp/okhoxi-wow/blob/master/doc/playerbot/commands.txt
 
 查看机器人状态：
 /t 夜之眼 stats
@@ -850,12 +850,12 @@ vim /usr/local/src/wow/portalclassic/src/game/MoveMapSharedDefines.h
 添加传送门后，提示传送门锁定
 
 待解决
-cat /usr/local/src/wow/elf-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
+cat /usr/local/src/wow/okhoxi-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
 
 
 五、参考链接
 我的服务端源码地址(含可用的mysql初始化数据)：
-https://github.com/geektcp/elf-wow
+https://github.com/geektcp/okhoxi-wow
 
 客户端下载地址：
 http://pan.baidu.com/s/1hslkRVQ 
