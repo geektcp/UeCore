@@ -1,5 +1,5 @@
 # donate
-[赞助](alipay_zhifubao.png)
+![赞助](alipay_zhifubao.png)
 
 # overview
 ```
