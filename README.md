@@ -1,5 +1,5 @@
 # donate
-![赞助]("alipay_zhifubao.png")
+![赞助](https://github.com/geektcp/okhoxi-wow/blob/master/alipay_zhifubao.png)
 
 # overview
 ```
