@@ -58,7 +58,7 @@ wow client|1.12.3
 # install
 ```
 一、如果不想进行下面复杂的编译，可以下载服务端二进制安装包：
-https://github.com/geektcp/elf-wow/releases
+https://github.com/geektcp/okhoxi-wow/releases
 
 
 二、用源码编译部署服务器端
@@ -110,14 +110,14 @@ cd boost_1_60_0
 5、编译安装
 先下载源码：
 cd /usr/local/src/wow/
-git clone https://github.com/geektcp/elf-wow.git
+git clone https://github.com/geektcp/okhoxi-wow.git
 
 然后开始编译并安装(必须要指定环境变量LD_LIBRARY_PATH为新版本g++的库)，下面这一段shell脚本全部复制粘贴执行：
 export LD_LIBRARY_PATH=/usr/local/gcc-4.9.3/lib64/
 export BASE_DIR=/usr/local/wow_mangos_bot_2017.10.2
-mkdir -p /usr/local/src/wow/elf-wow/build/  &&
-rm -rf /usr/local/src/wow/elf-wow/build/*  &&
-cd /usr/local/src/wow/elf-wow/build &&
+mkdir -p /usr/local/src/wow/okhoxi-wow/build/  &&
+rm -rf /usr/local/src/wow/okhoxi-wow/build/*  &&
+cd /usr/local/src/wow/okhoxi-wow/build &&
 /usr/local/cmake-3.5.2/bin/cmake ../ \
 -DCMAKE_INSTALL_PREFIX=$BASE_DIR  \
 -DCONF_DIR=$BASE_DIR/etc \
