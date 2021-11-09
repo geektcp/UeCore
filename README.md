@@ -43,7 +43,7 @@ https://pan.baidu.com/s/1BgIYpZEmfTiAmeD_lMB1Sg
 # feature
 ```
 在git找到其他魔兽世界服务端项目基本上完全没法使用。
-往往clone下来是编译不了的，总会有各种问题。而这个版本没这问题。
+往往clone下来是编译不了的，总会有各种问题。而这个git项目工程没这问题。
 ```
 
  # env
