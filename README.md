@@ -11,6 +11,12 @@ https://github.com/geektcp/okhoxi-wow.git
 https://www.cnblogs.com/geektcp/p/12185112.html
 ```
 
+# feature
+```
+在git找到其他魔兽世界服务端项目基本上完全没法使用。
+往往clone下来是编译不了的，总会有各种问题。而这个git项目工程没这问题。
+```
+
 # demo
 ```
 测试游戏环境服务端(资金不足，域名已经过期被回收了):
@@ -40,12 +46,6 @@ https://pan.baidu.com/s/1BgIYpZEmfTiAmeD_lMB1Sg
 客户端使用1.12.x版本(60魔兽经典客户端)
 ```
 
-# feature
-```
-在git找到其他魔兽世界服务端项目基本上完全没法使用。
-往往clone下来是编译不了的，总会有各种问题。而这个git项目工程没这问题。
-```
-
  # env
 env|version
 :-:|:-:
@@ -57,6 +57,13 @@ boost|1.60
 dbc and map|1.12.3
 wow client|1.12.3
 
+# 初始化数据
+```
+在doc/sql/init目录下，有3份初始化数据
+都是mysql关系型数据库，需要创建这个3个库
+详细文档见：
+[doc/sql/readme.md]((https://github.com/geektcp/okhoxi-wow/blob/master/doc/sql/readme.md)
+```
 
 # install
 ```
