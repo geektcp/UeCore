@@ -17,6 +17,12 @@ https://www.cnblogs.com/geektcp/p/12185112.html
 往往clone下来是编译不了的，总会有各种问题。而这个git项目工程没这问题。
 ```
 
+# client
+```
+魔兽世界经典旧世客户端下载地址:
+https://pan.baidu.com/s/1BgIYpZEmfTiAmeD_lMB1Sg
+```
+
 # demo
 ```
 测试游戏环境服务端(资金不足，域名已经过期被回收了):
@@ -29,12 +35,6 @@ SET realmlist wow.whyalive.org
 测试帐号/密码：
 test1/123
 wow/123
-```
-
-# client
-```
-魔兽世界经典旧世客户端下载地址:
-https://pan.baidu.com/s/1BgIYpZEmfTiAmeD_lMB1Sg
 ```
 
 # describe
@@ -67,7 +67,7 @@ wow client|1.12.3
 
 # install
 ```
-一、如果不想进行下面复杂的编译，可以下载服务端二进制安装包：
+一、如果不想进行下面复杂的编译，可以下载现成的服务端二进制的发布版本(运行环境最好是Cent OS 6.x)：
 https://github.com/geektcp/okhoxi-wow/releases
 
 
