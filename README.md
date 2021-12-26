@@ -908,4 +908,4 @@ git clone https://github.com/cmangos/classic-db.git
 ```
 
 - 界面截图
-![登录入口](https://github.com/geektcp/okhoxi-wow/blob/master/screen/login.png)
+![登录入口](https://github.com/geektcp/okhoxi-wow/blob/master/doc/screen/login.png)
