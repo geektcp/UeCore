@@ -1,6 +1,5 @@
 # donate
 ![赞助](https://github.com/geektcp/okhoxi-wow/blob/master/alipay_zhifubao.png)
-
 # overview
 ```
 顶级为60的魔兽世界版本是WOW最经典的版本,让我们重温经典吧。
@@ -15,6 +14,8 @@ https://www.cnblogs.com/geektcp/p/12185112.html
 ```
 在git找到其他魔兽世界服务端项目基本上完全没法使用。
 往往clone下来是编译不了的，总会有各种问题。而这个git项目工程没这问题。
+
+本项目支持机器人，自己可以创建玩家组队进行游戏。
 ```
 
 # client
@@ -905,3 +906,6 @@ git clone https://github.com/classicdb/database.git 		mangos_classicdb
 git clone https://github.com/cmangos/classic-db.git
 
 ```
+
+- 界面截图
+![登录入口](https://github.com/geektcp/okhoxi-wow/blob/master/screen/login.png)
