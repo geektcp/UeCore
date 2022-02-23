@@ -63,7 +63,7 @@ wow client|1.12.3
 在doc/sql目录下，init.zip解压后，有3份初始化数据
 都是mysql关系型数据库，需要创建这个3个库
 详细文档见：
-[doc/sql/readme.md]((https://github.com/geektcp/okhoxi-wow/blob/master/doc/sql/readme.md)
+[doc/sql/readme.md](https://github.com/geektcp/okhoxi-wow/blob/master/doc/sql/readme.md)
 ```
 
 # install
