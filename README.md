@@ -8,6 +8,9 @@ https://github.com/geektcp/okhoxi-wow.git
 
 中文博客链接：
 https://www.cnblogs.com/geektcp/p/12185112.html
+
+技术支持咨询QQ：1379205553
+
 ```
 
 # feature
