@@ -4,7 +4,7 @@
 ```
 顶级为60的魔兽世界版本是WOW最经典的版本,让我们重温经典吧。
 觉得有用就赞一个
-https://github.com/geektcp/okhoxi-wow.git
+https://github.com/geektcp/Namjagbarwa-wow.git
 
 中文博客链接：
 https://www.cnblogs.com/geektcp/p/12185112.html
