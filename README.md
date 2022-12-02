@@ -84,7 +84,7 @@ https://github.com/geektcp/okhoxi-wow/releases
 1、版本要求
 编译服务端有版本要求：
 os				CentOS 6.5
-wow				okhoxi-wow
+wow				Namjagbarwa-wow
 gcc				4.9.3
 cmake				3.5
 boost				1.60
@@ -128,7 +128,7 @@ cd boost_1_60_0
 5、编译安装
 先下载源码：
 cd /usr/local/src/wow/
-git clone https://github.com/geektcp/okhoxi-wow.git
+git clone https://github.com/geektcp/Namjagbarwa-wow.git
 
 然后开始编译并安装(必须要指定环境变量LD_LIBRARY_PATH为新版本g++的库)，下面这一段shell脚本全部复制粘贴执行：
 export LD_LIBRARY_PATH=/usr/local/gcc-4.9.3/lib64/
@@ -151,10 +151,10 @@ chown -R wow.wow -R $BASE_DIR
 
 
 6、地图文件生成
-map文件包括maps,mmaps,vmaps,dbc四个部分。，每个文件夹下面有大量地图文件。
+服务端的map文件包括maps,mmaps,vmaps,dbc四个部分，每个文件夹下面有大量地图文件。
 
 这些地图文件是从哪里来的呢？
-是从客户端的安装文件里面的抽取出来的。
+答案是从客户端的安装文件里面的抽取出来的。
 
 抽取方式，先从服务器端的源码里面找到如下目录：
 ls /usr/local/src/wow/okhoxi-wow/contrib/extractor_binary
@@ -167,7 +167,7 @@ README.txt
 vmap_assembler.exe
 vmapExtractor.exe
 注意上面这几个exe文件，只有我用的这个版本才有，最新的cmangos-classic没有对应的可执行文件，
-而这几个可执行文件是用来生成map文件的，而服务器端启动时必须依赖map文件。
+而这几个可执行文件是用来生成map文件时必须的，而服务器端启动时必须依赖map文件。
 网上找到的下载1.12版本的map文件很难找到，没有下载地址，有也是无效的链接，或者下载下来不能用的。
 
 将上面的exe文件都拷贝windows环境的wow客户端下，跟wow.exe同一级目录
