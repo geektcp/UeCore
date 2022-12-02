@@ -1,5 +1,3 @@
-# donate
-![赞助](https://github.com/geektcp/okhoxi-wow/blob/master/alipay_zhifubao.png)
 # overview
 ```
 顶级为60的魔兽世界版本是WOW最经典的版本,让我们重温经典吧。
@@ -11,6 +9,10 @@ https://www.cnblogs.com/geektcp/p/12185112.html
 
 技术支持咨询QQ：1379205553
 
+说明：由于资金和时间精力的关系，本人近期没有时间发布支持centOS7.9的版本
+但我把我之前基于CentOS6.5的版本的详细的编译过程发布成本文档，
+另外把编译后的安装版本发布并上传到本开源项目的release1.0版本里。
+有兴趣的高手可以直接用release版本，也可以参考本文档自行编译。
 ```
 
 # feature
@@ -71,7 +73,7 @@ wow client|1.12.3
 
 # install
 ```
-一、如果不想进行下面复杂的编译，可以下载现成的服务端二进制的发布版本(运行环境最好是Cent OS 6.x)：
+一、如果不想进行下面复杂的编译，可以下载现成的服务端二进制的发布版本(运行环境最好是Cent OS 6.5)：
 https://github.com/geektcp/okhoxi-wow/releases
 
 
@@ -578,7 +580,8 @@ cat /root/.bash_profile
 alias startmangos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/startup.sh'
 alias stopmanos='screen -S thy -X screen su - wow -c /usr/local/wow_mangos/bin/shutdown.sh'
 
-这里补充下，之所以用root下执行，又切换到wow普通用户，是因为服务端启动后会进入一个控制台，如果用nohup启动，会不断的打印日志，日志文件太大。
+这里补充下，之所以用root下执行，又切换到wow普通用户，是因为服务端启动后会进入一个控制台，
+如果用nohup启动，会不断的打印日志，日志文件太大。
 如果用screen的话就没有那么多日志。
 有兴趣的话可以研究下screen的用法。
 
@@ -755,7 +758,8 @@ WHERE o.id =176499
 			
 
 四、常见问题
-编译安装通常是正常的，问题往往处在map文件的获取，及map文件和当前编译版本不匹配，或者是数据库表，由于不完整，或者不同版本杂乱在一起导致没法正常启动。
+编译安装通常是正常的，问题往往处在map文件的获取，及map文件和当前编译版本不匹配，
+或者是数据库表，由于不完整，或者不同版本杂乱在一起导致没法正常启动。
 
 1、代码调试方法
 打印日志，以打印std:string类型的字符串name为例：
@@ -764,7 +768,8 @@ sLog.outError("111111： %s", name. c_str());
 
 2、map和sql的版本问题
 map文件必须跟服务器端的版本匹配，目前我的客户端是1.12.3版本
-服务器端的版本是老的mangos-classic，这个源码也不记得从哪里搞的，反正现在的官方的github下的mangos-classic是没有可执行文件生成map，
+服务器端的版本是老的mangos-classic，这个源码也不记得从哪里搞的，
+反正现在的官方的github下的mangos-classic是没有可执行文件生成map，
 而且用本文档提供的方式生成的map也跟github上的官方源码版本是不匹配的，这个地方要注意。
 
 只能用我的git下的服务端源码下的用于抽取的可执行文件，来抽取我的客户端版本1.12.3下的map文件，服务器才能正常启动，
@@ -853,7 +858,8 @@ tailf /usr/local/wow_mangos_bot/logs/Server.log
 2017-01-28 17:58:00 ERROR:MMAP:loadMap: 0003337.mmtile was built with generator v4, expected v5
 
 原因还是地图版本问题导致：
-因为当前源码的版本默认编译安装使用的题图版本是5，而我用extractor.exe之类的抽取程序抽取的map是4的版本，服务器启动会检查map，vmap，mmap版。
+因为当前源码的版本默认编译安装使用的题图版本是5，而我用extractor.exe之类的抽取程序抽取的map是4的版本，
+服务器启动会检查map，vmap，mmap版。
 
 vim /usr/local/src/wow/portalclassic/src/game/MoveMapSharedDefines.h
 找到如下一行：
@@ -912,3 +918,6 @@ git clone https://github.com/cmangos/classic-db.git
 
 - 界面截图
 ![登录入口](https://github.com/geektcp/okhoxi-wow/blob/master/doc/screen/login.png)
+
+# donate
+![赞助](https://github.com/geektcp/okhoxi-wow/blob/master/alipay_zhifubao.png)
