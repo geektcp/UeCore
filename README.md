@@ -110,7 +110,7 @@ cd gcc-4.8.2
 mkdir build
 cd build
 ../configure --prefix=/usr/local/gcc-4.8.2
-make -j16
+make -j
 make install
 
 4、安装boost
