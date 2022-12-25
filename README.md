@@ -62,7 +62,7 @@ wow/123
 env|version
 :-:|:-:
 os|CentOS 6.5
-wow|okhoxi-wow
+wow|Namjagbarwa-wow
 gcc|4.9.3
 cmake|3.5
 boost|1.60
@@ -74,13 +74,13 @@ wow client|1.12.3
 在doc/sql目录下，init.zip解压后，有3份初始化数据
 都是mysql关系型数据库，需要创建这个3个库
 详细文档见：
-[doc/sql/readme.md](https://github.com/geektcp/okhoxi-wow/blob/master/doc/sql/readme.md)
+[doc/sql/readme.md](https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/sql/readme.md)
 ```
 
 # install
 ```
 一、如果不想进行下面复杂的编译，可以下载现成的服务端二进制的发布版本(运行环境最好是Cent OS 6.5)：
-https://github.com/geektcp/okhoxi-wow/releases
+https://github.com/geektcp/Namjagbarwa-wow/releases
 
 
 二、用源码编译部署服务器端
@@ -137,9 +137,9 @@ git clone https://github.com/geektcp/Namjagbarwa-wow.git
 然后开始编译并安装(必须要指定环境变量LD_LIBRARY_PATH为新版本g++的库)，下面这一段shell脚本全部复制粘贴执行：
 export LD_LIBRARY_PATH=/usr/local/gcc-4.9.3/lib64/
 export BASE_DIR=/usr/local/wow_mangos_bot_2017.10.2
-mkdir -p /usr/local/src/wow/okhoxi-wow/build/  &&
-rm -rf /usr/local/src/wow/okhoxi-wow/build/*  &&
-cd /usr/local/src/wow/okhoxi-wow/build &&
+mkdir -p /usr/local/src/wow/Namjagbarwa-wow/build/  &&
+rm -rf /usr/local/src/wow/Namjagbarwa-wow/build/*  &&
+cd /usr/local/src/wow/Namjagbarwa-wow/build &&
 /usr/local/cmake-3.5.2/bin/cmake ../ \
 -DCMAKE_INSTALL_PREFIX=$BASE_DIR  \
 -DCONF_DIR=$BASE_DIR/etc \
@@ -161,7 +161,7 @@ chown -R wow.wow -R $BASE_DIR
 答案是从客户端的安装文件里面的抽取出来的。
 
 抽取方式，先从服务器端的源码里面找到如下目录：
-ls /usr/local/src/wow/okhoxi-wow/contrib/extractor_binary
+ls /usr/local/src/wow/Namjagbarwa-wow/contrib/extractor_binary
 ad.exe
 ExtractResources.sh
 MoveMapGen.exe
@@ -633,7 +633,7 @@ AllFlightPaths=1
 
 机器人用法
 对应的机器人命令：
-https://github.com/geektcp/okhoxi-wow/blob/master/doc/playerbot/commands.txt
+https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/playerbot/commands.txt
 
 查看机器人状态：
 /t 夜之眼 stats
@@ -883,12 +883,12 @@ vim /usr/local/src/wow/portalclassic/src/game/MoveMapSharedDefines.h
 添加传送门后，提示传送门锁定
 
 待解决
-cat /usr/local/src/wow/okhoxi-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
+cat /usr/local/src/wow/Namjagbarwa-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
 
 
 五、参考链接
 我的服务端源码地址(含可用的mysql初始化数据)：
-https://github.com/geektcp/okhoxi-wow
+https://github.com/geektcp/Namjagbarwa-wow
 
 客户端下载地址：
 http://pan.baidu.com/s/1hslkRVQ 
@@ -923,7 +923,7 @@ git clone https://github.com/cmangos/classic-db.git
 ```
 
 - 界面截图
-![登录入口](https://github.com/geektcp/okhoxi-wow/blob/master/doc/screen/login.png)
+![登录入口](https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/screen/login.png)
 
 # donate
-![赞助](https://github.com/geektcp/okhoxi-wow/blob/master/alipay_zhifubao.png)
+![赞助](https://github.com/geektcp/Namjagbarwa-wow/blob/master/alipay_zhifubao.png)
