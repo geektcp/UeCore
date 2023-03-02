@@ -1,4 +1,3 @@
-What it is:
 ===========
 
 Playerbot lets you add another character from your account as a bot that you can control and which will hopefully help you. Only characters from your account can be used, so you can have a maximum of 9 bots at one time.

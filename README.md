@@ -926,4 +926,4 @@ git clone https://github.com/cmangos/classic-db.git
 ![登录入口](https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/screen/login.png)
 
 # donate
-![赞助](https://github.com/geektcp/Namjagbarwa-wow/blob/master/alipay_zhifubao.png)
+![赞助](https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/sponsor/alipay_zhifubao.png)

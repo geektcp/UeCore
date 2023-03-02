@@ -1,8 +1,8 @@
 # CMaNGOS -- History of visible changes
 
-This file is part of the CMaNGOS Project. See [AUTHORS](AUTHORS.md) file for Copyright information
+This file is part of the CMaNGOS Project. See [AUTHORS](../../AUTHORS.md) file for Copyright information
 
-Most of our code is released under the GPL v2, a copy is shipped with the file [COPYING](COPYING).
+Most of our code is released under the GPL v2, a copy is shipped with the file [COPYING](../../COPYING).
 
 Visit our project website for forums, links and more:
 http://cmangos.net
