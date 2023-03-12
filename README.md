@@ -53,6 +53,22 @@ branch.CentOS6.5：
 https://pan.baidu.com/s/1BgIYpZEmfTiAmeD_lMB1Sg
 ```
 
+# os
+```
+CentOS 6.5 下载地址：
+https://vault.centos.org/6.5/isos/x86_64/
+
+CentOS 7.9 下载地址：
+https://ftp.riken.jp/Linux/centos/7.9.2009/isos/x86_64/
+
+完整的二进制安装包下载地址(仅支持CentOS 6.5)：
+https://github.com/geektcp/Namjagbarwa-wow/releases/tag/1.0
+
+完整的二进制安装包下载地址(支持CentOS 7.9)：
+待发布
+```
+
+
 # demo
 ```
 测试游戏环境服务端(资金不足，域名已经过期被回收了):
