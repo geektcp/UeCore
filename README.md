@@ -1,16 +1,14 @@
-# website
-[官网 http://wow.okfar.cn](http://wow.okfar.cn)
-
+everwar开源魔兽世界
+==============================
+> 魔兽世界是世界上最成功的游戏，这是一套完整的服务端源码版本。
 # overview
+[everwar开源魔兽世界官网](http://everwar.cn)
 ```
-南迦巴瓦开源魔兽世界项目
-项目命名Namjagbarwa是世界著名高峰南迦巴瓦峰的英文名字，
-南迦巴瓦峰海拔7782米，是世界第28高峰，是世界上相对高度最高的山峰。
-南迦巴瓦，壮观雄美，是世界最美山峰之一。
+everwar开源魔兽世界
 
 顶级为60的魔兽世界版本是WOW最经典的版本,让我们重温经典吧。
 觉得有用就赞一个，欢迎fork
-https://github.com/geektcp/Namjagbarwa-wow.git
+https://github.com/geektcp/everwar.git
 
 中文博客链接：
 https://www.cnblogs.com/geektcp/p/12185112.html
@@ -70,7 +68,7 @@ CentOS 7.9 下载地址：
 https://ftp.riken.jp/Linux/centos/7.9.2009/isos/x86_64/
 
 完整的二进制安装包下载地址(仅支持CentOS 6.5)：
-https://github.com/geektcp/Namjagbarwa-wow/releases/tag/1.0
+https://github.com/geektcp/everwar/releases/tag/1.0
 
 完整的二进制安装包下载地址(支持CentOS 7.9)：
 待发布
@@ -104,7 +102,7 @@ wow/123
 env|version
 :-:|:-:
 os|CentOS 6.5
-wow|Namjagbarwa-wow
+wow|everwar
 gcc|4.9.3
 cmake|3.5
 boost|1.60
@@ -116,13 +114,13 @@ wow client|1.12.3
 在doc/sql目录下，init.zip解压后，有3份初始化数据
 都是mysql关系型数据库，需要创建这个3个库
 详细文档见：
-[doc/sql/readme.md](https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/sql/readme.md)
+[doc/sql/readme.md](https://github.com/geektcp/everwar/blob/master/doc/sql/readme.md)
 ```
 
 # install
 ```
 一、如果不想进行下面复杂的编译，可以下载现成的服务端二进制的发布版本(运行环境最好是Cent OS 6.5)：
-https://github.com/geektcp/Namjagbarwa-wow/releases
+https://github.com/geektcp/everwar/releases
 
 
 二、用源码编译部署服务器端
@@ -130,7 +128,7 @@ https://github.com/geektcp/Namjagbarwa-wow/releases
 1、版本要求
 编译服务端有版本要求：
 os				CentOS 6.5
-wow				Namjagbarwa-wow
+wow				everwar
 gcc				4.9.3
 cmake				3.5
 boost				1.60
@@ -174,14 +172,14 @@ cd boost_1_60_0
 5、编译安装
 先下载源码：
 cd /usr/local/src/wow/
-git clone https://github.com/geektcp/Namjagbarwa-wow.git
+git clone https://github.com/geektcp/everwar.git
 
 然后开始编译并安装(必须要指定环境变量LD_LIBRARY_PATH为新版本g++的库)，下面这一段shell脚本全部复制粘贴执行：
 export LD_LIBRARY_PATH=/usr/local/gcc-4.9.3/lib64/
 export BASE_DIR=/usr/local/wow_mangos_bot_2017.10.2
-mkdir -p /usr/local/src/wow/Namjagbarwa-wow/build/  &&
-rm -rf /usr/local/src/wow/Namjagbarwa-wow/build/*  &&
-cd /usr/local/src/wow/Namjagbarwa-wow/build &&
+mkdir -p /usr/local/src/wow/everwar/build/  &&
+rm -rf /usr/local/src/wow/everwar/build/*  &&
+cd /usr/local/src/wow/everwar/build &&
 /usr/local/cmake-3.5.2/bin/cmake ../ \
 -DCMAKE_INSTALL_PREFIX=$BASE_DIR  \
 -DCONF_DIR=$BASE_DIR/etc \
@@ -203,7 +201,7 @@ chown -R wow.wow -R $BASE_DIR
 答案是从客户端的安装文件里面的抽取出来的。
 
 抽取方式，先从服务器端的源码里面找到如下目录：
-ls /usr/local/src/wow/Namjagbarwa-wow/contrib/extractor_binary
+ls /usr/local/src/wow/everwar/contrib/extractor_binary
 ad.exe
 ExtractResources.sh
 MoveMapGen.exe
@@ -675,7 +673,7 @@ AllFlightPaths=1
 
 机器人用法
 对应的机器人命令：
-https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/playerbot/commands.txt
+https://github.com/geektcp/everwar/blob/master/doc/playerbot/commands.txt
 
 查看机器人状态：
 /t 夜之眼 stats
@@ -925,12 +923,12 @@ vim /usr/local/src/wow/portalclassic/src/game/MoveMapSharedDefines.h
 添加传送门后，提示传送门锁定
 
 待解决
-cat /usr/local/src/wow/Namjagbarwa-wow/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
+cat /usr/local/src/wow/everwar/src/scriptdev2/scripts/eastern_kingdoms/gnomeregan/instance_gnomeregan.cpp
 
 
 五、参考链接
 我的服务端源码地址(含可用的mysql初始化数据)：
-https://github.com/geektcp/Namjagbarwa-wow
+https://github.com/geektcp/everwar
 
 客户端下载地址：
 http://pan.baidu.com/s/1hslkRVQ 
@@ -965,7 +963,7 @@ git clone https://github.com/cmangos/classic-db.git
 ```
 
 - 界面截图
-![登录入口](https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/screen/login.png)
+![登录入口](https://github.com/geektcp/everwar/blob/master/doc/screen/login.png)
 
 # donate
-![赞助](https://github.com/geektcp/Namjagbarwa-wow/blob/master/doc/sponsor/alipay_zhifubao.png)
+![赞助](https://github.com/geektcp/everwar/blob/master/doc/sponsor/alipay_zhifubao.png)
