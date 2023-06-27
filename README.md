@@ -13,10 +13,9 @@ everwar开源魔兽世界
 觉得有用就赞一个，欢迎fork
 https://github.com/geektcp/everwar.git
 
-中文博客链接：
-https://www.cnblogs.com/geektcp/p/12185112.html
+技术支持邮箱(直接把问题和期望写清楚)：
+karinpoky@163.com
 
-技术支持咨询QQ：1379205553
 
 说明：
 由于资金和时间精力的关系，本人最近几个月暂时没有时间发布支持CentOS7.x的版本
