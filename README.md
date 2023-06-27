@@ -4,7 +4,8 @@ everwar开源魔兽世界
 2023年6月，官网已经正式发布。欢迎点赞收藏。
 
 # overview
-[everwar开源魔兽世界官网](http://everwar.cn)
+<a href="http://everwar.cn" target="_blank">everwar开源魔兽世界官网</a>
+<br/>
 ```
 everwar开源魔兽世界
 
