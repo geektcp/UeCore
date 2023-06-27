@@ -14,9 +14,10 @@ everwar开源魔兽世界
 https://github.com/geektcp/everwar.git
 
 技术支持邮箱(直接把问题和期望写清楚)：
-karinpoky@163.com
+```
+<karinpoky@163.com>
 
-
+```
 说明：
 由于资金和时间精力的关系，本人最近几个月暂时没有时间发布支持CentOS7.x的版本
 但我把我之前基于CentOS6.5的版本的详细的编译过程发布成这个文档，
