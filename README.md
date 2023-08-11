@@ -13,7 +13,7 @@ everwar开源魔兽世界
 觉得有用就赞一个，欢迎fork
 https://github.com/geektcp/everwar.git
 
-任何技术问题直接在issue提问。直接把问题和期望写清楚)
+任何技术问题直接在issue提问。直接把问题和期望写清楚)，每周定期回复
 
 技术qq群： 153459822
 ```
