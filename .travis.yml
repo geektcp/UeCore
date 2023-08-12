@@ -43,6 +43,7 @@ env:
     - BUILD_TYPE=Release
     - BUILD_TYPE=Release PCH_FLAG=ON
 
+# gcc and g++ version must be 4.8
 addons:
   apt:
     sources:
