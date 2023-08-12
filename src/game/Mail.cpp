@@ -25,6 +25,10 @@
  *
  */
 
+ /*
+ * word and player and bot manage
+ */
+
 #include "Mail.h"
 #include "WorldPacket.h"
 #include "WorldSession.h"

@@ -20,6 +20,9 @@
 /// @{
 /// \file
 
+/*
+* user login and chat
+*/
 #include "Common.h"
 #include "Database/DatabaseEnv.h"
 #include "RealmList.h"

@@ -19,7 +19,9 @@
 /// \addtogroup mangosd Mangos Daemon
 /// @{
 /// \file
-
+/*
+* game engine
+*/
 #include "Common.h"
 #include "Database/DatabaseEnv.h"
 #include "Config/Config.h"
