@@ -4,7 +4,7 @@ Security Policy
 ## Supported Versions
 
 the latest version is guaranteed to be secure. For this purpose, thy-core maintains backwards compatibility. 
-Please note the [readme of the project](https://github.com/geektcp/Namjagbarwa-wow/blob/main/README.md) for further information.
+Please note the [readme of the project](https://github.com/geektcp/everwar/blob/main/README.md) for further information.
 
 
 ## Reporting a Vulnerability
