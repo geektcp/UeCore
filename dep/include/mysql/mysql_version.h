@@ -1,7 +1,11 @@
 /* Copyright Abandoned 1996, 1999, 2001 MySQL AB
    This file is public domain and comes with NO WARRANTY of any kind */
 
-/* Version numbers for protocol & mysqld */
+/* Version numbers for protocol & mysqld
+
+mysql version: 5.1-5.9 supported
+
+*/
 
 #ifndef _mysql_version_h
 #define _mysql_version_h
