@@ -1,3 +1,5 @@
+# ignore it , it is valid on windows platform.
+
 # Specify version format
 version: "0.18.{build}"
 
