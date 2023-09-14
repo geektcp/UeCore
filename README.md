@@ -21,7 +21,11 @@ https://github.com/geektcp/everwar.git
 ```
 感谢各位的star，支持和关注，接下来这个项目也会进行持续的更新，大家可以留意动态。
 2023年会发布一个新版本，基于CentOS7.x的版本，并部署到公网，到时候方便大家直接使用。
+
+2023年9月，新版本已经内测通过，2023年9月16日上线。
 ```
+<a href="https://everwar.cn/guide/release" target="_blank">Everwar版本更新记录</a>
+
 
 # feature
 ```
