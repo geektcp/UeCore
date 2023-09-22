@@ -5,9 +5,12 @@ everwar开源魔兽世界
 
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/8.jpg)
 
-# overview
+# website
 <a href="http://everwar.cn" target="_blank">Everwar 开源魔兽世界官网</a>
 <br/>
+
+# overview
+
 ```
 顶级为60的魔兽世界版本是WOW最经典的版本,让我们重温经典吧。
 觉得有用就赞一个，欢迎fork
@@ -21,11 +24,28 @@ https://github.com/geektcp/everwar.git
 ```
 感谢各位的star，支持和关注，接下来这个项目也会进行持续的更新，大家可以留意动态。
 2023年会发布一个新版本，基于CentOS7.x的版本，并部署到公网，到时候方便大家直接使用。
+--------------
 
-2023年9月，新版本已经内测通过，2023年9月16日上线。
+2023年9月20，基于CentOS7.x的新版本1.1已经内测通过，2023年9月16日上线。
 ```
-<a href="https://everwar.cn/guide/release" target="_blank">Everwar版本更新记录</a>
 
+# version
+<a href="https://everwar.cn/deploy/everwar_1_1" target="_blank">Everwar-1.1版本发布</a>
+
+- 公测帐号:
+```
+test1
+test2
+test3
+...
+
+test20
+```
+
+- 公测密码
+```
+123
+```
 
 # feature
 ```
