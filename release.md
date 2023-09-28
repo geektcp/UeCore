@@ -9,6 +9,10 @@ Thy-core Release Notes
 
 
 # 发布记录
+### 2023/9/27: everking 1.0
+- wotlk release version for CentOS7.9,  level 80
+
+<a href="https://everwar.cn/guide/king" target="_blank">everking-1.0 release</a>
 
 ### 2023/9/20: version 1.1
 - release version for CentOS7.9

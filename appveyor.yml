@@ -54,7 +54,7 @@ init:
             else {Write-Host "Skipping tag delete because its same commit!" -f Yellow;}}
 
 # clone directory
-clone_folder: C:\projects\cmangos
+clone_folder: C:\projects\Everwar
 
 # branches to build
 branches:

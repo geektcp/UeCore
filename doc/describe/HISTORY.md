@@ -1,14 +1,7 @@
-# CMaNGOS -- History of visible changes
-
-This file is part of the CMaNGOS Project. See [AUTHORS](../../AUTHORS.md) file for Copyright information
-
-Most of our code is released under the GPL v2, a copy is shipped with the file [COPYING](../../COPYING).
-
-Visit our project website for forums, links and more:
-http://cmangos.net
+# Everwar -- History of visible changes
 
 Please submit bug reports at our bugtracker at:
-https://github.com/cmangos/issues
+https://github.com/geektcp/everwar/issues
 
 See the file ChangeLog.md for details!
 

@@ -7,7 +7,7 @@ Clean install of ScriptDev2 (for Classic)
 Download C-MaNGOS (using git clone)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-See their http://www.ru-mangos.ru/[forum] or https://github.com/cmangos/mangos-classic/wiki[wiki] for more details
+See their http://www.ru-mangos.ru/[forum] or https://github.com/Everwar/mangos-classic/wiki[wiki] for more details
 
 Get the sources
 ~~~~~~~~~~~~~~~

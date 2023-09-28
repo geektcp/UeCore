@@ -1,5 +1,5 @@
 /*
- * This file is part of the CMaNGOS Project. See AUTHORS file for Copyright information
+ * This file is part of the Everwar Project. See AUTHORS file for Copyright information
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,7 +63,7 @@ class AuthSocket : public MaNGOS::Socket
             STATUS_CHALLENGE,
             STATUS_LOGON_PROOF,
             STATUS_RECON_PROOF,
-            STATUS_PATCH,      // unused in CMaNGOS
+            STATUS_PATCH,      // unused in Everwar
             STATUS_AUTHED,
             STATUS_CLOSED
         };

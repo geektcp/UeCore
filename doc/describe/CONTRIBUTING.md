@@ -1,25 +1,25 @@
-# How to contribute to the CMaNGOS project
+# How to contribute to the Everwar project
 
-There are many different ways to contribute to CMaNGOS to continue improving it!
+There are many different ways to contribute to Everwar to continue improving it!
 
 These guidelines shall help you by providing suggested ways of how you can help.
 
-As CMaNGOS and its friendly projects are a huge and widespread way of working,
+As Everwar and its friendly projects are a huge and widespread way of working,
 you can dig in at any place you want to!
 
 *Work for any part is appreciated!*
 
-See our linklist at [CMaNGOS Links](http://cmangos.net/thread-26.html) for other places.
+See our linklist at [Everwar Links](http://everwar.cn) for other places.
 
-This guide however is only for contributing to the CMaNGOS core part -
-which is hosted at https://github.com/cmangos
+This guide however is only for contributing to the Everwar core part -
+which is hosted at https://github.com/geektcp/everwar
 
 ## Getting Started
 
-* Make sure you have a [Forum account](http://cmangos.net)
+* Make sure you have a [Forum account](http://everwar.cn)
 * Make sure you have a [GitHub account](https://github.com/signup/free)
-* Watch the CMaNGOS repository on GitHub (This way you will get informed about changes by GitHub)
-* Optionally: Fork the CMaNGOS repository on GitHub in order to be able to publish own changes and create pull requests with them (see below for details)
+* Watch the Everwar repository on GitHub (This way you will get informed about changes by GitHub)
+* Optionally: Fork the Everwar repository on GitHub in order to be able to publish own changes and create pull requests with them (see below for details)
 
 You can help us developing the core by (at least!)
 * Giving Feedback on Bugs
@@ -28,7 +28,7 @@ You can help us developing the core by (at least!)
 
 # Bug-Reports
 
-If you spot a bug, please report it by opening an issue on our centralized GitHub issue tracking repository: [cmangos/issues](https://github.com/cmangos/issues/issues).
+If you spot a bug, please report it by opening an issue on our centralized GitHub issue tracking repository: [Everwar/issues](https://github.com/Everwar/issues/issues).
 Before you do so, please consider the following points:
 
 * The bug happens on a clean core
@@ -38,7 +38,7 @@ Before you do so, please consider the following points:
 When you decide to create a new bug report, please make sure that this report includes:
 
 * Revision on which you encountered this bug (if known, also the revision or timeframe where it first appeared) - you can also post the link to the commit on the upstream repository
-* Revisions of additional parts of the CMaNGOS familiy (SD2 version, database name and version, and such)
+* Revisions of additional parts of the Everwar familiy (SD2 version, database name and version, and such)
 * A detailed step-by-step report how this bug can be reproduced
 * A detailed explanation of what DOES happen
 * A detailed explanation of what SHOULD happen  - if possible also add a source why you think this should happen
@@ -103,7 +103,7 @@ While developing you should try to keep these points in mind:
 * *Write good commit messages to tell people what you are trying to do in your commit*
   This must include some test instructions, link to bug-report and similar
 
-Also we expect you to keep our [Coding Style](https://github.com/cmangos/mangos-wotlk/wiki/Coding-Standards)
+Also we expect you to keep our [Coding Style](https://github.com/Everwar/mangos-wotlk/wiki/Coding-Standards)
 This code style is automatically enforced by the helper scripts in contrib/cleanupTools (which require AStyle to be installed)
 
 ## Deployment
@@ -111,7 +111,7 @@ This code style is automatically enforced by the helper scripts in contrib/clean
 You can publish and share your contribution projects via forum or by pull-requests
 
 When you have created your topic-branch and pushed it to your local repository, you can easily create a pull-request to our repo from this!
-Please always create the pull request on the repository containing the CMaNGOS code you were working on.
+Please always create the pull request on the repository containing the Everwar code you were working on.
 
 Here is the [GitHub Information on Pull-Requests](https://help.github.com/articles/using-pull-requests)
 
@@ -130,4 +130,4 @@ more than 20 lines should most definitely be posted as a pull request instead of
 
 * [General GitHub documentation](http://help.github.com/)
 * [GitHub pull request documentation](http://help.github.com/send-pull-requests/)
-* #cmangos IRC channel on irc.rizon.net
+* #Everwar IRC channel on irc.rizon.net

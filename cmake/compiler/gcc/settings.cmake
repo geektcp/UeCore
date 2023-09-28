@@ -10,7 +10,7 @@ if(COMPILER_SUPPORTS_CXX11)
 elseif(COMPILER_SUPPORTS_CXX0X)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 else()
-  message(FATAL_ERROR "Error, CMaNGOS requires a compiler that supports C++11!")
+  message(FATAL_ERROR "Error, Everwar requires a compiler that supports C++11!")
 endif()
 
 if(PLATFORM EQUAL X86)

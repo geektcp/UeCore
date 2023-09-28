@@ -1,5 +1,5 @@
 #!/bin/sh
-# This file is part of the CMaNGOS Project. See AUTHORS file for Copyright information
+# This file is part of the Everwar Project. See AUTHORS file for Copyright information
 # This program is free software licensed under GPL version 2
 # Please see the included COPYING for full text */
 
@@ -62,7 +62,7 @@ EOF
 # Display help
 function display_help {
   echo
-  echo "Welcome to the CMaNGOS merge helper $script_file_name"
+  echo "Welcome to the Everwar merge helper $script_file_name"
   echo
   echo "Run this tool from a bash compatible terminal (on windows like Git Bash)"
   echo
@@ -100,7 +100,7 @@ function merge_pull_request {
 git rev-parse --git-dir 1>/dev/null 2>&1
 if [[ $? -ne 0 ]]; then
   echo "ERROR: This script must be used within a Git working tree"
-  echo "Try to start from your main cmangos directory by using"
+  echo "Try to start from your main Everwar directory by using"
   echo "  \"contrib/$script_file_name\""
   read -p"Press [RETURN] to exit"
   exit 1

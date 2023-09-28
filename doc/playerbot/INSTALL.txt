@@ -1,6 +1,6 @@
 Installation:
 =============
-Merge PlayerbotAI code with your favorite core/mods, or simply compile. Follow CMangos Core installation steps for installation and building.
+Merge PlayerbotAI code with your favorite core/mods, or simply compile. Follow Everwar Core installation steps for installation and building.
 
 Copy src/game/playerbot/playerbot.conf.dist.in for configuration variables!
 Install appropriate files from sql/playerbot

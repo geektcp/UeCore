@@ -8,7 +8,7 @@ Bots will only use abilities that they have - for example, a priest will only us
 
 All help is welcome be it through code development, reports from play testing or just discussion. Meet us in the C-MaNGOS forum thread.
 
-For CMaNGOS z2684+
+For Everwar z2684+
 
 
 INSTALLATION:

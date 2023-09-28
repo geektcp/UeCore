@@ -1,5 +1,5 @@
 /*
- * This file is part of the CMaNGOS Project. See AUTHORS file for Copyright information
+ * This file is part of the Everwar Project. See AUTHORS file for Copyright information
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -182,7 +182,7 @@ int main(int argc, char *argv[])
                    "     | |ontinued| |\\/| | __ _| . ` | | |_ | |  | |\\___ \\ \n"
                    "     | |____    | |  | |/ _` | |\\  | |__| | |__| |____) |\n"
                    "      \\_____|   |_|  |_| (_| |_| \\_|\\_____|\\____/ \\____/ \n"
-                   "      http://cmangos.net\\__,_|     Doing things right!\n\n");
+                   "      http://everwar.cn\\__,_|     Doing things right!\n\n");
 
     sLog.outString("Using configuration file %s.", configFile.c_str());
 

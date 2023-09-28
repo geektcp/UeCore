@@ -284,7 +284,7 @@ public:
 
 private:
     tbb_exception_ptr ( const std::exception_ptr& src ) : my_ptr(src) {}
-/* CMaNGOS hack until TBB adding vc11 support                                                */
+/* Everwar hack until TBB adding vc11 support                                                */
 /* New C++ standard adding std::make_exception_ptr instead used in C++0x std::copy_exception */
 /* vc10 have std::copy_exception, but vc11 have only std::make_exception_ptr                 */
 #if defined(_MSC_VER) && _MSC_VER >= 1700

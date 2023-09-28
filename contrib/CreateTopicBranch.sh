@@ -1,9 +1,9 @@
 #!/bin/sh
-# This file is part of the CMaNGOS Project. See AUTHORS file for Copyright information
+# This file is part of the Everwar Project. See AUTHORS file for Copyright information
 # This program is free software licensed under GPL version 2
 # Please see the included COPYING for full text */
 
-## Dialogue helper to create a "topic-branch" for cmangos
+## Dialogue helper to create a "topic-branch" for Everwar
 
 # Steps in interactive dialog:
 # 1) Get name of contribution (ie LFG)
@@ -50,7 +50,7 @@ function read_yes_no {
 
 # Main Script
 
-echo "Welcome to CMaNGOS' helper tool to create a branch for a development project"
+echo "Welcome to Everwar' helper tool to create a branch for a development project"
 echo "This script will guide you through seven steps to set up a branch in which you can develop your project"
 echo
 
@@ -58,7 +58,7 @@ echo
 git rev-parse --git-dir 1>/dev/null 2>&1
 if [[ $? -ne 0 ]]; then
   echo "ERROR: Cannot find Git directory"
-  echo "Try to start from your main cmangos directory by using"
+  echo "Try to start from your main Everwar directory by using"
   echo "  \"contrib/CreateTopicBranch.sh\""
   read -p"Press [RETURN] to exit"
   exit 1
@@ -182,7 +182,7 @@ then
   echo
   echo "Please link to your started project on our forum!"
   echo
-  echo "Here is some suggested content for publishing on the http://cmangos.net forums at:"
+  echo "Here is some suggested content for publishing on the http://everwar.cn forums at:"
   echo "    <LINK>"
   echo "or for a custom project:    <LINK2>"
   echo

@@ -1,5 +1,5 @@
 # output generic information about the core
-message(STATUS "CMaNGOS-Core revision : ${GIT_REVISION}")
+message(STATUS "Everwar-Core revision : ${GIT_REVISION}")
 message(STATUS "Install server to     : ${CMAKE_INSTALL_PREFIX}")
 
 # Show infomation about the options selected during configuration

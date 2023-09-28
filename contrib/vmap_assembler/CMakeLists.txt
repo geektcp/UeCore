@@ -1,4 +1,4 @@
-# This file is part of the CMaNGOS Project. See AUTHORS file for Copyright information
+# This file is part of the Everwar Project. See AUTHORS file for Copyright information
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
