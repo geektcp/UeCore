@@ -23,6 +23,7 @@
 #
 bin
 build
+cmake-build-debug*
 tags
 TAGS
 !.gitignore

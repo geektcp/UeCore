@@ -781,7 +781,7 @@ Event.Announce = 0
 BeepAtStart = 1
 ShowProgressBars = 0
 WaitAtStartupError = 0
-Motd = "Welcome to the Continued Massive Network Game Object Server."
+Motd = "Welcome to the everwar.cn Server."
 PlayerCommands = 1
 
 ###################################################################################################################
