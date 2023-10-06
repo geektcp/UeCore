@@ -2,7 +2,7 @@
 
 project(Everwar)
 
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.11)
 
 include(cmake/common.cmake)
 
@@ -79,8 +79,6 @@ endif()
 set(CMAKE_INSTALL_RPATH ../${LIBS_FOLDER_NAME})
 set(CMAKE_INSTALL_NAME_DIR ${LIBS_DIR})
 
-# Find needed packages and if necessery abort if something important is missing
-find_package(Boost REQUIRED COMPONENTS system program_options thread)
 
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
@@ -96,11 +94,13 @@ if(WIN32)
   set(OPENSSL_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/dep/include/openssl)
   set(OPENSSL_LIBRARIES ${CMAKE_SOURCE_DIR}/dep/lib/${DEP_ARCH}_release/libeay32.lib)
   set(OPENSSL_DEBUG_LIBRARIES ${CMAKE_SOURCE_DIR}/dep/lib/${DEP_ARCH}_debug/libeay32.lib)
+  set(BOOST_REQUIRED_VERSION 1.73)
   # zlib is build
 endif()
 
 # *nix-specific packages
 if(UNIX)
+  set(BOOST_REQUIRED_VERSION 1.71)
   if(POSTGRESQL)
     find_package(PostgreSQL REQUIRED)
 
@@ -112,9 +112,12 @@ if(UNIX)
     find_package(MySQL REQUIRED)
   endif()
 
-  find_package(OpenSSL REQUIRED)
+  find_package(OpenSSL 1.1 REQUIRED)
   find_package(ZLIB REQUIRED)
 endif()
+
+# Find needed packages and if necessery abort if something important is missing
+find_package(Boost ${BOOST_REQUIRED_VERSION} REQUIRED COMPONENTS system filesystem program_options thread iostreams regex)
 
 # Find core revision
 if(GIT_EXECUTABLE)

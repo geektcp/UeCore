@@ -13,6 +13,9 @@ else()
   message(FATAL_ERROR "Error, Everwar requires a compiler that supports C++11!")
 endif()
 
+
+set(GCC_EXPECTED_VERSION 10.0.0)
+
 if(PLATFORM EQUAL X86)
   # Required on 32-bit systems to enable SSE2 (standard on x64)
   set(SSE_FLAGS "-msse2 -mfpmath=sse")
