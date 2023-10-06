@@ -30,16 +30,18 @@ https://github.com/geektcp/everwar.git
 ```
 
 # version
-<a href="https://everwar.cn/deploy/everwar_1_1" target="_blank">Everwar-1.1版本发布</a>
+<a href="https://everwar.cn/guide/king" target="_blank">Everwar-1.1版本发布</a>
 
 - 公测帐号:
 ```
-test1
-test2
-test3
+everwar1
+everwar2
+everwar3
 ...
-
-test20
+...
+...
+test49
+test50
 ```
 
 - 公测密码
