@@ -40,11 +40,21 @@ https://github.com/geektcp/everwar.git
 
 
 # beta test
+
 - 经典旧世公测
+
 <a href="https://everwar.cn/guide/classic" target="_blank">Everwar-Classic-1.1 beta test server</a>
 
 - 巫妖王之怒公测
+
 <a href="https://everwar.cn/guide/king" target="_blank">Everwar-Wotlk-1.0 beta test server</a>
+<br/>
+
+<a href="http://wotlk.everwar.cn/" target="_blank">巫妖王之怒帐号注册</a>
+```
+http://wotlk.everwar.cn
+```
+
 
 - 公测帐号:
 ```
