@@ -35,6 +35,9 @@ https://github.com/geektcp/everwar.git
 
 <a href="https://everwar.cn/deploy/everwar_1_1" target="_blank">Everwar-Classic-1.1 release</a>
 
+### Wotlk
+<a href="https://github.com/geektcp/everking" target="_blank">Everking-Wotlk-1.0</a>
+
 
 # beta test
 - 经典旧世公测
