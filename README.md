@@ -30,7 +30,18 @@ https://github.com/geektcp/everwar.git
 ```
 
 # version
-<a href="https://everwar.cn/guide/king" target="_blank">Everwar-1.1版本发布</a>
+### Classic
+<a href="https://everwar.cn/deploy/everwar_1_0" target="_blank">Everwar-Classic-1.0 release</a>
+
+<a href="https://everwar.cn/deploy/everwar_1_1" target="_blank">Everwar-Classic-1.1 release</a>
+
+
+# beta test
+- 经典旧世公测
+<a href="https://everwar.cn/guide/classic" target="_blank">Everwar-Classic-1.1 beta test server</a>
+
+- 巫妖王之怒公测
+<a href="https://everwar.cn/guide/king" target="_blank">Everwar-Wotlk-1.0 beta test server</a>
 
 - 公测帐号:
 ```
