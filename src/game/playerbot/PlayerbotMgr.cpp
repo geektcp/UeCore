@@ -1016,6 +1016,11 @@ uint32 Player::GetSpec()
     return spec;
 }
 
+/**
+ * add AI player start here
+ * @param args
+ * @return
+ */
 bool ChatHandler::HandlePlayerbotCommand(char* args)
 {
     if (!(m_session->GetSecurity() > SEC_PLAYER))
