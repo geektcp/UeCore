@@ -64,6 +64,10 @@
 #  define SYSCONFDIR        ""
 #endif
 
+#ifndef EVERWAR_VERSION
+#  define EVERWAR_VERSION        ""
+#endif
+
 #if PLATFORM == PLATFORM_WINDOWS
 # ifdef _WIN64
 #  define _ENDIAN_PLATFORM "Win64 (" _ENDIAN_STRING ")"
