@@ -12,15 +12,18 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH ${LIBS_DIR})
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
+set(EVERWAR_BASE /usr/local)
+
 # set default buildoptions and print them
 include(cmake/options.cmake)
-set(EVERWAR_BASE /user/local/everwar)
-set(CMAKE_INSTALL_PREFIX /user/local/${EVERWAR_BASE}-${EVERWAR_VERSION})
+
+set(EVERWAR_INSTALL everwar)
+set(CMAKE_INSTALL_PREFIX ${EVERWAR_BASE}/${EVERWAR_INSTALL}-${EVERWAR_VERSION})
+
 set(BOOST_BASE boost)
-set(BOOST_ROOT /usr/local/${BOOST_BASE})
-link_directories(/usr/local/${BOOST_BASE}/lib)
-include_directories(/usr/local/${BOOST_BASE}/include)
-set(OPENSSL_INCLUDE_DIR /usr/local/openssl/include)
+set(BOOST_ROOT ${EVERWAR_BASE}/${BOOST_BASE})
+link_directories(${EVERWAR_BASE}/${BOOST_BASE}/lib)
+include_directories(${EVERWAR_BASE}/${BOOST_BASE}/include)
 
 # Force out-of-source build
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
