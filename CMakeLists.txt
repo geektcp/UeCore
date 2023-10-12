@@ -243,7 +243,7 @@ add_subdirectory(dep)
 # Add definitions for all build types
 # Don't place this above 'dep' subdirectory! Because of defines build will crash.
 set(DEFINITIONS
-  SYSCONFDIR="../${CONF_FOLDER_NAME}/"
+  SYSCONFDIR="${CMAKE_INSTALL_PREFIX}/${CONF_FOLDER_NAME}/"
 )
 
 if(POSTGRESQL)
