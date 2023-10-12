@@ -16,15 +16,12 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 include(cmake/options.cmake)
 set(EVERWAR_BASE /user/local/everwar)
 set(CMAKE_INSTALL_PREFIX /user/local/${EVERWAR_BASE}-${EVERWAR_VERSION})
-
-#set(BOOST_INCLUDEDIR /usr/local/boost-1.60.0_gcc-4.8.5/include)
-#set(BOOST_BASE boost-1.60.0_gcc-4.8.5)
-set(BOOST_BASE boost-1.71.0_gcc-10.5.0)
-
+set(BOOST_BASE boost)
 set(BOOST_ROOT /usr/local/${BOOST_BASE})
 link_directories(/usr/local/${BOOST_BASE}/lib)
 include_directories(/usr/local/${BOOST_BASE}/include)
-#set(OPENSSL_INCLUDE_DIR /usr/local/openssl/include)
+set(OPENSSL_INCLUDE_DIR /usr/local/openssl/include)
+
 # Force out-of-source build
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
   message(FATAL_ERROR
@@ -89,14 +86,7 @@ endif()
 set(CMAKE_INSTALL_RPATH ../${LIBS_FOLDER_NAME})
 set(CMAKE_INSTALL_NAME_DIR ${LIBS_DIR})
 
-find_package(Boost)
-message("||||Boost_LIBRARY_DIRS: " ${Boost_LIBRARY_DIRS})
-message("||||oost_VERSION: " ${Boost_VERSION})
-if(Boost_FOUND)
-  include_directories(${Boost_INCLUDE_DIRS})
-else()
-  message(FATAL_ERROR "This project requires boost.  Please install from http://www.boost.org")
-endif()
+
 
 # Win32 delivered packages
 if(WIN32)
@@ -112,7 +102,7 @@ endif()
 
 # *nix-specific packages
 if(UNIX)
-  set(BOOST_REQUIRED_VERSION 1.59)
+  set(BOOST_REQUIRED_VERSION 1.71)
   if(POSTGRESQL)
     find_package(PostgreSQL REQUIRED)
 
@@ -129,8 +119,13 @@ if(UNIX)
 endif()
 
 # Find needed packages and if necessery abort if something important is missing
-#find_package(Boost ${BOOST_REQUIRED_VERSION} REQUIRED COMPONENTS system filesystem program_options thread iostreams regex)
-message("====Boost_LIBRARIES: " ${Boost_LIBRARIES} "|" ${Boost_VERSION})
+find_package(Boost ${BOOST_REQUIRED_VERSION} REQUIRED COMPONENTS system filesystem program_options thread iostreams regex)
+
+if(Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+else()
+  message(FATAL_ERROR "This project requires boost.  Please install from http://www.boost.org")
+endif()
 
 # Find core revision
 if(GIT_EXECUTABLE)

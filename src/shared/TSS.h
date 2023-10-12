@@ -22,6 +22,7 @@
 #include <boost/thread/tss.hpp>
 
 #include <functional>
+#include <boost/shared_ptr.hpp>
 
 namespace MaNGOS
 {

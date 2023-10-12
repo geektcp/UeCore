@@ -183,6 +183,15 @@ add_library(${LIBRARY_NAME} STATIC
 if(POSTGRESQL)
   target_link_libraries(${LIBRARY_NAME} ${PostgreSQL_LIBRARIES})
 endif()
+  target_link_libraries(${LIBRARY_NAME}
+        boost_program_options
+        boost_system
+        boost_thread
+        boost_log
+  )
+if(UNIX)
+
+endif()
 
 add_dependencies(${LIBRARY_NAME} revision.h)
 
