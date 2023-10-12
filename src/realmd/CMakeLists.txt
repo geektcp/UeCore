@@ -50,7 +50,9 @@ add_dependencies(${EXECUTABLE_NAME} revision.h)
 target_link_libraries(${EXECUTABLE_NAME}
   shared
   framework
-  ${Boost_LIBRARIES}
+  boost_program_options
+  boost_system
+  boost_thread
 )
 
 if(WIN32)

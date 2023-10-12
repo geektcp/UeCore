@@ -69,7 +69,9 @@ target_link_libraries(${EXECUTABLE_NAME}
   framework
   g3dlite
   gsoap
-  ${Boost_LIBRARIES}
+  boost_program_options
+  boost_system
+  boost_thread
 )
 
 if(WIN32)

@@ -1,8 +1,8 @@
 # build server
 
 project(Everwar)
-
-cmake_minimum_required(VERSION 3.11)
+set(EVERWAR_VERSION 1.2)
+cmake_minimum_required(VERSION 3.0)
 
 include(cmake/common.cmake)
 
@@ -14,9 +14,17 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # set default buildoptions and print them
 include(cmake/options.cmake)
+set(EVERWAR_BASE /user/local/everwar)
+set(CMAKE_INSTALL_PREFIX /user/local/${EVERWAR_BASE}-${EVERWAR_VERSION})
 
-set(BOOST_INCLUDE_DIR /usr/local/boost/include)
-set(OPENSSL_INCLUDE_DIR /usr/local/openssl/include)
+#set(BOOST_INCLUDEDIR /usr/local/boost-1.60.0_gcc-4.8.5/include)
+#set(BOOST_BASE boost-1.60.0_gcc-4.8.5)
+set(BOOST_BASE boost-1.71.0_gcc-10.5.0)
+
+set(BOOST_ROOT /usr/local/${BOOST_BASE})
+link_directories(/usr/local/${BOOST_BASE}/lib)
+include_directories(/usr/local/${BOOST_BASE}/include)
+#set(OPENSSL_INCLUDE_DIR /usr/local/openssl/include)
 # Force out-of-source build
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
   message(FATAL_ERROR
@@ -82,6 +90,8 @@ set(CMAKE_INSTALL_RPATH ../${LIBS_FOLDER_NAME})
 set(CMAKE_INSTALL_NAME_DIR ${LIBS_DIR})
 
 find_package(Boost)
+message("||||Boost_LIBRARY_DIRS: " ${Boost_LIBRARY_DIRS})
+message("||||oost_VERSION: " ${Boost_VERSION})
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 else()
@@ -102,7 +112,7 @@ endif()
 
 # *nix-specific packages
 if(UNIX)
-  set(BOOST_REQUIRED_VERSION 1.71)
+  set(BOOST_REQUIRED_VERSION 1.59)
   if(POSTGRESQL)
     find_package(PostgreSQL REQUIRED)
 
@@ -114,12 +124,13 @@ if(UNIX)
     find_package(MySQL REQUIRED)
   endif()
 
-  find_package(OpenSSL 1.1 REQUIRED)
+  find_package(OpenSSL 1.0 REQUIRED)
   find_package(ZLIB REQUIRED)
 endif()
 
 # Find needed packages and if necessery abort if something important is missing
-find_package(Boost ${BOOST_REQUIRED_VERSION} REQUIRED COMPONENTS system filesystem program_options thread iostreams regex)
+#find_package(Boost ${BOOST_REQUIRED_VERSION} REQUIRED COMPONENTS system filesystem program_options thread iostreams regex)
+message("====Boost_LIBRARIES: " ${Boost_LIBRARIES} "|" ${Boost_VERSION})
 
 # Find core revision
 if(GIT_EXECUTABLE)
