@@ -15,6 +15,8 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 # set default buildoptions and print them
 include(cmake/options.cmake)
 
+set(BOOST_INCLUDE_DIR /usr/local/boost/include)
+set(OPENSSL_INCLUDE_DIR /usr/local/openssl/include)
 # Force out-of-source build
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
   message(FATAL_ERROR
@@ -79,7 +81,7 @@ endif()
 set(CMAKE_INSTALL_RPATH ../${LIBS_FOLDER_NAME})
 set(CMAKE_INSTALL_NAME_DIR ${LIBS_DIR})
 
-
+find_package(Boost)
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 else()
