@@ -55,6 +55,8 @@
 #include "SQLStorages.h"
 #include "LootMgr.h"
 
+uint32 everwar = 20;
+
 static uint32 ahbotQualityIds[MAX_AUCTION_QUALITY] =
 {
     LANG_AHBOT_QUALITY_GREY, LANG_AHBOT_QUALITY_WHITE,
@@ -5634,7 +5636,7 @@ bool ChatHandler::HandleServerPLimitCommand(char* args)
         else if (strncmp(param, "administrator", l) == 0)
             sWorld.SetPlayerLimit(-SEC_ADMINISTRATOR);
         else if (strncmp(param, "reset", l) == 0)
-            sWorld.SetPlayerLimit(sConfig.GetIntDefault("PlayerLimit", DEFAULT_PLAYER_LIMIT));
+            sWorld.SetPlayerLimit(everwar);
         else if (ExtractInt32(&param, val))
         {
             if (val < -SEC_ADMINISTRATOR)

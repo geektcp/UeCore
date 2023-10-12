@@ -61,10 +61,10 @@ ConfVersion=2016101401
 
 RealmID = 1
 DataDir = "."
-LogsDir = ""
-LoginDatabaseInfo     = "127.0.0.1;3306;everwar;everwar.cn;realmd"
-WorldDatabaseInfo     = "127.0.0.1;3306;everwar;everwar.cn;mangos"
-CharacterDatabaseInfo = "127.0.0.1;3306;everwar;everwar.cn;characters"
+LogsDir = "/usr/local/everwar/logs"
+LoginDatabaseInfo     = "everwar;3306;everwar;everwar.cn;realmd"
+WorldDatabaseInfo     = "everwar;3306;everwar;everwar.cn;mangos"
+CharacterDatabaseInfo = "everwar;3306;everwar;everwar.cn;characters"
 LoginDatabaseConnections = 1
 WorldDatabaseConnections = 1
 CharacterDatabaseConnections = 1

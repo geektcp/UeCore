@@ -88,6 +88,8 @@ float World::m_VisibleObjectGreyDistance      = 0;
 float  World::m_relocation_lower_limit_sq     = 10.f * 10.f;
 uint32 World::m_relocation_ai_notify_delay    = 1000u;
 
+uint32 everwar = 20;
+
 /// World constructor
 World::World(): mail_timer(0), mail_timer_expires(0)
 {
@@ -370,7 +372,7 @@ void World::LoadConfigSettings(bool reload)
     }
 
     ///- Read the player limit and the Message of the day from the config file
-    SetPlayerLimit(sConfig.GetIntDefault("PlayerLimit", DEFAULT_PLAYER_LIMIT), true);
+    SetPlayerLimit(everwar, true);
     SetMotd(s);
 
     ///- Read all rates from the config file
