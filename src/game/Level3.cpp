@@ -55,7 +55,7 @@
 #include "SQLStorages.h"
 #include "LootMgr.h"
 
-uint32 everwar = 20;
+static uint32 everwar = 20;
 
 static uint32 ahbotQualityIds[MAX_AUCTION_QUALITY] =
 {

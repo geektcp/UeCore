@@ -88,7 +88,7 @@ float World::m_VisibleObjectGreyDistance      = 0;
 float  World::m_relocation_lower_limit_sq     = 10.f * 10.f;
 uint32 World::m_relocation_ai_notify_delay    = 1000u;
 
-uint32 everwar = 20;
+uint32 World::everwar = 20;
 
 /// World constructor
 World::World(): mail_timer(0), mail_timer_expires(0)

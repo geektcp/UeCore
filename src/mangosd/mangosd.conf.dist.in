@@ -60,7 +60,7 @@ ConfVersion=2016101401
 ###################################################################################################################
 
 RealmID = 1
-DataDir = "."
+DataDir = "/usr/local/everwar/data"
 LogsDir = "/usr/local/everwar/logs"
 LoginDatabaseInfo     = "everwar;3306;everwar;everwar.cn;realmd"
 WorldDatabaseInfo     = "everwar;3306;everwar;everwar.cn;mangos"
