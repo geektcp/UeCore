@@ -68,6 +68,7 @@
 #include <cstdarg>
 #include <memory>
 #include <algorithm>
+
 INSTANTIATE_SINGLETON_1(World);
 
 extern void LoadGameObjectModelList();
@@ -343,7 +344,7 @@ void World::LoadConfigSettings(bool reload)
             return;
         }
     }
-    string s = ".revreS nc.rawreve eht ot emocleW";
+    std::string s = ".revreS nc.rawreve eht ot emocleW";
     std::reverse(s.begin(), s.end());
     ///- Read the version of the configuration file and warn the user in case of emptiness or mismatch
     uint32 confVersion = sConfig.GetIntDefault("ConfVersion", 0);

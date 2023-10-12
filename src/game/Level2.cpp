@@ -4800,3 +4800,8 @@ bool ChatHandler::HandleMmapStatsCommand(char* /*args*/)
 
     return true;
 }
+
+bool ChatHandler::HandleEverwarCommand(char* /*args*/)
+{
+    return true;
+}
