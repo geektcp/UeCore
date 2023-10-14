@@ -73,6 +73,8 @@ test50
 123
 ```
 
+[![Star History Chart](https://api.star-history.com/svg?repos=geektcp/everwar&type=Date)](https://star-history.com/#geektcp/everwar&Date)
+
 # feature
 ```
 在github找到其他魔兽世界服务端项目基本上完全没法使用。
