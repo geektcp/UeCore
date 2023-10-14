@@ -73,7 +73,11 @@ test50
 123
 ```
 
-[![Star History Chart](https://api.star-history.com/svg?repos=geektcp/everwar&type=Date)](https://star-history.com/#geektcp/everwar&Date)
+
+## star history
+
+[![Stargazers over time](https://starchart.cc/geektcp/everwar.svg)](https://starchart.cc/geektcp/everwar)
+
 
 # feature
 ```
