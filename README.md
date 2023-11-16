@@ -29,50 +29,14 @@ https://github.com/geektcp/everwar.git
 2023年9月20，基于CentOS7.x的新版本1.1已经内测通过，2023年9月16日上线。
 ```
 
-# version
-### Classic
-<a href="https://everwar.cn/deploy/everwar_1_0" target="_blank">Everwar-Classic-1.0 release</a>
-
-<a href="https://everwar.cn/deploy/everwar_1_1" target="_blank">Everwar-Classic-1.1 release</a>
-
-### Wotlk
-<a href="https://github.com/geektcp/everking" target="_blank">Everking-Wotlk-1.0</a>
-
-
 # beta test
 
-- 经典旧世公测
-
-<a href="https://everwar.cn/guide/classic" target="_blank">Everwar-Classic-1.1 beta test server</a>
-
-- 巫妖王之怒公测
-
-<a href="https://everwar.cn/guide/king" target="_blank">Everwar-Wotlk-1.0 beta test server</a>
-<br/>
+- 巫妖王之怒
 
 <a href="http://wotlk.everwar.cn/" target="_blank">巫妖王之怒帐号注册</a>
 ```
 http://wotlk.everwar.cn
 ```
-
-
-- 公测帐号:
-```
-everwar1
-everwar2
-everwar3
-...
-...
-...
-test49
-test50
-```
-
-- 公测密码
-```
-123
-```
-
 
 ## star history
 
