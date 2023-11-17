@@ -196,7 +196,7 @@ class MANGOS_DLL_SPEC SqlStatement
         SqlStatement(const SqlStatement& index) : m_index(index.m_index), m_pDB(index.m_pDB), m_pParams(nullptr)
         {
             if (index.m_pParams)
-                m_pParams = new SqlStmtParameters(*(index.m_pParams));
+                m_pParams = std::move(index.m_pParams);
         }
 
         SqlStatement& operator=(const SqlStatement& index);

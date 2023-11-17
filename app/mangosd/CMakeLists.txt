@@ -4,6 +4,10 @@ SET(MAIN_EXECUTE mangosd)
 
 add_executable(${MAIN_EXECUTE} mangosd.cpp)   # Name of exec. and location of file.
 
+include_directories(
+        ${CMAKE_SOURCE_DIR}/src/mangosd
+)
+
 target_link_libraries(${MAIN_EXECUTE}
         PRIVATE
         mangosd_lib

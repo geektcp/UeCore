@@ -4,6 +4,10 @@ SET(MAIN_EXECUTE realmd)
 
 add_executable(${MAIN_EXECUTE} realmd.cpp)   # Name of exec. and location of file.
 
+include_directories(
+        ${CMAKE_SOURCE_DIR}/src/realmd
+)
+
 target_link_libraries(${MAIN_EXECUTE}
         PRIVATE
         realmd_lib
@@ -19,3 +23,7 @@ target_link_libraries(${MAIN_EXECUTE} PRIVATE dl)
 #target_link_options(${MAIN_EXECUTE} PRIVATE "-no-pie")
 
 install(TARGETS ${MAIN_EXECUTE} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
+install(FILES realmd.conf.dist.in DESTINATION ${CONF_DIR} RENAME realmd.conf.dist)
+
+
