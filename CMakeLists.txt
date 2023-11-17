@@ -44,7 +44,26 @@ if(PREFIX)
   message(FATAL_ERROR "The parameter PREFIX has been removed. Please re-run CMake and use CMAKE_INSTALL_PREFIX instead to define your installation location!")
 endif()
 
+
+option(ENABLE_WARNINGS_SETTINGS "Allow target_set_warnings to add flags and defines.
+                                 Set this to OFF if you want to provide your own warning parameters." ON)
+option(ENABLE_LTO "Enable link time optimization" ON)
+
 include(CheckPlatform)
+include(Warnings)
+find_package(MySQL)
+include(Colors)
+include(LTO)
+include(Warnings)
+include(AutoCollect)
+
+# Check for LTO support.
+find_lto(CXX)
+
+list(APPEND CMAKE_MODULE_PATH
+        ${CMAKE_SOURCE_DIR}/cmake/macros)
+
+
 
 # TODO: use MSVC_CXX_ARCHITECTURE_ID instead to identify platform on windows (not required on other systems)
 # find platform: required to build 3rd party libraries w/o CMake files
@@ -239,7 +258,7 @@ if(XCODE)
 endif()
 
 list(APPEND CMAKE_MODULE_PATH
-        "${CMAKE_SOURCE_DIR}/cmake/macros")
+        ${CMAKE_SOURCE_DIR}/cmake/macros)
 
 add_subdirectory(dep)
 
@@ -265,10 +284,6 @@ else()
   set_directory_properties(PROPERTIES COMPILE_DEFINITIONS "${DEFINITIONS};${DEFINITIONS_RELEASE}")
 endif()
 
-if(BUILD_CORE)
-  add_subdirectory(src)
-endif()
-
 if(BUILD_EXTRACTOR)
   add_subdirectory(contrib/extractor)
 endif()
@@ -286,3 +301,4 @@ endif()
 # endif()
 
 add_subdirectory(app)
+add_subdirectory(src)
