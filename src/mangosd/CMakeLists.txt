@@ -52,14 +52,15 @@ add_library(${LIBRARY_NAME}
   ${LIBRARY_SRCS}
 )
 
-include_directories(
-        ${CMAKE_SOURCE_DIR}/src/shared
-        ${CMAKE_SOURCE_DIR}/dep/include/gsoap
-        ${CMAKE_SOURCE_DIR}/src/framework
-        ${CMAKE_SOURCE_DIR}/src/game
-        ${CMAKE_BINARY_DIR}
-        ${CMAKE_BINARY_DIR}/src/shared
-        ${OPENSSL_INCLUDE_DIR}
+target_include_directories(${LIBRARY_NAME}
+        PUBLIC
+            ${CMAKE_SOURCE_DIR}/src/shared
+            ${CMAKE_SOURCE_DIR}/dep/include/gsoap
+            ${CMAKE_SOURCE_DIR}/src/framework
+            ${CMAKE_SOURCE_DIR}/src/game
+            ${CMAKE_BINARY_DIR}
+            ${CMAKE_BINARY_DIR}/src/shared
+            ${OPENSSL_INCLUDE_DIR}
 )
 add_dependencies(${LIBRARY_NAME} revision.h)
 

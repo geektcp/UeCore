@@ -37,12 +37,12 @@ add_library(${LIBRARY_NAME}
 
 target_include_directories(${LIBRARY_NAME}
         PUBLIC
-        ${CMAKE_SOURCE_DIR}/src/shared
-        ${CMAKE_SOURCE_DIR}/src/framework
-        ${CMAKE_BINARY_DIR}
-        ${CMAKE_BINARY_DIR}/src/shared
-        ${MYSQL_INCLUDE_DIR}
-        ${OPENSSL_INCLUDE_DIR}
+            ${CMAKE_SOURCE_DIR}/src/shared
+            ${CMAKE_SOURCE_DIR}/src/framework
+            ${CMAKE_BINARY_DIR}
+            ${CMAKE_BINARY_DIR}/src/shared
+            ${MYSQL_INCLUDE_DIR}
+            ${OPENSSL_INCLUDE_DIR}
         )
 
 add_dependencies(${LIBRARY_NAME} revision.h)

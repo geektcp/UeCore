@@ -1,7 +1,7 @@
 # build server
 
 project(Everwar)
-set(EVERWAR_VERSION 1.2)
+set(EVERWAR_VERSION 1.3)
 cmake_minimum_required(VERSION 3.0)
 
 include(cmake/common.cmake)
@@ -20,7 +20,7 @@ set(EVERWAR_BASE /usr/local)
 include(cmake/options.cmake)
 
 set(EVERWAR_INSTALL everwar)
-set(CMAKE_INSTALL_PREFIX ${EVERWAR_BASE}/${EVERWAR_INSTALL})
+set(CMAKE_INSTALL_PREFIX ${EVERWAR_BASE}/${EVERWAR_INSTALL}-${EVERWAR_VERSION})
 
 set(BOOST_BASE boost)
 set(BOOST_ROOT ${EVERWAR_BASE}/${BOOST_BASE})
