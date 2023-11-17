@@ -1,0 +1,2 @@
+add_subdirectory(realmd)
+add_subdirectory(mangosd)
