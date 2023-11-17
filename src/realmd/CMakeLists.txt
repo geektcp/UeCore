@@ -16,13 +16,12 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-set(EXECUTABLE_NAME realmd)
+set(EXECUTABLE_NAME realmd_lib)
 
 set(EXECUTABLE_SRCS
     AuthCodes.h
     AuthSocket.cpp
     AuthSocket.h
-    Main.cpp
     RealmList.cpp
     RealmList.h
    )
@@ -41,7 +40,7 @@ include_directories(
   ${OPENSSL_INCLUDE_DIR}
 )
 
-add_executable(${EXECUTABLE_NAME}
+add_library(${EXECUTABLE_NAME}
   ${EXECUTABLE_SRCS}
 )
 

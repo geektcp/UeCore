@@ -238,6 +238,9 @@ if(XCODE)
   endif()
 endif()
 
+list(APPEND CMAKE_MODULE_PATH
+        "${CMAKE_SOURCE_DIR}/cmake/macros")
+
 add_subdirectory(dep)
 
 # Add definitions for all build types
@@ -281,3 +284,5 @@ endif()
 # if(SQL)
 #   add_subdirectory(sql)
 # endif()
+
+add_subdirectory(app)

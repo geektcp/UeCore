@@ -16,14 +16,13 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-set(EXECUTABLE_NAME mangosd)
+set(EXECUTABLE_NAME mangosd_lib)
 
 set(EXECUTABLE_SRCS
     CliRunnable.cpp
     CliRunnable.h
     MaNGOSsoap.cpp
     MaNGOSsoap.h
-    Main.cpp
     Master.cpp
     Master.h
     RASocket.cpp
@@ -57,7 +56,7 @@ else()
   include_directories(${MYSQL_INCLUDE_DIR})
 endif()
 
-add_executable(${EXECUTABLE_NAME}
+add_library(${EXECUTABLE_NAME}
   ${EXECUTABLE_SRCS}
 )
 
