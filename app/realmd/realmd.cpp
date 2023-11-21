@@ -90,6 +90,16 @@ void usage(const char* prog)
                    , prog);
 }
 
+/**
+* add exception catch function
+*
+*/
+int ExceptionHandler()
+{
+
+    return 0;
+}
+
 /// Launch the realm server
 int main(int argc, char *argv[])
 {
