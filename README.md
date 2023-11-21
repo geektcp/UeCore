@@ -125,5 +125,5 @@ https://github.com/geektcp/everwar/releases/tag/1.0
 
 ![风景1](https://github.com/geektcp/everwar/blob/master/screen/43.png)
 ![风景2](https://github.com/geektcp/everwar/blob/master/screen/44.png)
-![风景3](https://github.com/geektcp/everwar/blob/master/screen/44.png)
+![风景3](https://github.com/geektcp/everwar/blob/master/screen/25.png)
 
