@@ -3,7 +3,7 @@ everwar开源魔兽世界
 > 魔兽世界是世界上最成功的游戏，这是一套完整的服务端源码版本。
 2023年6月，官网已经正式发布。欢迎点赞收藏。
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/8.jpg)
+![登录入口](https://github.com/geektcp/everwar/blob/master/screen/24.png)
 
 # website
 <a href="http://everwar.cn" target="_blank">Everwar 开源魔兽世界官网</a>
@@ -121,4 +121,9 @@ https://github.com/geektcp/everwar/releases/tag/1.0
 
 - 界面截图
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/login.png)
+
+
+![风景1](https://github.com/geektcp/everwar/blob/master/screen/43.png)
+![风景2](https://github.com/geektcp/everwar/blob/master/screen/44.png)
+![风景3](https://github.com/geektcp/everwar/blob/master/screen/44.png)
 
