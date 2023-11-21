@@ -1,7 +1,7 @@
 # build server
 
 project(Everwar)
-set(EVERWAR_VERSION 1.2)
+set(EVERWAR_VERSION 1.3)
 cmake_minimum_required(VERSION 3.0)
 
 include(cmake/common.cmake)
@@ -12,13 +12,15 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH ${LIBS_DIR})
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
+set(CMAKE_CXX_STANDARD 11)
+
 set(EVERWAR_BASE /usr/local)
 
 # set default buildoptions and print them
 include(cmake/options.cmake)
 
 set(EVERWAR_INSTALL everwar)
-set(CMAKE_INSTALL_PREFIX ${EVERWAR_BASE}/${EVERWAR_INSTALL})
+set(CMAKE_INSTALL_PREFIX ${EVERWAR_BASE}/${EVERWAR_INSTALL}-${EVERWAR_VERSION})
 
 set(BOOST_BASE boost)
 set(BOOST_ROOT ${EVERWAR_BASE}/${BOOST_BASE})
@@ -44,7 +46,26 @@ if(PREFIX)
   message(FATAL_ERROR "The parameter PREFIX has been removed. Please re-run CMake and use CMAKE_INSTALL_PREFIX instead to define your installation location!")
 endif()
 
+
+option(ENABLE_WARNINGS_SETTINGS "Allow target_set_warnings to add flags and defines.
+                                 Set this to OFF if you want to provide your own warning parameters." ON)
+option(ENABLE_LTO "Enable link time optimization" ON)
+
 include(CheckPlatform)
+include(Warnings)
+find_package(MySQL)
+include(Colors)
+include(LTO)
+include(Warnings)
+include(AutoCollect)
+
+# Check for LTO support.
+find_lto(CXX)
+
+list(APPEND CMAKE_MODULE_PATH
+        ${CMAKE_SOURCE_DIR}/cmake/macros)
+
+
 
 # TODO: use MSVC_CXX_ARCHITECTURE_ID instead to identify platform on windows (not required on other systems)
 # find platform: required to build 3rd party libraries w/o CMake files
@@ -77,6 +98,7 @@ set(CONF_FOLDER_NAME etc)
 set(LIBS_FOLDER_NAME lib)
 
 set(BIN_DIR ${CMAKE_INSTALL_PREFIX}/${BIN_FOLDER_NAME})
+set(LIB_DIR ${CMAKE_INSTALL_PREFIX}/${LIBS_FOLDER_NAME})
 set(CONF_DIR ${CMAKE_INSTALL_PREFIX}/${CONF_FOLDER_NAME})
 # If win32 put it in the bin dir not lib
 if(WIN32)
@@ -238,6 +260,9 @@ if(XCODE)
   endif()
 endif()
 
+list(APPEND CMAKE_MODULE_PATH
+        ${CMAKE_SOURCE_DIR}/cmake/macros)
+
 add_subdirectory(dep)
 
 # Add definitions for all build types
@@ -262,10 +287,6 @@ else()
   set_directory_properties(PROPERTIES COMPILE_DEFINITIONS "${DEFINITIONS};${DEFINITIONS_RELEASE}")
 endif()
 
-if(BUILD_CORE)
-  add_subdirectory(src)
-endif()
-
 if(BUILD_EXTRACTOR)
   add_subdirectory(contrib/extractor)
 endif()
@@ -281,3 +302,6 @@ endif()
 # if(SQL)
 #   add_subdirectory(sql)
 # endif()
+
+add_subdirectory(app)
+add_subdirectory(src)

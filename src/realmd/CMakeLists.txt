@@ -16,38 +16,38 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-set(EXECUTABLE_NAME realmd)
+set(LIBRARY_NAME realmd_lib)
 
-set(EXECUTABLE_SRCS
+set(LIBRARY_SRCS
     AuthCodes.h
     AuthSocket.cpp
     AuthSocket.h
-    Main.cpp
     RealmList.cpp
     RealmList.h
    )
 
 if(WIN32)
   # add resource file to windows build
-  set(EXECUTABLE_SRCS ${EXECUTABLE_SRCS} realmd.rc)
+  set(LIBRARY_SRCS ${LIBRARY_SRCS} realmd.rc)
 endif()
 
-include_directories(
-  ${CMAKE_SOURCE_DIR}/src/shared
-  ${CMAKE_SOURCE_DIR}/src/framework
-  ${CMAKE_BINARY_DIR}
-  ${CMAKE_BINARY_DIR}/src/shared
-  ${MYSQL_INCLUDE_DIR}
-  ${OPENSSL_INCLUDE_DIR}
+add_library(${LIBRARY_NAME}
+  ${LIBRARY_SRCS}
 )
 
-add_executable(${EXECUTABLE_NAME}
-  ${EXECUTABLE_SRCS}
-)
+target_include_directories(${LIBRARY_NAME}
+        PUBLIC
+            ${CMAKE_SOURCE_DIR}/src/shared
+            ${CMAKE_SOURCE_DIR}/src/framework
+            ${CMAKE_BINARY_DIR}
+            ${CMAKE_BINARY_DIR}/src/shared
+            ${MYSQL_INCLUDE_DIR}
+            ${OPENSSL_INCLUDE_DIR}
+        )
 
-add_dependencies(${EXECUTABLE_NAME} revision.h)
+add_dependencies(${LIBRARY_NAME} revision.h)
 
-target_link_libraries(${EXECUTABLE_NAME}
+target_link_libraries(${LIBRARY_NAME}
   shared
   framework
   boost_program_options
@@ -56,42 +56,40 @@ target_link_libraries(${EXECUTABLE_NAME}
 )
 
 if(WIN32)
-  target_link_libraries(${EXECUTABLE_NAME}
+  target_link_libraries(${LIBRARY_NAME}
     optimized ${MYSQL_LIBRARY}
     optimized ${OPENSSL_LIBRARIES}
     debug ${MYSQL_DEBUG_LIBRARY}
     debug ${OPENSSL_DEBUG_LIBRARIES}
   )
   if(PLATFORM MATCHES X86)
-    target_link_libraries(${EXECUTABLE_NAME})
+    target_link_libraries(${LIBRARY_NAME})
   endif()
 endif()
 
 if(UNIX)
-  target_link_libraries(${EXECUTABLE_NAME}
+  target_link_libraries(${LIBRARY_NAME}
     ${MYSQL_LIBRARY}
     ${OPENSSL_LIBRARIES}
     ${OPENSSL_EXTRA_LIBRARIES}
   )
 endif()
 
-set(EXECUTABLE_LINK_FLAGS "")
+set(LIBRARY_LINK_FLAGS "")
 
 if(UNIX)
-  set(EXECUTABLE_LINK_FLAGS "-pthread ${EXECUTABLE_LINK_FLAGS}")
+  set(LIBRARY_LINK_FLAGS "-pthread ${LIBRARY_LINK_FLAGS}")
 endif()
 
 if(APPLE)
-  set(EXECUTABLE_LINK_FLAGS "-framework Carbon ${EXECUTABLE_LINK_FLAGS}")
+  set(LIBRARY_LINK_FLAGS "-framework Carbon ${LIBRARY_LINK_FLAGS}")
 endif()
 
-set_target_properties(${EXECUTABLE_NAME} PROPERTIES LINK_FLAGS
-  "${EXECUTABLE_LINK_FLAGS}"
+set_target_properties(${LIBRARY_NAME} PROPERTIES LINK_FLAGS
+  "${LIBRARY_LINK_FLAGS}"
 )
 
-install(TARGETS ${EXECUTABLE_NAME} DESTINATION ${BIN_DIR})
-install(FILES realmd.conf.dist.in DESTINATION ${CONF_DIR} RENAME realmd.conf.dist)
-
+install(TARGETS ${LIBRARY_NAME} DESTINATION ${LIB_DIR})
 if(WIN32 AND MSVC)
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/\${BUILD_TYPE}/${EXECUTABLE_NAME}.pdb DESTINATION ${BIN_DIR} CONFIGURATIONS Debug)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/\${BUILD_TYPE}/${LIBRARY_NAME}.pdb DESTINATION ${LIB_DIR} CONFIGURATIONS Debug)
 endif()

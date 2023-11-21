@@ -16,14 +16,13 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-set(EXECUTABLE_NAME mangosd)
+set(LIBRARY_NAME mangosd_lib)
 
-set(EXECUTABLE_SRCS
+set(LIBRARY_SRCS
     CliRunnable.cpp
     CliRunnable.h
     MaNGOSsoap.cpp
     MaNGOSsoap.h
-    Main.cpp
     Master.cpp
     Master.h
     RASocket.cpp
@@ -38,18 +37,10 @@ set(EXECUTABLE_SRCS
 
 if(WIN32)
   # add resource file to windows build
-  set(EXECUTABLE_SRCS ${EXECUTABLE_SRCS} mangosd.rc)
+  set(LIBRARY_SRCS ${LIBRARY_SRCS} mangosd.rc)
 endif()
 
-include_directories(
-  ${CMAKE_SOURCE_DIR}/src/shared
-  ${CMAKE_SOURCE_DIR}/dep/include/gsoap
-  ${CMAKE_SOURCE_DIR}/src/framework
-  ${CMAKE_SOURCE_DIR}/src/game
-  ${CMAKE_BINARY_DIR}
-  ${CMAKE_BINARY_DIR}/src/shared
-  ${OPENSSL_INCLUDE_DIR}
-)
+
 
 if(POSTGRESQL)
   include_directories(${PGSQL_INCLUDE_DIR})
@@ -57,13 +48,23 @@ else()
   include_directories(${MYSQL_INCLUDE_DIR})
 endif()
 
-add_executable(${EXECUTABLE_NAME}
-  ${EXECUTABLE_SRCS}
+add_library(${LIBRARY_NAME}
+  ${LIBRARY_SRCS}
 )
 
-add_dependencies(${EXECUTABLE_NAME} revision.h)
+target_include_directories(${LIBRARY_NAME}
+        PUBLIC
+            ${CMAKE_SOURCE_DIR}/src/shared
+            ${CMAKE_SOURCE_DIR}/dep/include/gsoap
+            ${CMAKE_SOURCE_DIR}/src/framework
+            ${CMAKE_SOURCE_DIR}/src/game
+            ${CMAKE_BINARY_DIR}
+            ${CMAKE_BINARY_DIR}/src/shared
+            ${OPENSSL_INCLUDE_DIR}
+)
+add_dependencies(${LIBRARY_NAME} revision.h)
 
-target_link_libraries(${EXECUTABLE_NAME}
+target_link_libraries(${LIBRARY_NAME}
   game
   shared
   framework
@@ -75,7 +76,7 @@ target_link_libraries(${EXECUTABLE_NAME}
 )
 
 if(WIN32)
-  target_link_libraries(${EXECUTABLE_NAME}
+  target_link_libraries(${LIBRARY_NAME}
     zlib
     optimized ${MYSQL_LIBRARY}
     optimized ${OPENSSL_LIBRARIES}
@@ -83,12 +84,12 @@ if(WIN32)
     debug ${OPENSSL_DEBUG_LIBRARIES}
   )
   if(PLATFORM MATCHES X86)
-    target_link_libraries(${EXECUTABLE_NAME})
+    target_link_libraries(${LIBRARY_NAME})
   endif()
 endif()
 
 if(UNIX)
-  target_link_libraries(${EXECUTABLE_NAME}
+  target_link_libraries(${LIBRARY_NAME}
     ${MYSQL_LIBRARY}
     ${OPENSSL_LIBRARIES}
     ${OPENSSL_EXTRA_LIBRARIES}
@@ -96,25 +97,25 @@ if(UNIX)
   )
 endif()
 
-set(EXECUTABLE_LINK_FLAGS "")
+set(LIBRARY_LINK_FLAGS "")
 
 if(UNIX)
   if (APPLE)
-    set(EXECUTABLE_LINK_FLAGS "-pthread -framework Carbon")
+    set(LIBRARY_LINK_FLAGS "-pthread -framework Carbon")
   else()
-    set(EXECUTABLE_LINK_FLAGS "-pthread -rdynamic")
+    set(LIBRARY_LINK_FLAGS "-pthread -rdynamic")
   endif()
 endif()
 
-set_target_properties(${EXECUTABLE_NAME} PROPERTIES LINK_FLAGS
-  "${EXECUTABLE_LINK_FLAGS}"
+set_target_properties(${LIBRARY_NAME} PROPERTIES LINK_FLAGS
+  "${LIBRARY_LINK_FLAGS}"
 )
 
-install(TARGETS ${EXECUTABLE_NAME} DESTINATION ${BIN_DIR})
-install(FILES run-mangosd DESTINATION ${BIN_DIR})
+install(TARGETS ${LIBRARY_NAME} DESTINATION ${LIB_DIR})
+install(FILES run-mangosd DESTINATION ${LIB_DIR})
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/mangosd.conf.dist.in ${CMAKE_CURRENT_BINARY_DIR}/mangosd.conf.dist)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/mangosd.conf.dist DESTINATION ${CONF_DIR})
 
 if(WIN32 AND MSVC)
-  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/\${BUILD_TYPE}/${EXECUTABLE_NAME}.pdb DESTINATION ${BIN_DIR} CONFIGURATIONS Debug)
+  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/\${BUILD_TYPE}/${LIBRARY_NAME}.pdb DESTINATION ${LIB_DIR} CONFIGURATIONS Debug)
 endif()

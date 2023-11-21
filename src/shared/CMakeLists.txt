@@ -189,7 +189,11 @@ endif()
         boost_thread
         boost_log
   )
+
 if(UNIX)
+  target_link_libraries(${LIBRARY_NAME}
+          pthread
+          )
 
 endif()
 
