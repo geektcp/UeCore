@@ -290,7 +290,7 @@ int main(int argc, char *argv[])
     ///- Wait for termination signal
     while (!stopEvent)
     {
-        if ((++loopCounter) == numLoops)
+        if ((++loopCounter) == static_cast<uint32>(numLoops))
         {
             loopCounter = 0;
             DETAIL_LOG("Ping MySQL to keep connection alive");

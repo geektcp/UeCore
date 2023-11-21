@@ -3,7 +3,7 @@ everwar开源魔兽世界
 > 魔兽世界是世界上最成功的游戏，这是一套完整的服务端源码版本。
 2023年6月，官网已经正式发布。欢迎点赞收藏。
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/8.jpg)
+![登录入口](https://github.com/geektcp/everwar/blob/master/screen/24.png)
 
 # website
 <a href="http://everwar.cn" target="_blank">Everwar 开源魔兽世界官网</a>
@@ -29,49 +29,19 @@ https://github.com/geektcp/everwar.git
 2023年9月20，基于CentOS7.x的新版本1.1已经内测通过，2023年9月16日上线。
 ```
 
-# version
-### Classic
-<a href="https://everwar.cn/deploy/everwar_1_0" target="_blank">Everwar-Classic-1.0 release</a>
-
-<a href="https://everwar.cn/deploy/everwar_1_1" target="_blank">Everwar-Classic-1.1 release</a>
-
-### Wotlk
-<a href="https://github.com/geektcp/everking" target="_blank">Everking-Wotlk-1.0</a>
-
-
 # beta test
 
-- 经典旧世公测
-
-<a href="https://everwar.cn/guide/classic" target="_blank">Everwar-Classic-1.1 beta test server</a>
-
-- 巫妖王之怒公测
-
-<a href="https://everwar.cn/guide/king" target="_blank">Everwar-Wotlk-1.0 beta test server</a>
-<br/>
+- 巫妖王之怒
 
 <a href="http://wotlk.everwar.cn/" target="_blank">巫妖王之怒帐号注册</a>
 ```
 http://wotlk.everwar.cn
 ```
 
+## star history
 
-- 公测帐号:
-```
-everwar1
-everwar2
-everwar3
-...
-...
-...
-test49
-test50
-```
+[![Stargazers over time](https://starchart.cc/geektcp/everwar.svg)](https://starchart.cc/geektcp/everwar)
 
-- 公测密码
-```
-123
-```
 
 # feature
 ```
@@ -151,4 +121,9 @@ https://github.com/geektcp/everwar/releases/tag/1.0
 
 - 界面截图
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/login.png)
+
+
+![风景1](https://github.com/geektcp/everwar/blob/master/screen/43.png)
+![风景2](https://github.com/geektcp/everwar/blob/master/screen/44.png)
+![风景3](https://github.com/geektcp/everwar/blob/master/screen/25.png)
 
