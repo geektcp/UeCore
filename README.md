@@ -154,8 +154,12 @@ http://doc.everwar.cn
 
 # 界面截图
 ```
-更完整的界面截图，在项目的screen目录
+更完整的界面截图，在项目的screen目录：
+https://github.com/geektcp/everwar/tree/master/screen
 ```
+
+<a href="https://github.com/geektcp/everwar/tree/master/screen" target="_blank">游戏精彩截图</a>
+
 
 - 玩家一起练级
 
