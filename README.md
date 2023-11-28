@@ -3,7 +3,7 @@ everwar开源魔兽世界
 > 魔兽世界是世界上最成功的游戏，这是一套完整的服务端源码版本。
 2023年6月，官网已经正式发布。欢迎点赞收藏。
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/24.png)
+![登录入口](https://github.com/geektcp/everwar/blob/master/screen/door.png)
 
 # website
 <a href="http://everwar.cn" target="_blank">Everwar 开源魔兽世界官网</a>
@@ -29,14 +29,27 @@ https://github.com/geektcp/everwar.git
 2023年9月20，基于CentOS7.x的新版本1.1已经内测通过，2023年9月16日上线。
 ```
 
-# beta test
+# wotlk server
+
+![登录入口](https://github.com/geektcp/everwar/blob/master/screen/37.png)
 
 - 巫妖王之怒
+```
+目前已经扩展至巫妖王之怒版本，进行了大量的深度改良和bug修复。
 
+本服不盈利，以结交朋友为主，大家一起来玩游戏。
+
+一起改良它，让更多的人获得乐趣。
+
+```
 <a href="http://wotlk.everwar.cn/" target="_blank">巫妖王之怒帐号注册</a>
 ```
 http://wotlk.everwar.cn
 ```
+
+![登录入口](https://github.com/geektcp/everwar/blob/master/screen/26.png)
+
+![登录入口](https://github.com/geektcp/everwar/blob/master/player/6.png)
 
 ## star history
 
@@ -65,7 +78,8 @@ http://wotlk.everwar.cn
 
 希望你不要太当真，这只是一场游戏。
 
-本项目聚焦经典旧世版本，未来还将持续下去。
+本项目聚焦经典旧世的游戏内容，未来还将持续下去。
+
 
 ```
 
@@ -120,10 +134,10 @@ https://github.com/geektcp/everwar/releases/tag/1.0
 ```
 
 - 界面截图
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/login.png)
+![登录入口](https://github.com/geektcp/everwar/blob/master/screen/37.png)
 
 
 ![风景1](https://github.com/geektcp/everwar/blob/master/screen/43.png)
 ![风景2](https://github.com/geektcp/everwar/blob/master/screen/44.png)
-![风景3](https://github.com/geektcp/everwar/blob/master/screen/25.png)
+![风景3](https://github.com/geektcp/everwar/blob/master/player/4.png)
 
