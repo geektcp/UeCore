@@ -160,10 +160,14 @@ https://github.com/geektcp/everwar/tree/master/screen
 
 <a href="https://github.com/geektcp/everwar/tree/master/screen" target="_blank">游戏精彩截图</a>
 
+- 玩家成功安装截图
+
+![成功安装](https://github.com/geektcp/everwar/blob/master/screen/deploy/7.png)
+
 
 - 玩家一起练级
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/37.png)
+![玩家](https://github.com/geektcp/everwar/blob/master/screen/37.png)
 
 - 在灰谷体验最魔幻的森林
 
