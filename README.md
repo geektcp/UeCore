@@ -56,9 +56,6 @@ http://wotlk.everwar.cn
 
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/player/6.png)
 
-## star history
-
-[![Stargazers over time](https://starchart.cc/geektcp/everwar.svg)](https://starchart.cc/geektcp/everwar)
 
 
 # feature
@@ -87,6 +84,13 @@ http://wotlk.everwar.cn
 
 
 ```
+
+## star history
+```
+github star增长变化情况
+```
+
+[![Stargazers over time](https://starchart.cc/geektcp/everwar.svg)](https://starchart.cc/geektcp/everwar)
 
 # branch
 ```
