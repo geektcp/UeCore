@@ -35,11 +35,15 @@ https://github.com/geektcp/everwar.git
 
 - 巫妖王之怒
 ```
-目前已经扩展至巫妖王之怒版本，进行了大量的深度改良和bug修复。
+本项目目前已经扩展至巫妖王之怒版本，进行了大量的深度改良和bug修复。
 
-本服不盈利，以结交朋友为主，大家一起来玩游戏。
+经过多年的沉淀，对游戏的代码更加熟悉，对游戏的逻辑认识更加深刻。
+本服除了大幅优化了超级炉石功能，还做了很多的深度改造，包括飞行引擎，任务系统，传送系统。
+随着时间的推移，未来还会更多精良的功能会上线。
 
-一起改良它，让更多的人获得乐趣。
+本服不盈利，以结交朋友为主，大家一起来玩游戏。希望大家多多支持，注册账号进来休闲。
+
+我们一起改良它，让更多的人获得乐趣。
 
 ```
 <a href="http://wotlk.everwar.cn/" target="_blank">巫妖王之怒帐号注册</a>
@@ -133,11 +137,20 @@ https://github.com/geektcp/everwar/releases/tag/1.0
 客户端使用1.12.x版本(60魔兽经典客户端)
 ```
 
-- 界面截图
+# 界面截图
+
+- 玩家一起练级
+
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/37.png)
 
+- 在灰谷体验最魔幻的森林
 
 ![风景1](https://github.com/geektcp/everwar/blob/master/screen/43.png)
+
+
 ![风景2](https://github.com/geektcp/everwar/blob/master/screen/44.png)
-![风景3](https://github.com/geektcp/everwar/blob/master/player/4.png)
+
+- 玩家打副本
+
+![玩家合照](https://github.com/geektcp/everwar/blob/master/player/4.png)
 
