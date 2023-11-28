@@ -53,7 +53,7 @@ http://wotlk.everwar.cn
 
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/26.png)
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/player/6.png)
+![登录入口](https://github.com/geektcp/everwar/blob/master/screen/player/6.png)
 
 ## star history
 
@@ -138,6 +138,9 @@ https://github.com/geektcp/everwar/releases/tag/1.0
 ```
 
 # 界面截图
+```
+更完整的界面截图，在项目的screen目录
+```
 
 - 玩家一起练级
 
@@ -150,7 +153,11 @@ https://github.com/geektcp/everwar/releases/tag/1.0
 
 ![风景2](https://github.com/geektcp/everwar/blob/master/screen/44.png)
 
+- 玩家电脑屏幕截图
+
+![玩家合照](https://github.com/geektcp/everwar/blob/master/screen/player/8.png)
+
 - 玩家打副本
 
-![玩家合照](https://github.com/geektcp/everwar/blob/master/player/4.png)
+![玩家合照](https://github.com/geektcp/everwar/blob/master/screen/player/4.png)
 
