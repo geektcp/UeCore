@@ -7,7 +7,7 @@ everwar开源魔兽世界
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/door.png)
 
 # website
-<a href="http://everwar.cn" target="_blank">Everwar 开源魔兽世界官网</a>
+<a href="http://uewow.com" target="_blank">Everwar 开源有义魔兽世界社区论坛</a>
 <br/>
 
 # overview
@@ -20,6 +20,18 @@ https://github.com/geektcp/everwar.git
 任何技术问题直接在issue提问。直接把问题和期望写清楚)，每周定期回复
 
 技术qq群： 153459822
+```
+
+## bbs
+```
+有义魔兽世界论坛的取名uewow蕴含着有义，有益，友谊的魔兽世界。
+
+有义魔兽世界论坛是一个专业的魔兽世界玩家和技术人士组成的专业社区论坛。
+
+是一个关于魔兽世界游戏引擎的研究、设计、开发、玩法、攻略的著名游戏论坛。 
+
+https://uewow.com
+
 ```
 
 ```
@@ -36,6 +48,7 @@ everwar服务器将提供良好的游戏功能设计，游戏体验，
 持续更新，持续修复bug，持续扩展PVP，PVE各类玩法，创新功能，改进架构，做一个高质量的真正的游戏服务器。
 
 ```
+
 # wotlk server
 
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/37.png)
