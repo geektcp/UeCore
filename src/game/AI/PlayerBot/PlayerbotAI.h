@@ -2,10 +2,10 @@
 #define _PLAYERBOTAI_H
 
 #include "Common.h"
-#include "../QuestDef.h"
-#include "../GameEventMgr.h"
-#include "../ObjectGuid.h"
-#include "../Unit.h"
+#include "QuestDef.h"
+#include "GameEventMgr.h"
+#include "ObjectGuid.h"
+#include "Unit.h"
 
 class WorldPacket;
 class WorldObject;
@@ -517,7 +517,7 @@ public:
     bool IsInCombat();
     bool IsRegenerating();
     bool IsGroupInCombat();
-    Player* GetGroupTank(); // TODO: didn't want to pollute non-playerbot code but this should really go in group.cpp
+    Player* GetGroupTank(); // TODO: didn't want to pollute non-PlayerBot code but this should really go in group.cpp
     void SetGroupCombatOrder(CombatOrderType co);
     void ClearGroupCombatOrder(CombatOrderType co);
     void SetGroupIgnoreUpdateTime(uint8 t);

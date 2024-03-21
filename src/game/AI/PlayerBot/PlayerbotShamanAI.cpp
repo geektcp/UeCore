@@ -1,6 +1,6 @@
 #include "PlayerbotShamanAI.h"
-#include "../SpellAuras.h"
-#include "../Totem.h"
+#include "SpellAuras.h"
+#include "Totem.h"
 
 class PlayerbotAI;
 PlayerbotShamanAI::PlayerbotShamanAI(Player* const master, Player* const bot, PlayerbotAI* const ai) : PlayerbotClassAI(master, bot, ai)

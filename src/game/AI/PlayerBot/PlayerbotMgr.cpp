@@ -1,16 +1,16 @@
 #include "Config/Config.h"
 #include "config.h"
-#include "../Player.h"
+#include "Player.h"
 #include "PlayerbotAI.h"
 #include "PlayerbotMgr.h"
 #include "WorldPacket.h"
-#include "../Chat.h"
-#include "../ObjectMgr.h"
-#include "../GossipDef.h"
-#include "../Chat.h"
-#include "../Language.h"
-#include "../WaypointMovementGenerator.h"
-#include "../LootMgr.h"
+#include "Chat.h"
+#include "ObjectMgr.h"
+#include "GossipDef.h"
+#include "Chat.h"
+#include "Language.h"
+#include "WaypointMovementGenerator.h"
+#include "LootMgr.h"
 
 class LoginQueryHolder;
 class CharacterHandler;
@@ -19,13 +19,13 @@ Config botConfig;
 
 void PlayerbotMgr::SetInitialWorldSettings()
 {
-    //Get playerbot configuration file
+    //Get PlayerBot configuration file
     if (!botConfig.SetSource(_PLAYERBOT_CONFIG))
         sLog.outError("Playerbot: Unable to open configuration file. Database will be unaccessible. Configuration values will use default.");
     else
         sLog.outString("Playerbot: Using configuration file %s",_PLAYERBOT_CONFIG);
 
-    //Check playerbot config file version
+    //Check PlayerBot config file version
     if (botConfig.GetIntDefault("ConfVersion", 0) != PLAYERBOT_CONF_VERSION)
         sLog.outError("Playerbot: Configuration file version doesn't match expected version. Some config variables may be wrong or missing.");
 }
@@ -1077,7 +1077,7 @@ bool ChatHandler::HandlePlayerbotCommand(char* args)
         return false;
     }
 
-    // create the playerbot manager if it doesn't already exist
+    // create the PlayerBot manager if it doesn't already exist
     PlayerbotMgr* mgr = m_session->GetPlayer()->GetPlayerbotMgr();
     if (!mgr)
     {

@@ -2,13 +2,13 @@
 #define _PLAYERBOTCLASSAI_H
 
 #include "Common.h"
-#include "../World.h"
-#include "../SpellMgr.h"
-#include "../Player.h"
-#include "../ObjectMgr.h"
+#include "World.h"
+#include "SpellMgr.h"
+#include "Player.h"
+#include "ObjectMgr.h"
 #include "WorldPacket.h"
-#include "../Unit.h"
-#include "../SharedDefines.h"
+#include "Unit.h"
+#include "SharedDefines.h"
 #include "PlayerbotAI.h"
 
 class Player;

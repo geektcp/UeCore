@@ -44,31 +44,31 @@ include_directories(
 )
 
 set(SRC_GRP_PLAYERBOT
-    playerbot/config.h
-    playerbot/PlayerbotAI.cpp
-    playerbot/PlayerbotAI.h
-    playerbot/PlayerbotClassAI.cpp
-    playerbot/PlayerbotClassAI.h
-    playerbot/PlayerbotDruidAI.cpp
-    playerbot/PlayerbotDruidAI.h
-    playerbot/PlayerbotHunterAI.cpp
-    playerbot/PlayerbotHunterAI.h
-    playerbot/PlayerbotMageAI.cpp
-    playerbot/PlayerbotMageAI.h
-    playerbot/PlayerbotMgr.cpp
-    playerbot/PlayerbotMgr.h
-    playerbot/PlayerbotPaladinAI.cpp
-    playerbot/PlayerbotPaladinAI.h
-    playerbot/PlayerbotPriestAI.cpp
-    playerbot/PlayerbotPriestAI.h
-    playerbot/PlayerbotRogueAI.cpp
-    playerbot/PlayerbotRogueAI.h
-    playerbot/PlayerbotShamanAI.cpp
-    playerbot/PlayerbotShamanAI.h
-    playerbot/PlayerbotWarlockAI.cpp
-    playerbot/PlayerbotWarlockAI.h
-    playerbot/PlayerbotWarriorAI.cpp
-    playerbot/PlayerbotWarriorAI.h
+        AI/PlayerBot/config.h
+        AI/PlayerBot/PlayerbotAI.cpp
+        AI/PlayerBot/PlayerbotAI.h
+        AI/PlayerBot/PlayerbotClassAI.cpp
+        AI/PlayerBot/PlayerbotClassAI.h
+        AI/PlayerBot/PlayerbotDruidAI.cpp
+        AI/PlayerBot/PlayerbotDruidAI.h
+        AI/PlayerBot/PlayerbotHunterAI.cpp
+        AI/PlayerBot/PlayerbotHunterAI.h
+        AI/PlayerBot/PlayerbotMageAI.cpp
+        AI/PlayerBot/PlayerbotMageAI.h
+        AI/PlayerBot/PlayerbotMgr.cpp
+        AI/PlayerBot/PlayerbotMgr.h
+        AI/PlayerBot/PlayerbotPaladinAI.cpp
+        AI/PlayerBot/PlayerbotPaladinAI.h
+        AI/PlayerBot/PlayerbotPriestAI.cpp
+        AI/PlayerBot/PlayerbotPriestAI.h
+        AI/PlayerBot/PlayerbotRogueAI.cpp
+        AI/PlayerBot/PlayerbotRogueAI.h
+        AI/PlayerBot/PlayerbotShamanAI.cpp
+        AI/PlayerBot/PlayerbotShamanAI.h
+        AI/PlayerBot/PlayerbotWarlockAI.cpp
+        AI/PlayerBot/PlayerbotWarlockAI.h
+        AI/PlayerBot/PlayerbotWarriorAI.cpp
+        AI/PlayerBot/PlayerbotWarriorAI.h
 )
 
 set(SRC_GRP_AI
@@ -422,7 +422,7 @@ set(LIBRARY_SRCS
     pchdef.h
 )
 
-source_group("PlayerBot"
+source_group("AI/PlayerBot"
   FILES
     ${SRC_GRP_PLAYERBOT}
 )
@@ -520,4 +520,4 @@ if(PCH)
   cotire(${LIBRARY_NAME})
 endif()
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/playerbot/playerbot.conf.dist.in DESTINATION ${CONF_DIR} RENAME playerbot.conf.dist)
+install(FILES AI/PlayerBot/playerbot.conf.dist.in DESTINATION ${CONF_DIR} RENAME playerbot.conf.dist)
