@@ -7,7 +7,7 @@ Everwar开源魔兽世界
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/door.png)
 
 # website
-<a href="http://uewow.com" target="_blank">Everwar 开源有义魔兽世界社区论坛</a>
+<a href="http://uewow.com" target="_blank">Everwar开源友谊魔兽世界社区论坛</a>
 <br/>
 
 # overview
@@ -67,7 +67,7 @@ everwar服务器将提供良好的游戏功能设计，游戏体验，
 我们一起改良它，让更多的人获得乐趣。
 
 ```
-<a href="http://wotlk.everwar.cn/" target="_blank">巫妖王之怒帐号注册</a>
+<a href="http://everwar.cn/" target="_blank">Everwar魔兽世界帐号注册</a>
 ```
 http://wotlk.everwar.cn
 ```
