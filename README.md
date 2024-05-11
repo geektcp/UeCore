@@ -1,8 +1,8 @@
-Everwar开源魔兽世界
+Everwar开源魔兽世界服务器
 ==============================
 > 魔兽世界是世界上最成功的游戏之一，这是一套完整的服务端源码版本。
 
-> 2023年6月，官网已经正式发布。欢迎点赞收藏。
+> 2023年6月，官网已经正式发布魔兽世界服务器。欢迎点赞收藏。
 
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/door.png)
 
@@ -13,7 +13,7 @@ Everwar开源魔兽世界
 # overview
 
 ```
-顶级为60的魔兽世界版本是WOW最经典的版本,让我们重温经典吧。
+顶级为60的魔兽世界服务器版本是WOW最经典的版本,让我们重温经典吧。
 觉得有用就赞一个，欢迎fork
 https://github.com/geektcp/everwar.git
 
