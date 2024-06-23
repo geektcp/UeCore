@@ -1,4 +1,4 @@
-# Everwar -- History of visible changes
+# UeCore -- History of visible changes
 
 Please submit bug reports at our bugtracker at:
 https://github.com/geektcp/everwar/issues

@@ -1,6 +1,6 @@
 # build server
 
-project(Everwar)
+project(UeCore)
 set(EVERWAR_VERSION 1.3)
 cmake_minimum_required(VERSION 3.0)
 

@@ -1,4 +1,4 @@
-Everwar开源魔兽世界服务器
+UeCore开源魔兽世界服务器
 ==============================
 > 魔兽世界是世界上最成功的游戏之一，这是一套完整的服务端源码版本。
 
@@ -7,7 +7,7 @@ Everwar开源魔兽世界服务器
 ![登录入口](https://github.com/geektcp/everwar/blob/master/screen/door.png)
 
 # website
-<a href="http://uewow.com" target="_blank">Everwar开源友谊魔兽世界社区论坛</a>
+<a href="http://uewow.com" target="_blank">UeCore开源友谊魔兽世界社区论坛</a>
 <br/>
 
 # overview
@@ -67,7 +67,7 @@ everwar服务器将提供良好的游戏功能设计，游戏体验，
 我们一起改良它，让更多的人获得乐趣。
 
 ```
-<a href="http://everwar.cn/" target="_blank">Everwar魔兽世界帐号注册</a>
+<a href="http://everwar.cn/" target="_blank">UeCore魔兽世界帐号注册</a>
 ```
 http://wotlk.everwar.cn
 ```
@@ -178,7 +178,7 @@ https://github.com/geektcp/everwar/releases/tag/1.0
 http://doc.everwar.cn
 ```
 
-<a href="http://doc.everwar.cn" target="_blank">Everwar开源魔兽世界官方技术文档地址</a>
+<a href="http://doc.everwar.cn" target="_blank">UeCore开源魔兽世界官方技术文档地址</a>
 
 
 # 界面截图

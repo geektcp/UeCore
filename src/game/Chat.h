@@ -1,5 +1,5 @@
 /*
- * This file is part of the Everwar Project. See AUTHORS file for Copyright information
+ * This file is part of the UeCore Project. See AUTHORS file for Copyright information
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -585,7 +585,7 @@ class MANGOS_DLL_SPEC ChatHandler
         bool HandleMmap(char* args);
         bool HandleMmapTestArea(char* args);
         bool HandleMmapTestHeight(char* args);
-        bool HandleEverwarCommand(char* args);
+        bool HandleUeCoreCommand(char* args);
 
         //! Development Commands
         bool HandleSaveAllCommand(char* args);

@@ -1,5 +1,5 @@
 /*
- * This file is part of the Everwar Project. See AUTHORS file for Copyright information
+ * This file is part of the UeCore Project. See AUTHORS file for Copyright information
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -4801,7 +4801,7 @@ bool ChatHandler::HandleMmapStatsCommand(char* /*args*/)
     return true;
 }
 
-bool ChatHandler::HandleEverwarCommand(char* /*args*/)
+bool ChatHandler::HandleUeCoreCommand(char* /*args*/)
 {
     return true;
 }
