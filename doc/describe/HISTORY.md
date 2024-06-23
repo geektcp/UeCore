@@ -1,7 +1,7 @@
 # UeCore -- History of visible changes
 
 Please submit bug reports at our bugtracker at:
-https://github.com/geektcp/everwar/issues
+https://github.com/geektcp/UeCore/issues
 
 See the file ChangeLog.md for details!
 

@@ -1,10 +1,10 @@
-UeCore开源魔兽世界服务器
+UeCore全球著名中文魔兽世界服务器开源项目
 ==============================
 > 魔兽世界是世界上最成功的游戏之一，这是一套完整的服务端源码版本。
 
 > 2023年6月，官网已经正式发布魔兽世界服务器。欢迎点赞收藏。
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/door.png)
+![登录入口](https://github.com/geektcp/UeCore/blob/master/screen/door.png)
 
 # website
 <a href="http://uewow.com" target="_blank">UeCore开源友谊魔兽世界社区论坛</a>
@@ -15,7 +15,7 @@ UeCore开源魔兽世界服务器
 ```
 顶级为60的魔兽世界服务器版本是WOW最经典的版本,让我们重温经典吧。
 觉得有用就赞一个，欢迎fork
-https://github.com/geektcp/everwar.git
+https://github.com/geektcp/UeCore.git
 
 任何技术问题直接在issue提问。直接把问题和期望写清楚)，每周定期回复
 
@@ -44,14 +44,14 @@ https://uewow.com
 
 # notice
 ```
-everwar服务器将提供良好的游戏功能设计，游戏体验，
+UeCore服务器将提供良好的游戏功能设计，游戏体验，
 持续更新，持续修复bug，持续扩展PVP，PVE各类玩法，创新功能，改进架构，做一个高质量的真正的游戏服务器。
 
 ```
 
 # wotlk server
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/37.png)
+![登录入口](https://github.com/geektcp/UeCore/blob/master/screen/37.png)
 
 - 巫妖王之怒
 ```
@@ -72,9 +72,9 @@ everwar服务器将提供良好的游戏功能设计，游戏体验，
 http://wotlk.everwar.cn
 ```
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/26.png)
+![登录入口](https://github.com/geektcp/UeCore/blob/master/screen/26.png)
 
-![登录入口](https://github.com/geektcp/everwar/blob/master/screen/player/6.png)
+![登录入口](https://github.com/geektcp/UeCore/blob/master/screen/player/6.png)
 
 
 # feature
@@ -93,7 +93,7 @@ http://wotlk.everwar.cn
 
 ```
 
-![登陆器](https://github.com/geektcp/everwar/blob/master/screen/launcher/launcher-v0.4.png)
+![登陆器](https://github.com/geektcp/UeCore/blob/master/screen/launcher/launcher-v0.4.png)
 
 # history
 ```
@@ -119,7 +119,7 @@ http://wotlk.everwar.cn
 github star增长变化情况
 ```
 
-[![Stargazers over time](https://starchart.cc/geektcp/everwar.svg)](https://starchart.cc/geektcp/everwar)
+[![Stargazers over time](https://starchart.cc/geektcp/UeCore.svg)](https://starchart.cc/geektcp/UeCore)
 
 # branch
 ```
@@ -156,7 +156,7 @@ CentOS 7.9 下载地址：
 https://ftp.riken.jp/Linux/centos/7.9.2009/isos/x86_64/
 
 完整的二进制安装包下载地址(仅支持CentOS 6.5)：
-https://github.com/geektcp/everwar/releases/tag/1.0
+https://github.com/geektcp/UeCore/releases/tag/1.0
 
 完整的二进制安装包下载地址(支持CentOS 7.9)：
 待发布
@@ -184,32 +184,32 @@ http://doc.everwar.cn
 # 界面截图
 ```
 更完整的界面截图，在项目的screen目录：
-https://github.com/geektcp/everwar/tree/master/screen
+https://github.com/geektcp/UeCore/tree/master/screen
 ```
 
-<a href="https://github.com/geektcp/everwar/tree/master/screen" target="_blank">游戏精彩截图</a>
+<a href="https://github.com/geektcp/UeCore/tree/master/screen" target="_blank">游戏精彩截图</a>
 
 - 玩家成功安装截图
 
-![成功安装](https://github.com/geektcp/everwar/blob/master/screen/deploy/7.png)
+![成功安装](https://github.com/geektcp/UeCore/blob/master/screen/deploy/7.png)
 
 
 - 玩家一起练级
 
-![玩家](https://github.com/geektcp/everwar/blob/master/screen/37.png)
+![玩家](https://github.com/geektcp/UeCore/blob/master/screen/37.png)
 
 - 在灰谷体验最魔幻的森林
 
-![风景1](https://github.com/geektcp/everwar/blob/master/screen/43.png)
+![风景1](https://github.com/geektcp/UeCore/blob/master/screen/43.png)
 
 
-![风景2](https://github.com/geektcp/everwar/blob/master/screen/44.png)
+![风景2](https://github.com/geektcp/UeCore/blob/master/screen/44.png)
 
 - 玩家电脑屏幕截图
 
-![玩家合照](https://github.com/geektcp/everwar/blob/master/screen/player/8.png)
+![玩家合照](https://github.com/geektcp/UeCore/blob/master/screen/player/8.png)
 
 - 玩家打副本
 
-![玩家合照](https://github.com/geektcp/everwar/blob/master/screen/player/4.png)
+![玩家合照](https://github.com/geektcp/UeCore/blob/master/screen/player/4.png)
 

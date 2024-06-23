@@ -19,7 +19,7 @@ set(EVERWAR_BASE /usr/local)
 # set default buildoptions and print them
 include(cmake/options.cmake)
 
-set(EVERWAR_INSTALL everwar)
+set(EVERWAR_INSTALL UeCore)
 set(CMAKE_INSTALL_PREFIX ${EVERWAR_BASE}/${EVERWAR_INSTALL}-${EVERWAR_VERSION})
 
 set(BOOST_BASE boost)

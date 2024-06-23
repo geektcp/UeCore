@@ -623,7 +623,7 @@ class World
 
         static float  m_relocation_lower_limit_sq;
         static uint32 m_relocation_ai_notify_delay;
-        static uint32 everwar;
+        static uint32 uecore;
 
         // CLI command holder to be thread safe
         std::mutex m_cliCommandQueueLock;

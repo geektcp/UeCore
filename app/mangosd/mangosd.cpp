@@ -182,7 +182,7 @@ int main(int argc, char *argv[])
                    "     | |ontinued| |\\/| | __ _| . ` | | |_ | |  | |\\___ \\ \n"
                    "     | |____    | |  | |/ _` | |\\  | |__| | |__| |____) |\n"
                    "      \\_____|   |_|  |_| (_| |_| \\_|\\_____|\\____/ \\____/ \n"
-                   "      http://everwar.cn\\__,_|     Doing things right!\n\n");
+                   "      http://uewow.com\\__,_|     Doing things right!\n\n");
 
     sLog.outString("Using configuration file %s.", configFile.c_str());
 

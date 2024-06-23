@@ -60,11 +60,11 @@ ConfVersion=2016101401
 ###################################################################################################################
 
 RealmID = 1
-DataDir = "/usr/local/everwar/data"
-LogsDir = "/usr/local/everwar/logs"
-LoginDatabaseInfo     = "everwar;3306;everwar;everwar.cn;realmd"
-WorldDatabaseInfo     = "everwar;3306;everwar;everwar.cn;mangos"
-CharacterDatabaseInfo = "everwar;3306;everwar;everwar.cn;characters"
+DataDir = "/usr/local/UeCore/data"
+LogsDir = "/usr/local/UeCore/logs"
+LoginDatabaseInfo     = "UeCore;3306;UeCore;UeCore;realmd"
+WorldDatabaseInfo     = "UeCore;3306;UeCore;UeCore;mangos"
+CharacterDatabaseInfo = "UeCore;3306;UeCore;UeCore;characters"
 LoginDatabaseConnections = 1
 WorldDatabaseConnections = 1
 CharacterDatabaseConnections = 1
@@ -781,7 +781,7 @@ Event.Announce = 0
 BeepAtStart = 1
 ShowProgressBars = 0
 WaitAtStartupError = 0
-Motd = "Welcome to the everwar.cn Server."
+Motd = "Welcome to the UeCore Server."
 PlayerCommands = 1
 
 ###################################################################################################################

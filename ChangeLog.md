@@ -18,4 +18,4 @@ https://everwar.cn
 ```
 持续反馈开源界用户的问题。
 ```
-<a href="https://github.com/geektcp/everwar/issues" _target="blank" >issue</a>
+<a href="https://github.com/geektcp/UeCore/issues" _target="blank" >issue</a>

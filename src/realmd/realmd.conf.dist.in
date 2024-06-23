@@ -107,8 +107,8 @@ ConfVersion=2010062001
 #
 ###################################################################################################################
 
-LoginDatabaseInfo = "everwar;3306;everwar;everwar.cn;realmd"
-LogsDir = "/usr/local/everwar/logs"
+LoginDatabaseInfo = "uecore;3306;uecore;uewow.com;realmd"
+LogsDir = "/usr/local/UeCore/logs"
 MaxPingTime = 30
 RealmServerPort = 3724
 BindIP = "0.0.0.0"

@@ -12,7 +12,7 @@ you can dig in at any place you want to!
 See our linklist at [UeCore Links](http://everwar.cn) for other places.
 
 This guide however is only for contributing to the UeCore core part -
-which is hosted at https://github.com/geektcp/everwar
+which is hosted at https://github.com/geektcp/UeCore
 
 ## Getting Started
 

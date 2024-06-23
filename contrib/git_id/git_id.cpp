@@ -55,8 +55,8 @@
 
 char remotes[NUM_REMOTES][MAX_REMOTE] =
 {
-    "git@github.com:/geektcp/everwar.git",
-    "git@github.com:/geektcp/everwar.git"           // used for fetch if present
+    "git@github.com:/geektcp/UeCore.git",
+    "git@github.com:/geektcp/UeCore.git"           // used for fetch if present
 };
 
 char remote_branch[MAX_REMOTE] = "master";

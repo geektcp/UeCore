@@ -182,7 +182,7 @@ then
   echo
   echo "Please link to your started project on our forum!"
   echo
-  echo "Here is some suggested content for publishing on the http://everwar.cn forums at:"
+  echo "Here is some suggested content for publishing on the http://uewow.com forums at:"
   echo "    <LINK>"
   echo "or for a custom project:    <LINK2>"
   echo
