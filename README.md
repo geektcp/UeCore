@@ -13,7 +13,7 @@ UeCore全球著名中文魔兽世界服务器开源项目
 
 > 2020年 3月，支持Player Bot
 
-> 2020年12月，支持Npc Bot
+> 2020年12月，支持Lua脚本
 
 > 2021年 6月，UeCore官网已经正式发布魔兽世界服务器
 
@@ -29,12 +29,14 @@ UeCore全球著名中文魔兽世界服务器开源项目
 
 > 2024年 5月，重构60，70团队副本。
 
+> 2025年 3月，优化部署文档。
 
+> 2025年 11月，加入NpcBot机器人。
 
 ![登录入口](https://github.com/geektcp/UeCore/blob/master/screen/door.png)
 
 # website
-<a href="http://uewow.com" target="_blank">UeCore开源友谊魔兽世界社区论坛</a>
+<a href="http://uecore.org" target="_blank">UeCore开源UeCore魔兽世界社区论坛</a>
 <br/>
 
 # overview
@@ -46,7 +48,8 @@ https://github.com/geektcp/UeCore.git
 
 任何技术问题直接在issue提问。直接把问题和期望写清楚)，每周定期回复
 
-技术qq群： 153459822
+<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=lUPEtyE55iYo5LxuCLWPfwYCc0KJ-12A&authKey=V5OyPonKbW7ZLuUc52yaIqNBUjVDthYfFMLYH701gm7hTXVsX57XunVls77UbbuX&noverify=0&group_code=153459822" target="_blank">技术交流QQ群： 153459822</a>
+
 ```
 
 ## bbs
@@ -60,7 +63,9 @@ https://github.com/geektcp/UeCore.git
 
 ```
 感谢各位的star，支持和关注，接下来这个项目也会进行持续的更新，大家可以留意动态。
-2023年会发布一个新版本，基于CentOS7.x的版本，并部署到公网，到时候方便大家直接使用。
+
+<a href="https://github.com/geektcp/UeCore/releases" target="_blank">2023年已经发布一个新版本，基于CentOS7.x的版本。</a>
+
 --------------
 
 2023年9月20，基于CentOS7.x的新版本1.1已经内测通过，2023年9月16日上线。
@@ -91,9 +96,9 @@ UeCore服务器将提供良好的游戏功能设计，游戏体验，
 我们一起改良它，让更多的人获得乐趣。
 
 ```
-<a href="http://everwar.cn/" target="_blank">UeCore魔兽世界帐号注册</a>
+<a href="http://uecore.org" target="_blank">UeCore魔兽世界帐号注册</a>
 ```
-http://wotlk.everwar.cn
+http://uecore.org
 ```
 
 ![登录入口](https://github.com/geektcp/UeCore/blob/master/screen/26.png)
@@ -199,10 +204,10 @@ https://github.com/geektcp/UeCore/releases/tag/1.0
 
 - 官方技术文档地址
 ```
-http://doc.everwar.cn
+http://uecore.org
 ```
 
-<a href="http://doc.everwar.cn" target="_blank">UeCore开源魔兽世界官方技术文档地址</a>
+<a href="http://uecore.org" target="_blank">UeCore开源魔兽世界官方技术文档地址</a>
 
 
 # 界面截图
