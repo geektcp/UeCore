@@ -47,29 +47,30 @@ UeCore全球著名中文魔兽世界服务器开源项目
 https://github.com/geektcp/UeCore.git
 
 任何技术问题直接在issue提问。直接把问题和期望写清楚)，每周定期回复
+```
 
 <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=lUPEtyE55iYo5LxuCLWPfwYCc0KJ-12A&authKey=V5OyPonKbW7ZLuUc52yaIqNBUjVDthYfFMLYH701gm7hTXVsX57XunVls77UbbuX&noverify=0&group_code=153459822" target="_blank">技术交流QQ群： 153459822</a>
 
-```
 
-## bbs
+
+## issue
 ```
 各位有专业问题，尽量在issue留言讨论，留言后可以发QQ消息给作者或管理员提醒回复。
 
 有很多问题往往一句话说不清楚或者描述不清楚。还有很多问题的回复也未必一次就能讨论清楚。
 谢谢配合。
 
+感谢各位的star，支持和关注，接下来这个项目也会进行持续的更新，大家可以留意动态。
 ```
 
-```
-感谢各位的star，支持和关注，接下来这个项目也会进行持续的更新，大家可以留意动态。
+## release
 
 <a href="https://github.com/geektcp/UeCore/releases" target="_blank">2023年已经发布一个新版本，基于CentOS7.x的版本。</a>
 
 --------------
 
 2023年9月20，基于CentOS7.x的新版本1.1已经内测通过，2023年9月16日上线。
-```
+
 
 # notice
 ```
